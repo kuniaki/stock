@@ -34,6 +34,3 @@ services:
     image: dockerkvs_app
     container_name: stock_app
     restart: "no"
-
-volumes:
-    driver: local
