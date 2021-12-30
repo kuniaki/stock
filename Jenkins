@@ -39,6 +39,8 @@ node('Slave1') {
          branch = env.CHANGE_BRANCH
        }
 
+       branch = "main"
+
        checkout([
                     $class: 'GitSCM',
                     branches: [[name: branch]],
