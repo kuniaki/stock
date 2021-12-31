@@ -28,10 +28,10 @@ CORS(app)
 def root():
     return "Chart Server"
 
+"""
 #http://server:5000/candle?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
 @app.route('/stock')
 def stock():
-"""
   my_share = share.Share('RIDE')
   symbol_data = None
   try:
@@ -41,7 +41,6 @@ def stock():
     print(e.message)
     sys.exit(1)
   return success(symbol_data)
-"""
   data = {}
   cursor = '0'
   while cursor != 0:
@@ -52,6 +51,7 @@ def stock():
     values = [value.decode() for value in REDIS.mget(*keys)]
     data.update(dict(zip(keys, values)))
   return success(data)
+"""
 
 @app.route('/api/v1/keys/', methods=['GET'])
 def api_keys():
