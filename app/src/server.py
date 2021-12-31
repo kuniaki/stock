@@ -31,12 +31,9 @@ def root():
 #http://server:5000/candle?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
 @app.route('/stock', methods=['GET'])
 def stock():
-# df = "aaa"
+"""
   my_share = share.Share('RIDE')
   symbol_data = None
-# code      = request.args.get('code')
-# country   = request.args.get('country')
-# df = investpy.get_stock_recent_data(stock=code,country=country)
   try:
     symbol_data = my_share.get_historical(share.PERIOD_TYPE_DAY,60,
                                         share.FREQUENCY_TYPE_MINUTE,5)
@@ -44,30 +41,17 @@ def stock():
     print(e.message)
     sys.exit(1)
   return success(symbol_data)
-# return success(df)
 """
-# code      = request.args.get('code')
-# country   = request.args.get('country')
-# fromDate  = request.args.get('fromDate')
-# toDate    = request.args.get('toDate')
-
-  df = investpy.get_stock_historical_data(stock=code,
-                                        country=country,
-                                        from_date=fromDate,
-                                        to_date=toDate)
-  df = investpy.get_stock_recent_data(stock=code,country=country)
-
-  df = investpy.get_stock_historical_data(stock='7974',
-                                        country='japan',
-                                        from_date='01/01/2020',
-                                        to_date='01/01/2021')
-
-  df = investpy.get_stock_historical_data(stock=code,
-                                        country=country,
-                                        from_date=fromDate,
-                                        to_date=toDate)
-
-"""
+  data = {}
+  cursor = '0'
+  while cursor != 0:
+    cursor, keys = REDIS.scan(cursor=cursor, count=1000000)
+    if len(keys) == 0:
+      break
+    keys = [key.decode() for key in keys]
+    values = [value.decode() for value in REDIS.mget(*keys)]
+    data.update(dict(zip(keys, values)))
+  return success(data)
 
 @app.route('/api/v1/keys/', methods=['GET'])
 def api_keys():
