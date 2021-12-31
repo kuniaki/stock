@@ -9,7 +9,7 @@ $('#btn').click(function(){
 function getInfo(code, span, callback){
     $.ajax({
 //      url : 'https://api.iextrading.com/1.0/stock/' + code + '/chart/' + span,
-        url : 'http://http://asahihdgrjenkinsslave1.eastus.cloudapp.azure.com/api/v1/keys/,
+        url : 'http://http://asahihdgrjenkinsslave1.eastus.cloudapp.azure.com/api/v1/keys/',
         type : 'GET',       
         async : true,        
         cashe : false,     
