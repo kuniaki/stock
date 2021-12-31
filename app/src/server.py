@@ -23,6 +23,7 @@ def root():
 @app.route('/stock')
 def stock():
   df = {}
+  country = request.args.get('country', default="japan", type=str)
   language = request.args.get('language')
   return success(df)
 """
