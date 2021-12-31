@@ -4,7 +4,6 @@ RUN pip install investpy
 WORKDIR /src
 COPY ./src/server.py /src/
 
-RUN apt-get install -y vim
 RUN pip install --upgrade pip && \
     pip install --upgrade setuptools && \
     pip install --upgrade Flask flask_cors mplfinance
