@@ -26,10 +26,16 @@ node('Slave1') {
        sh "docker rm -f stock_web"
        sh "docker rm -f stock_app"
        sh "docker rm -f  dockerkvs_app"
+       sh "docker rm -f  dockerkvs_web"
        sh "docker rm -f stock_apptest"
        sh "docker rm -f dockerkvs_db"
+
+       try {
+          sh "docker rmi -f `docker images -q`"
+       }catch(e) {
+           echo " web image is already deleted"
+       }
        
-       sh "docker rmi -f `docker images -q`"
 
      //Clean up WORKSPACE
      step([$class: 'WsCleanup'])
