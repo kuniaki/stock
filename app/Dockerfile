@@ -4,6 +4,10 @@ RUN pip install investpy
 RUN pip install yahoo-finance-api2
 WORKDIR /src
 COPY ./src/server.py /src/
+COPY ./src/test.py /src/
+COPY ./src/test1.py /src/
+COPY ./src/test2.py /src/
+COPY ./src/test3.py /src/
 
 RUN pip install --upgrade pip && \
     pip install --upgrade setuptools && \
