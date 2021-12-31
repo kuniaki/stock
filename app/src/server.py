@@ -23,7 +23,7 @@ def root():
 @app.route('/stock')
 def stock():
   df ={} 
-  code      = request.args.get('code')
+# code      = request.args.get('code')
 # country   = request.args.get('country')
 # fromDate  = request.args.get('fromDate')
 # toDate    = request.args.get('toDate')
