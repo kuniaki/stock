@@ -1,4 +1,4 @@
-Rgoogle.charts.load('current', {'packages':['corechart']});
+google.charts.load('current', {'packages':['corechart']});
 
 $('#btn').click(function(){
     var code = $('#input').val()
