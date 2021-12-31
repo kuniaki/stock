@@ -27,6 +27,7 @@ def stock():
 # country   = request.args.get('country')
 # fromDate  = request.args.get('fromDate')
 # toDate    = request.args.get('toDate')
+
   df = investpy.get_stock_historical_data(stock='7974',
                                         country='japan',
                                         from_date='01/01/2020',
