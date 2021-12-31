@@ -41,7 +41,6 @@ def stock():
     print(e.message)
     sys.exit(1)
   return success(symbol_data)
-"""
   data = {}
   cursor = '0'
   while cursor != 0:
@@ -51,6 +50,8 @@ def stock():
     keys = [key.decode() for key in keys]
     values = [value.decode() for value in REDIS.mget(*keys)]
     data.update(dict(zip(keys, values)))
+"""
+  data = {}
   return success(data)
 
 @app.route('/api/v1/keys/', methods=['GET'])
