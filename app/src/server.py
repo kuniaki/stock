@@ -14,6 +14,10 @@ app = Flask('app server')
 @app.route('/stock', methods=['GET'])
 def stock():
   df = {}
+  code    = request.args.get('code', default="7974", type=str)
+  country = request.args.get('country', default="japan", type=str)
+  from    = request.args.get('from', type=str)
+  to      = request.args.get('from', type=str)
   return success(df)
 """
   code    = request.args.get('code', default="7974", type=str)
