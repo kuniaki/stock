@@ -20,7 +20,7 @@ def root():
     return "Chart Server"
 
 #http://サーバ名:5000/candle?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
-@app.route('/stock', methods=['GET'])
+@app.route('/stock')
 def stock():
 # df ={} 
 # code      = request.args.get('code')
