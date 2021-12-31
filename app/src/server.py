@@ -24,9 +24,9 @@ def root():
 def stock():
   df ={} 
   code    = request.args.get('code')
-  country = request.args.get('country')
-  from    = request.args.get('from')
-  to      = request.args.get('to')
+# country = request.args.get('country')
+# from    = request.args.get('from')
+# to      = request.args.get('to')
   return success(df)
 """
   request.args.get("something")
