@@ -55,14 +55,11 @@ def stock():
 
 @app.route('/api/v1/keys/', methods=['GET'])
 def api_keys():
-  my_share = share.Share('RIDE')
   symbol_data = None
-  try:
-    symbol_data = my_share.get_historical(share.PERIOD_TYPE_DAY,60,
-                                        share.FREQUENCY_TYPE_MINUTE,5)
-  except YahooFinanceError as e:
-    print(e.message)
-    sys.exit(1)
+  symbol_data = investpy.get_stock_recent_data(
+    stock='7974',
+    country='japan'
+  )
 
   df = pd.DataFrame(symbol_data)
 
