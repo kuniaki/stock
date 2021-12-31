@@ -29,7 +29,7 @@ def root():
     return "Chart Server"
 
 #http://server:5000/candle?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
-@app.route('/stock')
+@app.route('/stock', methods=['GET'])
 def stock():
 # df = "aaa"
   my_share = share.Share('RIDE')
