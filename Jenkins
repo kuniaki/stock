@@ -23,6 +23,14 @@ node('Slave1') {
        git config --global user.email kuniaki.kudo@gmail.com
        '''
 
+       sh "docker rm -f stock_web"
+       sh "docker rm -f stock_app"
+       sh "docker rm -f  dockerkvs_app"
+       sh "docker rm -f stock_apptest"
+       sh "docker rm -f dockerkvs_db"
+       
+       sh "docker rmi -f `docker images -q`"
+
      //Clean up WORKSPACE
      step([$class: 'WsCleanup'])
     }
