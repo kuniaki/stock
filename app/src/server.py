@@ -3,6 +3,7 @@ import investpy
 import io
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+from pandas_datareader import data
 
 REDIS_HOST = os.environ['REDIS_HOST']
 REDIS_PORT = int(os.environ['REDIS_PORT'])
@@ -11,6 +12,8 @@ REDIS = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, db=REDIS_DB)
 APP_PORT = int(os.environ['PORT'])
 DEBUG = os.environ['DEBUG'].lower() == 'true'
 app = Flask('app server')
+
+ 
 
 CORS(app)
 
@@ -22,7 +25,8 @@ def root():
 #http://server:5000/candle?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
 @app.route('/stock')
 def stock():
-  df = "aaa"
+# df = "aaa"
+  df = data.DataReader("AAPL","yahoo")
   return success(df)
 """
 # code      = request.args.get('code')
