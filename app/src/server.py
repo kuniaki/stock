@@ -1,6 +1,4 @@
 import os, re, redis
-import investpy
-import pandas as pd
 from flask import Flask, jsonify, request
 
 REDIS_HOST = os.environ['REDIS_HOST']
@@ -11,21 +9,18 @@ APP_PORT = int(os.environ['PORT'])
 DEBUG = os.environ['DEBUG'].lower() == 'true'
 app = Flask('app server')
 
-"""
-#http://サーバ名:5000/candle?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
-@app.route('/stock', methods=['GET'])
-def stock():
-  code    = request.args.get('code', default="7974", type=str)
-  country = request.args.get('country', default="japan", type=str)
-  from    = request.args.get('from', type=str)
-  to      = request.args.get('from', type=str)
-
-  df = investpy.get_stock_historical_data(stock=code,
-                                        country=country,
-                                        from_date=from,
-                                        to_date=to)
-  return success(df)
-"""
+@app.route('/api/v1/keys/', methods=['GET'])
+def api_keys():
+  data = {}
+  cursor = '0'
+  while cursor != 0:
+    cursor, keys = REDIS.scan(cursor=cursor, count=1000000)
+    if len(keys) == 0:
+      break
+    keys = [key.decode() for key in keys]
+    values = [value.decode() for value in REDIS.mget(*keys)]
+    data.update(dict(zip(keys, values)))
+  return success(data)
 
 @app.route('/api/v1/keys/<key>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def api_key(key):
