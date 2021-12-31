@@ -22,10 +22,10 @@ def root():
 #http://サーバ名:5000/candle?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
 @app.route('/stock')
 def stock():
-# code    = request.args.get('code', default=7974, type=int)
-  country = request.args.get('country', default="japan", type=str)
-  from    = request.args.get('from', type=str)
-  to      = request.args.get('from', type=str)
+  code    = request.args.get('code')
+  country = request.args.get('country')
+  from    = request.args.get('from')
+  to      = request.args.get('to')
   return success(df)
 """
   request.args.get("something")
