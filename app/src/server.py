@@ -27,26 +27,12 @@ def stock():
   country   = request.args.get('country')
   fromDate  = request.args.get('fromDate')
   toDate    = request.args.get('toDate')
-  return success(df)
-"""
-  request.args.get("something")
-  country = request.args.get('country', default="japan", type=str)
-  from    = request.args.get('from', type=str)
-  to      = request.args.get('from', type=str)
-  return success(df)
-  code    = request.args.get('code', default="7974", type=str)
-  country = request.args.get('country', default="japan", type=str)
-  from    = request.args.get('from', type=str)
-  to      = request.args.get('from', type=str)
-
   df = investpy.get_stock_historical_data(stock=code,
                                         country=country,
-                                        from_date=from,
-                                        to_date=to)
+                                        from_date=fromDate,
+                                        to_date=toDate)
+
   return success(df)
-"""
-
-
 
 @app.route('/api/v1/keys/', methods=['GET'])
 def api_keys():
