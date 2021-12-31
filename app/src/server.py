@@ -55,6 +55,15 @@ def stock():
 
 @app.route('/api/v1/keys/', methods=['GET'])
 def api_keys():
+  my_share = share.Share('RIDE')
+  symbol_data = None
+  try:
+    symbol_data = my_share.get_historical(share.PERIOD_TYPE_DAY,60,
+                                        share.FREQUENCY_TYPE_MINUTE,5)
+  except YahooFinanceError as e:
+    print(e.message)
+    sys.exit(1)
+
   data = {}
   cursor = '0'
   while cursor != 0:
