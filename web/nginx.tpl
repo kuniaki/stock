@@ -20,7 +20,7 @@ http {
     server_name nginx;
     location / {
       root   /usr/share/nginxml/html;
-      index  stock.html stock.html;
+      index  index.html index.html;
     }
 
     proxy_set_header Host $host;
