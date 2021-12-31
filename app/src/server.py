@@ -55,32 +55,6 @@ def stock():
 
 @app.route('/api/v1/keys/', methods=['GET'])
 def api_keys():
-"""
-  data = {}
-  cursor = '0'
-  while cursor != 0:
-    cursor, keys = REDIS.scan(cursor=cursor, count=1000000)
-    if len(keys) == 0:
-      break
-    keys = [key.decode() for key in keys]
-    values = [value.decode() for value in REDIS.mget(*keys)]
-    data.update(dict(zip(keys, values)))
-  return success(data)
-  my_share = share.Share('RIDE')
-  symbol_data = None
-  try:
-    symbol_data = my_share.get_historical(share.PERIOD_TYPE_DAY,60,
-                                        share.FREQUENCY_TYPE_MINUTE,5)
-  except YahooFinanceError as e:
-    print(e.message)
-    sys.exit(1)
-  dd = {}
-  data = symbol_data['timestamp']
-  price = symbol_data['close']
-  dd.update(dict(zip(data,price)))
-   
-  return success(dd)
-"""
   data = {}
   cursor = '0'
   while cursor != 0:
