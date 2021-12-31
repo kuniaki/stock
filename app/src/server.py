@@ -25,12 +25,19 @@ def stock():
   df ={} 
   code      = request.args.get('code')
   country   = request.args.get('country')
-  fromDate  = request.args.get('fromDate')
-  toDate    = request.args.get('toDate')
+# fromDate  = request.args.get('fromDate')
+# toDate    = request.args.get('toDate')
+  df = investpy.get_stock_recent_data(
+    stock='7974',
+    country='japan'
+  )
+
+"""
   df = investpy.get_stock_historical_data(stock=code,
                                         country=country,
                                         from_date=fromDate,
                                         to_date=toDate)
+"""
 
   return success(df)
 
