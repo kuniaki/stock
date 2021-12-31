@@ -10,6 +10,7 @@ APP_PORT = int(os.environ['PORT'])
 DEBUG = os.environ['DEBUG'].lower() == 'true'
 app = Flask('app server')
 
+"""
 #http://サーバ名:5000/candle?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
 @app.route('/stock', methods=['GET'])
 def stock():
@@ -23,6 +24,8 @@ def stock():
                                         from_date=from,
                                         to_date=to)
   return success(df)
+
+"""
 
 
 @app.route('/api/v1/keys/', methods=['GET'])
