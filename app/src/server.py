@@ -3,7 +3,6 @@ import investpy
 import io
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from pandas_datareader import data
 
 REDIS_HOST = os.environ['REDIS_HOST']
 REDIS_PORT = int(os.environ['REDIS_PORT'])
@@ -26,7 +25,9 @@ def root():
 @app.route('/stock')
 def stock():
 # df = "aaa"
-  df = data.DataReader("AAPL","yahoo")
+  code      = request.args.get('code')
+  country   = request.args.get('country')
+  df = investpy.get_stock_recent_data(stock=code,country=country)
   return success(df)
 """
 # code      = request.args.get('code')
