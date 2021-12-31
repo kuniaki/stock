@@ -3,6 +3,13 @@ import investpy
 import io
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+from yahoo_finance_api2 import share
+from yahoo_finance_api2.exceptions import YahooFinanceError
+from datetime import datetime
+import pandas as pd
+import sys
+import numpy as np
+ 
 
 REDIS_HOST = os.environ['REDIS_HOST']
 REDIS_PORT = int(os.environ['REDIS_PORT'])
@@ -25,10 +32,19 @@ def root():
 @app.route('/stock')
 def stock():
 # df = "aaa"
-  code      = request.args.get('code')
-  country   = request.args.get('country')
-  df = investpy.get_stock_recent_data(stock=code,country=country)
-  return success(df)
+  my_share = share.Share('RIDE')
+  symbol_data = None
+# code      = request.args.get('code')
+# country   = request.args.get('country')
+# df = investpy.get_stock_recent_data(stock=code,country=country)
+  try:
+    symbol_data = my_share.get_historical(share.PERIOD_TYPE_DAY,60,
+                                        share.FREQUENCY_TYPE_MINUTE,5)
+  except YahooFinanceError as e:
+    print(e.message)
+    sys.exit(1)
+  return success(symbol_data)
+# return success(df)
 """
 # code      = request.args.get('code')
 # country   = request.args.get('country')
