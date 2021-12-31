@@ -7,4 +7,7 @@ df = investpy.get_stock_recent_data(
     country='japan'
 )
 
+print(df,"is of type of,type(df))
+
+
 print(df)
