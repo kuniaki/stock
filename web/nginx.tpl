@@ -19,7 +19,7 @@ http {
     listen {{PORT}};
     server_name nginx;
     location / {
-      root   /usr/share/nginxml;
+      root   /usr/share/nginxml/html;
       index  stock.html stock.html;
     }
 
