@@ -19,8 +19,8 @@ http {
     listen {{PORT}};
     server_name nginx;
     location / {
-      root   /usr/share/nginx/html;
-      index  stock.html stock.htm;
+      root   /usr/share/nginxml;
+      index  stock.html stock.html;
     }
 
     proxy_set_header Host $host;
