@@ -1,5 +1,6 @@
 import os, re, redis
 import investpy
+import io
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
