@@ -9,6 +9,7 @@ from datetime import datetime
 import pandas as pd
 import sys
 import numpy as np
+import json
  
 
 REDIS_HOST = os.environ['REDIS_HOST']
@@ -61,10 +62,6 @@ def api_keys():
     country='japan'
   )
 
-  app.logger.info(symbol_data)
-
-  df = pd.DataFrame(symbol_data)
-
   data = {}
   cursor = '0'
   while cursor != 0:
@@ -74,7 +71,7 @@ def api_keys():
     keys = [key.decode() for key in keys]
     values = [value.decode() for value in REDIS.mget(*keys)]
     data.update(dict(zip(keys, values)))
-  return success(symbol_data)
+  return success(symbol_data.to_json())
 
 @app.route('/api/v1/keys/<key>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def api_key(key):
