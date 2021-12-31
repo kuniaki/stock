@@ -19,11 +19,12 @@ CORS(app)
 def root():
     return "Chart Server"
 
-"""
 #http://server:5000/candle?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
 @app.route('/stock')
 def stock():
-  df = {}
+  df = "aaa"
+  return success(df)
+"""
 # code      = request.args.get('code')
 # country   = request.args.get('country')
 # fromDate  = request.args.get('fromDate')
@@ -45,7 +46,6 @@ def stock():
                                         from_date=fromDate,
                                         to_date=toDate)
 
-  return success(df)
 """
 
 @app.route('/api/v1/keys/', methods=['GET'])
