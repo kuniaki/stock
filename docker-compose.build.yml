@@ -7,17 +7,8 @@ services:
     image: dockerkvs_web
     container_name: dockerkvs_web
     restart: "no"
-    depends_on:
-      - app
     ports:
       - 80:80
     environment:
       DEBUG: "false"
       APP_SERVER: http://app:80
-  app:
-    build:
-      context: ./app
-      dockerfile: Dockerfile
-    image: dockerkvs_app
-    container_name: dockerkvs_app
-    restart: "no"
