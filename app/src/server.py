@@ -14,19 +14,19 @@ app = Flask('app server')
 
 CORS(app)
 
-# http://サーバ名:5000/
+# http://server:5000/
 @app.route('/')
 def root():
     return "Chart Server"
 
-#http://サーバ名:5000/candle?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
+#http://server:5000/candle?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
 @app.route('/stock')
 def stock():
   df ={} 
   code      = request.args.get('code')
-  country   = request.args.get('country')
-  fromDate  = request.args.get('fromDate')
-  toDate    = request.args.get('toDate')
+# country   = request.args.get('country')
+# fromDate  = request.args.get('fromDate')
+# toDate    = request.args.get('toDate')
 
 """
   df = investpy.get_stock_historical_data(stock=code,
