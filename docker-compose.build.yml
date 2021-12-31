@@ -20,5 +20,4 @@ services:
       dockerfile: Dockerfile
     image: stock_app
     container_name: stock_app
-    tty: true
     restart: "no"
