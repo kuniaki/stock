@@ -1,11 +1,11 @@
 version: '3.7'
 services:
-  web:
+  web: 
     build:
       context: ./web
       dockerfile: Dockerfile
-    image: stock_web
-    container_name: stock_web
+    image: dockerkvs_web
+    container_name: dockerkvs_web
     restart: "no"
     depends_on:
       - app
@@ -18,6 +18,6 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile
-    image: stock_app
-    container_name: stock_app
+    image: dockerkvs_app
+    container_name: dockerkvs_app
     restart: "no"
