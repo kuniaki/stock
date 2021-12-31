@@ -3,6 +3,12 @@ RUN pip install flask==1.1.1 redis==3.3.8
 RUN pip install investpy
 WORKDIR /src
 COPY ./src/server.py /src/
+
+RUN apt-get install -y vim
+RUN pip install --upgrade pip && \
+    pip install --upgrade setuptools && \
+    pip install --upgrade Flask flask_cors mplfinance
+
 ENV PORT 80
 ENV DEBUG false
 ENV REDIS_HOST 127.0.0.1
