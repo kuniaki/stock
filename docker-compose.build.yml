@@ -30,7 +30,22 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile
-    image: stock_app
-    container_name: stock_app
-    tty: true
+    image: dockerkvs_app
+    container_name: dockerkvs_app
     restart: "no"
+    depends_on:
+      - db
+    environment:
+      REDIS_HOST: db
+      REDIS_PORT: 6379
+      REDIS_DB: 0
+  db:
+    image: redis:5.0.6-alpine3.10
+    restart: "no"
+    container_name: dockerkvs_db
+    volumes:
+      - dockerkvs_redis_volume:/data
+
+volumes:
+  dockerkvs_redis_volume:
+    driver: local
