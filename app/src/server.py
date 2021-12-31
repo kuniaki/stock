@@ -66,7 +66,6 @@ def api_keys():
     values = [value.decode() for value in REDIS.mget(*keys)]
     data.update(dict(zip(keys, values)))
   return success(data)
-"""
   my_share = share.Share('RIDE')
   symbol_data = None
   try:
@@ -81,6 +80,17 @@ def api_keys():
   dd.update(dict(zip(data,price)))
    
   return success(dd)
+"""
+  data = {}
+  cursor = '0'
+  while cursor != 0:
+    cursor, keys = REDIS.scan(cursor=cursor, count=1000000)
+    if len(keys) == 0:
+      break
+    keys = [key.decode() for key in keys]
+    values = [value.decode() for value in REDIS.mget(*keys)]
+    data.update(dict(zip(keys, values)))
+  return success(data)
 
 @app.route('/api/v1/keys/<key>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def api_key(key):
