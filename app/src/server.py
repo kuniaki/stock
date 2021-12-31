@@ -19,6 +19,7 @@ CORS(app)
 def root():
     return "Chart Server"
 
+"""
 #http://server:5000/candle?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
 @app.route('/stock')
 def stock():
@@ -28,7 +29,6 @@ def stock():
 # fromDate  = request.args.get('fromDate')
 # toDate    = request.args.get('toDate')
 
-"""
   df = investpy.get_stock_historical_data(stock=code,
                                         country=country,
                                         from_date=fromDate,
@@ -44,9 +44,9 @@ def stock():
                                         country=country,
                                         from_date=fromDate,
                                         to_date=toDate)
-"""
 
   return success(df)
+"""
 
 @app.route('/api/v1/keys/', methods=['GET'])
 def api_keys():
