@@ -30,8 +30,8 @@ def root():
     return "Chart Server"
 
 #http://server:5000/candle?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
-@app.route('/stock')
-def stock():
+@app.route('/stock',methods=['GET'])
+def api_stock():
   symbol_data = None
   symbol_data = investpy.get_stock_recent_data(
     stock='7974',
