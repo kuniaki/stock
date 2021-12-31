@@ -23,14 +23,14 @@ def root():
 @app.route('/stock')
 def stock():
 # df ={} 
-# code      = request.args.get('code')
-# country   = request.args.get('country')
+  code      = request.args.get('code')
+  country   = request.args.get('country')
 # fromDate  = request.args.get('fromDate')
 # toDate    = request.args.get('toDate')
 
   df = investpy.get_stock_recent_data(
-    stock='7974',
-    country='japan'
+    stock=code,
+    country=country
   )
 
 """
