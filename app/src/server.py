@@ -1,7 +1,7 @@
 import os, re, redis
 import investpy
 import io
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request ,session
 from flask_cors import CORS
 from yahoo_finance_api2 import share
 from yahoo_finance_api2.exceptions import YahooFinanceError
@@ -17,7 +17,7 @@ REDIS_DB = int(os.environ['REDIS_DB'])
 REDIS = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, db=REDIS_DB)
 APP_PORT = int(os.environ['PORT'])
 DEBUG = os.environ['DEBUG'].lower() == 'true'
-app = Flask('app server')
+app = Flask(__name__)
 
  
 
@@ -60,6 +60,8 @@ def api_keys():
     stock='7974',
     country='japan'
   )
+
+  app.logger.info(symbol_data)
 
   df = pd.DataFrame(symbol_data)
 
