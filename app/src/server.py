@@ -29,30 +29,15 @@ CORS(app)
 def root():
     return "Chart Server"
 
-"""
 #http://server:5000/candle?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
 @app.route('/stock')
 def stock():
-  my_share = share.Share('RIDE')
   symbol_data = None
-  try:
-    symbol_data = my_share.get_historical(share.PERIOD_TYPE_DAY,60,
-                                        share.FREQUENCY_TYPE_MINUTE,5)
-  except YahooFinanceError as e:
-    print(e.message)
-    sys.exit(1)
-  return success(symbol_data)
-  data = {}
-  cursor = '0'
-  while cursor != 0:
-    cursor, keys = REDIS.scan(cursor=cursor, count=1000000)
-    if len(keys) == 0:
-      break
-    keys = [key.decode() for key in keys]
-    values = [value.decode() for value in REDIS.mget(*keys)]
-    data.update(dict(zip(keys, values)))
-  return success(data)
-"""
+  symbol_data = investpy.get_stock_recent_data(
+    stock='7974',
+    country='japan'
+  )
+  return success(symbol_data.to_json())
 
 @app.route('/api/v1/keys/', methods=['GET'])
 def api_keys():
