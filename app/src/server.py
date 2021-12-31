@@ -29,7 +29,7 @@ def root():
     return "Chart Server"
 
 #http://server:5000/candle?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
-@app.route('/stock/', methods=['GET'])
+@app.route('/stock')
 def stock():
 """
   my_share = share.Share('RIDE')
@@ -41,6 +41,7 @@ def stock():
     print(e.message)
     sys.exit(1)
   return success(symbol_data)
+"""
   data = {}
   cursor = '0'
   while cursor != 0:
@@ -50,8 +51,6 @@ def stock():
     keys = [key.decode() for key in keys]
     values = [value.decode() for value in REDIS.mget(*keys)]
     data.update(dict(zip(keys, values)))
-"""
-  data = {}
   return success(data)
 
 @app.route('/api/v1/keys/', methods=['GET'])
