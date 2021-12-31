@@ -75,8 +75,12 @@ def api_keys():
   except YahooFinanceError as e:
     print(e.message)
     sys.exit(1)
-  data = {}
-  return success(data)
+  dd = {}
+  data = symbol_data['timestamp']
+  price = symbol_data['close']
+  dd.update(dict(zip(data,price)))
+   
+  return success(dd)
 
 @app.route('/api/v1/keys/<key>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def api_key(key):
