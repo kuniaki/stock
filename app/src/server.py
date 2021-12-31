@@ -64,6 +64,8 @@ def api_keys():
     print(e.message)
     sys.exit(1)
 
+  df = pd.DataFrame(symbol_data)
+
   data = {}
   cursor = '0'
   while cursor != 0:
@@ -73,7 +75,7 @@ def api_keys():
     keys = [key.decode() for key in keys]
     values = [value.decode() for value in REDIS.mget(*keys)]
     data.update(dict(zip(keys, values)))
-  return success(data)
+  return success(df)
 
 @app.route('/api/v1/keys/<key>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def api_key(key):
