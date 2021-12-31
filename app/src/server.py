@@ -22,9 +22,10 @@ def root():
 @app.route('/stock', methods=['GET'])
 def stock():
   df = {}
-  code = request.args.get('code', default=None, type=int)
+  opt_param = request.args.get("something")
+  return success(df)
 """
-  code    = request.args.get('code', default=7974, type=int)
+  request.args.get("something")
   country = request.args.get('country', default="japan", type=str)
   from    = request.args.get('from', type=str)
   to      = request.args.get('from', type=str)
