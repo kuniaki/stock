@@ -1,5 +1,19 @@
 version: '3.7'
 services:
+  web: 
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    image: dockerkvs_web
+    container_name: dockerkvs_web
+    restart: "no"
+    depends_on:
+      - app
+    ports:
+      - 80:80
+    environment:
+      DEBUG: "false"
+      APP_SERVER: http://app:80
   app:
     build:
       context: ./app
