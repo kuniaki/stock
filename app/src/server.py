@@ -28,11 +28,11 @@ def stock():
   fromDate  = request.args.get('fromDate')
   toDate    = request.args.get('toDate')
 
+"""
   df = investpy.get_stock_historical_data(stock=code,
                                         country=country,
                                         from_date=fromDate,
                                         to_date=toDate)
-"""
   df = investpy.get_stock_recent_data(stock=code,country=country)
 
   df = investpy.get_stock_historical_data(stock='7974',
