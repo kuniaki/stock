@@ -1,18 +1,6 @@
 version: '3.7'
 services:
-  apptest:
-    build:
-      context: ./apptest
-      dockerfile: Dockerfile
-    image: stock_apptest
-    container_name: stock_apptest
-    depends_on:
-      - app
-    tty: true
-    environment:
-      APP_HOST: app
-      APP_PORT: 80
-  web: 
+  web:
     build:
       context: ./web
       dockerfile: Dockerfile
