@@ -28,7 +28,7 @@ services:
       REDIS_HOST: db
       REDIS_PORT: 6379
       REDIS_DB: 0
-   volumes:
+    volumes:
         - ./app/src:/src
   db:
     image: redis:5.0.6-alpine3.10
