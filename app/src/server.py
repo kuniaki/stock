@@ -55,12 +55,6 @@ def api_stock():
 
 @app.route('/api/v1/keys/', methods=['GET'])
 def api_keys():
-  symbol_data = None
-  symbol_data = investpy.get_stock_recent_data(
-    stock='7974',
-    country='japan'
-  )
-
   data = {}
   cursor = '0'
   while cursor != 0:
@@ -70,7 +64,7 @@ def api_keys():
     keys = [key.decode() for key in keys]
     values = [value.decode() for value in REDIS.mget(*keys)]
     data.update(dict(zip(keys, values)))
-  return success(symbol_data.to_json())
+  return success(data)
 
 @app.route('/api/v1/keys/<key>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def api_key(key):
