@@ -29,12 +29,13 @@ CORS(app)
 def root():
     return "Chart Server"
 
-#http://server:5000/candle?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
+#http://server:5000/api/v1/stock?code="1001"&country="200"&from="01/01/2020"&to="01/01/2021"
 @app.route('/api/v1/stock/',methods=['GET'])
 def api_stock():
+  code  = request.args.get('code')
   symbol_data = None
   symbol_data = investpy.get_stock_recent_data(
-    stock='7974',
+    stock=code,
     country='japan'
   )
   return success(symbol_data.to_json())
