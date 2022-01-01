@@ -35,6 +35,7 @@ function mainChart(result){
         //いちいち書くのが面倒なので、取得した情報の長さを配列に入れる
         date_d = result["date"]
         var length = date_d.length;
+        open_d = result["open"]
         close_d = result["close"]
         high_d = result["high"]
         low_d = result["low"]
