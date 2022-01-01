@@ -82,4 +82,6 @@ def method_not_allowed_error(error):
 def internal_server_error(error):
   return (jsonify({'error':'server internal error', 'code':500}), 500)
 
-app.run(debug=DEBUG, host='0.0.0.0', port=APP_PORT)
+
+if __name__ == '__main__':
+     app.run(host='0.0.0.0', port=5000, debug=True)
