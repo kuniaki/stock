@@ -29,7 +29,7 @@ CORS(app)
 def root():
     return "Chart Server"
 
-#http://server:5000/api/v1/stock?code=7494&country=japan&from=01/01/2020&to=01/01/2021
+#http://server:5000/api/v1/stock?code=7494&country=japan&from_date=01/01/2020&to_date=01/01/2021
 @app.route('/api/v1/stock/',methods=['GET'])
 def api_stock():
   code  = request.args.get('code')
