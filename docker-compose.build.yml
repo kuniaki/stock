@@ -4,8 +4,8 @@ services:
     build:
       context: ./web
       dockerfile: Dockerfile
-    image: dockerkvs_web
-    container_name: dockerkvs_web
+    image: stock_web
+    container_name: stock_web
     restart: "no"
     depends_on:
       - app
@@ -18,8 +18,8 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile
-    image: dockerkvs_app
-    container_name: dockerkvs_app
+    image: stock_app
+    container_name: stock_app
     restart: "no"
     tty: true
     depends_on:
