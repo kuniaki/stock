@@ -35,6 +35,7 @@ function mainChart(result){
         //いちいち書くのが面倒なので、取得した情報の長さを配列に入れる
         var data2 = JSON.stringify(result);
         var data3 = JSON.parse(data2);
+        var data4 = Object.keys(data3)
         dateObject = data3.keys("date")
    //   var length = result.length;
         var length = dateObject.length;
