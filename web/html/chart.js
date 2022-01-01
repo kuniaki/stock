@@ -53,7 +53,7 @@ function mainChart(result){
         for(var m = 0; m < length - 4; m++){
             for(var n = 0; n < 5; n++){
                 if(result[m+n].close != ''){
-                    temp = temp + parseFloat(result[m+n].close);
+                    temp = temp + parseFloat(result[m+n].Close);
                     divide++;
                 }
             }
@@ -66,7 +66,7 @@ function mainChart(result){
         for(var m = 0; m < length - 24; m++){
             for(var n = 0; n < 25; n++){
                 if(result[m+n].close != ''){
-                    temp = temp + parseFloat(result[m+n].close);
+                    temp = temp + parseFloat(result[m+n].Close);
                     divide++
                 }
             }
@@ -79,7 +79,7 @@ function mainChart(result){
         for(var m = 0; m < length - 49; m++){
             for(var n = 0; n < 49; n++){
                 if(result[m+n].close != ''){
-                    temp = temp + parseFloat(result[m+n].close);
+                    temp = temp + parseFloat(result[m+n].Close);
                     divide++
                 }
             }
@@ -100,7 +100,7 @@ function mainChart(result){
         }
         //配列insertingDataの中に、[安値、始値、高値、終値、５日移動平均線、２５日移動平均線、５０日移動平均線]の形で値を入れ込む
         for(var a = 0; a < length; a++){
-            insertingData[a] = [dates[a],parseFloat(result[a].low),parseFloat(result[a].open),parseFloat(result[a].close),parseFloat(result[a].high),ave[0][a],ave[1][a],ave[2][a]]
+            insertingData[a] = [dates[a],parseFloat(result[a].Low),parseFloat(result[a].Open),parseFloat(result[a].Close),parseFloat(result[a].High),ave[0][a],ave[1][a],ave[2][a]]
         }
         //チャート描画用の配列の中に、insertingDataの値を入れ込む
         //最古の50日分のデータまでは移動平均線のデータが揃っていないので、取り除く
