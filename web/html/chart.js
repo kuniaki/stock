@@ -26,12 +26,6 @@ function getInfo(code, span, callback){
 
 function mainChart(result){
     //チャートに描画するための最終的なデータを入れる
-    for(var key in result){
-       var kk = key
-       var kl = result[key]
-       var k2 = result[key]
-
-    }
     var chartData = new google.visualization.DataTable();
         //日付ようにString型のカラムを一つ、チャート描画用に数値型のカラムを７つ作成
         chartData.addColumn('string');
@@ -39,12 +33,7 @@ function mainChart(result){
             chartData.addColumn('number');
         }
         //いちいち書くのが面倒なので、取得した情報の長さを配列に入れる
-        var data2 = JSON.stringify(result);
-        var data3 = JSON.parse(data2);
-        var data4 = Object.keys(data3)
-        dateObject = data3.keys("date")
-   //   var length = result.length;
-        var length = dateObject.length;
+        var length = result.length;
         //描画用のデータを一時的に入れる
         var insertingData = new Array(length);
         //平均を出すための割り算の分母
