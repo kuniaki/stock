@@ -3,14 +3,17 @@ google.charts.load('current', {'packages':['corechart']});
 $('#btn').click(function(){
     var code = $('#input').val()
     var span = $('#span').val()
-    getInfo(code, span, mainChart);
+    var dates = $('#inputs').val()
+    var datee = $('#inpute').val()
+    var countryc =  $('#inputec').val()
+    getInfo(code, span,dates,datee,countryc, mainChart);
 })
 
-function getInfo(code, span, callback){
+function getInfo(code, span,dates,datee,countryc,callback){
     $.ajax({
 //      url : 'https://api.iextrading.com/1.0/stock/' + code + '/chart/' + span,
 //      url : 'http://asahihdgrjenkinsslave1.eastus.cloudapp.azure.com/api/v1/keys/',
-        url : 'http://asahihdgrjenkinsslave1.eastus.cloudapp.azure.com/api/v1/stock?code=' + code + '&country=japan&from_date=01/01/2020&to_date=01/01/2021',
+        url : 'http://asahihdgrjenkinsslave1.eastus.cloudapp.azure.com/api/v1/stock?code=' + code + '&country='+countryc + '&from_date=' + dates + '&to_date=' + datee,
         type : 'GET',       
         async : true,        
         cashe : false,     
