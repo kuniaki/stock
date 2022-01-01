@@ -14,7 +14,7 @@ function getInfo(code, span,dates,datee,countryc,callback){
 //      url : 'https://api.iextrading.com/1.0/stock/' + code + '/chart/' + span,
 //      url : 'http://asahihdgrjenkinsslave1.eastus.cloudapp.azure.com/api/v1/keys/',
 //      url : 'http://asahihdgrjenkinsslave1.eastus.cloudapp.azure.com/api/v1/stock?code=' + code + '&country='+countryc + '&from_date=' + dates + '&to_date=' + datee,
-        url : 'http://asahihdgrjenkinsslave1.eastus.cloudapp.azure.com/api/v1/stock?code=' + code + '&country='+ countryc  + '&from_date=' + '01/01/2020' + '&to_date=' + '06/06/2020',
+        url : 'http://asahihdgrjenkinsslave1.eastus.cloudapp.azure.com/api/v1/stock?code=' + code + '&country='+ countryc  + '&from_date=' + dates + '&to_date=' + '06/06/2020',
         type : 'GET',       
         async : true,        
         cashe : false,     
