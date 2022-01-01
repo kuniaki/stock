@@ -36,6 +36,9 @@ function mainChart(result){
         date_d = result["date"]
         var length = date_d.length;
         close_d = result["close"]
+        high_d = result["high"]
+        low_d = result["low"]
+        volume_d = result["volume"]
         //描画用のデータを一時的に入れる
         var insertingData = new Array(length);
         //平均を出すための割り算の分母
@@ -54,7 +57,7 @@ function mainChart(result){
         //基準日より５日前までのデータを足し合わせ、平均値を出す
         for(var m = 0; m < length - 4; m++){
             for(var n = 0; n < 5; n++){
-                if(result[m+n].close != ''){
+                if(close_d[m+n] != ''){
                     temp = temp + parseFloat(close_d[m+n]);
                     divide++;
                 }
@@ -67,7 +70,7 @@ function mainChart(result){
         //上と同様の処理
         for(var m = 0; m < length - 24; m++){
             for(var n = 0; n < 25; n++){
-                if(result[m+n].close != ''){
+                if(close_d[m+n] != ''){
                     temp = temp + parseFloat(close_d[m+n]);
                     divide++
                 }
@@ -80,8 +83,8 @@ function mainChart(result){
         //上と同様の処理
         for(var m = 0; m < length - 49; m++){
             for(var n = 0; n < 49; n++){
-                if(result[m+n].close != ''){
-                    temp = temp + parseFloat(close[m+n]);
+                if(close_d[m+n] != ''){
+                    temp = temp + parseFloat(close_d[m+n]);
                     divide++
                 }
             }
@@ -95,14 +98,14 @@ function mainChart(result){
         //チャートの日付を保持する配列
         var dates = new Array();
         for(var s = 0; s < length; s++){
-            if(result[s].volume != ''){
-                volume[s] = result[s].volume;
-                dates[s] = String(result[s].date);
+            if(volume_d[s] != ''){
+                volume[s] = volume_d[s];
+                dates[s] = String(date_d[s]);
             }
         }
         //配列insertingDataの中に、[安値、始値、高値、終値、５日移動平均線、２５日移動平均線、５０日移動平均線]の形で値を入れ込む
         for(var a = 0; a < length; a++){
-            insertingData[a] = [dates[a],parseFloat(result[a].Low),parseFloat(result[a].Open),parseFloat(result[a].Close),parseFloat(result[a].High),ave[0][a],ave[1][a],ave[2][a]]
+            insertingData[a] = [dates[a],parseFloat(low_d[a]),parseFloat(open_d[a]),parseFloat(close_d[a]),parseFloat(high_d[a]),ave[0][a],ave[1][a],ave[2][a]]
         }
         //チャート描画用の配列の中に、insertingDataの値を入れ込む
         //最古の50日分のデータまでは移動平均線のデータが揃っていないので、取り除く
