@@ -13,7 +13,7 @@ RUN pip install --upgrade pip && \
     pip install --upgrade setuptools && \
     pip install --upgrade Flask flask_cors mplfinance
 
-ENV PORT 5000
+ENV PORT 80
 ENV DEBUG false
 ENV REDIS_HOST 127.0.0.1
 ENV REDIS_PORT 6379
