@@ -50,8 +50,7 @@ def api_stock():
     da = str(item.year) + "-" + str(item.month) + "-" + str(item.day)
     dates.append(da)
   dc = dict(date=dates,close=opens)
-  js = json.dumps(dc)
-  return success(js)
+  return success(dc)
 
 @app.route('/api/v1/keys/', methods=['GET'])
 def api_keys():
