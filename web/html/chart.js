@@ -26,6 +26,12 @@ function getInfo(code, span, callback){
 
 function mainChart(result){
     //チャートに描画するための最終的なデータを入れる
+    for(var key in result){
+       var kk = key
+       var kl = result[key]
+       var k2 = result[key]
+
+    }
     var chartData = new google.visualization.DataTable();
         //日付ようにString型のカラムを一つ、チャート描画用に数値型のカラムを７つ作成
         chartData.addColumn('string');
