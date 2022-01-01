@@ -53,7 +53,7 @@ function mainChart(result){
         for(var m = 0; m < length - 4; m++){
             for(var n = 0; n < 5; n++){
                 if(result[m+n].close != ''){
-                    temp = temp + parseFloat(result[m+n].Close);
+                    temp = temp + parseFloat(result[m+n].close);
                     divide++;
                 }
             }
@@ -66,7 +66,7 @@ function mainChart(result){
         for(var m = 0; m < length - 24; m++){
             for(var n = 0; n < 25; n++){
                 if(result[m+n].close != ''){
-                    temp = temp + parseFloat(result[m+n].Close);
+                    temp = temp + parseFloat(result[m+n].close);
                     divide++
                 }
             }
@@ -79,7 +79,7 @@ function mainChart(result){
         for(var m = 0; m < length - 49; m++){
             for(var n = 0; n < 49; n++){
                 if(result[m+n].close != ''){
-                    temp = temp + parseFloat(result[m+n].Close);
+                    temp = temp + parseFloat(result[m+n].close);
                     divide++
                 }
             }
