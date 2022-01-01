@@ -33,7 +33,7 @@ function mainChart(result){
             chartData.addColumn('number');
         }
         //いちいち書くのが面倒なので、取得した情報の長さを配列に入れる
-        dateObject = result.get("date")
+        dateObject = result.keys("date")
    //   var length = result.length;
         var length = dateObject.length;
         //描画用のデータを一時的に入れる
