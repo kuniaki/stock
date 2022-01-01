@@ -9,8 +9,8 @@ $('#btn').click(function(){
 function getInfo(code, span, callback){
     $.ajax({
 //      url : 'https://api.iextrading.com/1.0/stock/' + code + '/chart/' + span,
-//      url : 'http://asahihdgrjenkinsslave1.eastus.cloudapp.azure.com/api/v1/keys/',
-        url : 'http://asahihdgrjenkinsslave1.eastus.cloudapp.azure.com/api/v1/stock?code=7494&country=japan&from_date=01/01/2020&to_date=01/02/2020',
+        url : 'http://asahihdgrjenkinsslave1.eastus.cloudapp.azure.com/api/v1/keys/',
+//      url : 'http://asahihdgrjenkinsslave1.eastus.cloudapp.azure.com/api/v1/stock?code=7494&country=japan&from_date=01/01/2020&to_date=01/02/2020',
         type : 'GET',       
         async : true,        
         cashe : false,     
