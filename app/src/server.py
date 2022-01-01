@@ -35,6 +35,7 @@ def api_stock():
   code  = request.args.get('code')
   country = request.args.get('country')
   fromD   = request.args.get('from_date')
+  toD     = request.args.get('to_date')
   symbol_data = None
   symbol_data = investpy.get_stock_historical_data(stock=code,
                                         country=country,
