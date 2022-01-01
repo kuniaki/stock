@@ -8,7 +8,5 @@ services:
     container_name: stock_app
     restart: "no"
     tty: true
-    ports:
-      - 5000:5000
     volumes:
         - ./app/src:/src

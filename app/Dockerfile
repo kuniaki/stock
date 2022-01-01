@@ -12,6 +12,6 @@ RUN pip install --upgrade pip && \
     pip install --upgrade setuptools && \
     pip install --upgrade Flask flask_cors mplfinance
 
-ENV PORT 5000
+ENV PORT 80
 ENV DEBUG false
 ENTRYPOINT ["python", "-u", "server.py"]
