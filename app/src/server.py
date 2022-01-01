@@ -34,11 +34,13 @@ def root():
 def api_stock():
   code  = request.args.get('code')
   country = request.args.get('country')
+  from  = request.args.get('from')
+  to    = request.args.get('to')
   symbol_data = None
   symbol_data = investpy.get_stock_historical_data(stock=code,
                                         country=country,
-                                        from_date='01/01/2020',
-                                        to_date='01/01/2021')
+                                        from_date=from,
+                                        to_date=to)
   return success(symbol_data.to_json())
 
 @app.route('/api/v1/keys/', methods=['GET'])
