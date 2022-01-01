@@ -33,11 +33,11 @@ def root():
 @app.route('/api/v1/stock/',methods=['GET'])
 def api_stock():
   code  = request.args.get('code')
-  country = request.args.get('country')
+# country = request.args.get('country')
   symbol_data = None
   symbol_data = investpy.get_stock_recent_data(
     stock=code,
-    country=country
+    country='japan'
   )
 """
   symbol_data = investpy.get_stock_historical_data(stock=code,
