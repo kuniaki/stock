@@ -35,6 +35,7 @@ function mainChart(result){
         //いちいち書くのが面倒なので、取得した情報の長さを配列に入れる
         date_d = result["date"]
         var length = date_d.length;
+        close_d = result["close"]
         //描画用のデータを一時的に入れる
         var insertingData = new Array(length);
         //平均を出すための割り算の分母
@@ -54,7 +55,7 @@ function mainChart(result){
         for(var m = 0; m < length - 4; m++){
             for(var n = 0; n < 5; n++){
                 if(result[m+n].close != ''){
-                    temp = temp + parseFloat(result[m+n].close);
+                    temp = temp + parseFloat(close_d[m+n]);
                     divide++;
                 }
             }
@@ -67,7 +68,7 @@ function mainChart(result){
         for(var m = 0; m < length - 24; m++){
             for(var n = 0; n < 25; n++){
                 if(result[m+n].close != ''){
-                    temp = temp + parseFloat(result[m+n].close);
+                    temp = temp + parseFloat(close_d[m+n]);
                     divide++
                 }
             }
@@ -80,7 +81,7 @@ function mainChart(result){
         for(var m = 0; m < length - 49; m++){
             for(var n = 0; n < 49; n++){
                 if(result[m+n].close != ''){
-                    temp = temp + parseFloat(result[m+n].close);
+                    temp = temp + parseFloat(close[m+n]);
                     divide++
                 }
             }
