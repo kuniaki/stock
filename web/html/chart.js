@@ -33,6 +33,8 @@ function mainChart(result){
             chartData.addColumn('number');
         }
         //いちいち書くのが面倒なので、取得した情報の長さを配列に入れる
+        var toString = Object.prototype.toString;
+        dddd = toString.call(result)
         dateObject = result.keys("date")
    //   var length = result.length;
         var length = dateObject.length;
