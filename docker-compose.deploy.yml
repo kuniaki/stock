@@ -9,6 +9,6 @@ services:
     restart: "no"
     tty: true
     ports:
-      - 80:80
+      - 5000:5000
     volumes:
         - ./app/src:/src
