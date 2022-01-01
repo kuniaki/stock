@@ -41,7 +41,17 @@ def api_stock():
                                         country=country,
                                         from_date=fromD,
                                         to_date=toD)
-  return success(symbol_data.to_json())
+  opens = makeArray(symbol_data,"Close")
+
+  dates = []
+  dd = symbol_data.to_dict()
+  keys = dd['Open'].keys()
+  for item in keys:
+    da = str(item.year) + "-" + str(item.month) + "-" + str(item.day)
+    dates.append(da)
+  dc = dict(date=dates,close=opens)
+  js = json.dumps(dc)
+  return success(js)
 
 @app.route('/api/v1/keys/', methods=['GET'])
 def api_keys():
@@ -97,6 +107,12 @@ def isalnum(text):
 
 def success(d):
   return (jsonify(d), 200)
+
+def makeArray(df,text):
+  dd = []
+  for item in df[text]:
+    dd.append(item)
+  return dd
 
 def error(code):
   message = {
