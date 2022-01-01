@@ -5,7 +5,7 @@ $('#btn').click(function(){
     var span = $('#span').val()
     var dates = $('#inputs').val()
     var datee = $('#inpute').val()
-    var countryc =  $('#inputec').val()
+    var countryc =  $('#inputc').val()
     getInfo(code, span,dates,datee,countryc, mainChart);
 })
 
