@@ -22,21 +22,5 @@ services:
     container_name: stock_app
     restart: "no"
     tty: true
-    depends_on:
-      - db
-    environment:
-      REDIS_HOST: db
-      REDIS_PORT: 6379
-      REDIS_DB: 0
     volumes:
         - ./app/src:/src
-  db:
-    image: redis:5.0.6-alpine3.10
-    restart: "no"
-    container_name: dockerkvs_db
-    volumes:
-      - dockerkvs_redis_volume:/data
-
-volumes:
-  dockerkvs_redis_volume:
-    driver: local
