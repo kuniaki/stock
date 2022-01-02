@@ -2,7 +2,6 @@ import os, re
 import investpy
 import io
 from flask import Flask, jsonify, request ,session
-from flask_cors import CORS
 from datetime import datetime
 import pandas as pd
 import sys
@@ -13,8 +12,6 @@ import json
 APP_PORT = int(os.environ['PORT'])
 DEBUG = os.environ['DEBUG'].lower() == 'true'
 app = Flask(__name__)
-
-CORS(app)
 
 @app.route('/')
 def root():

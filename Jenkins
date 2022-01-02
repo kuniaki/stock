@@ -10,9 +10,6 @@ def now = new Date()
 def TIME_STAMP = now.format("yyMMdd.HHmm", TimeZone.getTimeZone('UTC'))
 def test_stage = '1'
 
-def production = 'asahitestapp.eastus.cloudapp.azure.com'
-
-
 node('StockSlave') {
 
 
@@ -53,7 +50,7 @@ node('StockSlave') {
          branch = env.CHANGE_BRANCH
        }
 
-       branch = "feature"
+       branch = "main"
 
        checkout([
                     $class: 'GitSCM',
