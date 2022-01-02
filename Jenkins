@@ -13,7 +13,7 @@ def test_stage = '1'
 def production = 'asahitestapp.eastus.cloudapp.azure.com'
 
 
-node('Slave1') {
+node('StockSlave') {
 
 
     //Clean up Build machine Workspace
