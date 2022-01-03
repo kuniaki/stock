@@ -5,8 +5,8 @@ $('#btn').click(function(){
     var dates = $('#start').val()
     var datee = $('#end').val()
     var countryc =  $('#country').val()
-    dates = dates.replace('-','/')
-    datee = datee.replace('-','/')
+    dates = dates.replace(/-/g, '/');
+    datee = datee.replace(/-/g, '/');
     getInfo(code,dates,datee,countryc,mainChart);
 })
 
