@@ -1,10 +1,10 @@
 google.charts.load('current', {'packages':['corechart']});
 
 $('#btn').click(function(){
-    var code = $('#input').val()
-    var dates = $('#inputs').val()
-    var datee = $('#inpute').val()
-    var countryc =  $('#inputc').val()
+    var code = $('#code').val()
+    var dates = $('#start').val()
+    var datee = $('#end').val()
+    var countryc =  $('#country').val()
     getInfo(code,dates,datee,countryc,mainChart);
 })
 
