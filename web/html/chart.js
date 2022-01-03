@@ -1,6 +1,6 @@
 google.charts.load('current', {'packages':['corechart']});
 
-$('#btn').click(function(){
+$('#btn-getinfo').click(function(){
     var code = $('#code').val()
     var dates = $('#start').val()
     var datee = $('#end').val()
