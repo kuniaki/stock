@@ -5,10 +5,9 @@ $('#btn').click(function(){
     var dates = $('#start').val()
     var datee = $('#end').val()
     var countryc =  $('#country').val()
-
-    date0= dates.toLocaleDateString("en-US", { day: 'numeric' }) + '/' + dates.toLocaleDateString("en-US", { month: 'numeric' }) + '/' + dates.toLocaleDateString("en-US", { year: 'numeric' })
-    date1= datee.toLocaleDateString("en-US", { day: 'numeric' }) + '/' + datee.toLocaleDateString("en-US", { month: 'numeric' }) + '/' + datee.toLocaleDateString("en-US", { year: 'numeric' })
-    getInfo(code,date0,date1,countryc,mainChart);
+    dates = dates.replace('-','/')
+    datee = datee.replace('-','/')
+    getInfo(code,dates,datee,countryc,mainChart);
 })
 
 function getInfo(code,dates,datee,countryc,callback){
