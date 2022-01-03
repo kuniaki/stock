@@ -5,8 +5,7 @@ $('#btn').click(function(){
     var dates = $('#start').val()
     var datee = $('#end').val()
     var countryc =  $('#country').val()
-    dates = dates.replace(/-/g, '/');
-    datee = datee.replace(/-/g, '/');
+    var mathes  = dates.match(/d{2}-\d{2}-\d{2}/g)
     getInfo(code,dates,datee,countryc,mainChart);
 })
 
