@@ -5,7 +5,10 @@ $('#btn').click(function(){
     var dates = $('#start').val()
     var datee = $('#end').val()
     var countryc =  $('#country').val()
-    var mathes  = dates.match(/^\d{4}-\d{2}-\d{2}$/g)
+    var ds = dates.split('-'); 
+    var de = datee.split('-'); 
+    dates  = ds[1] + '/' +  ds[0] + '/' +  ds[2]
+    datee  = de[1] + '/' +  de[0] + '/' +  de[2]
     getInfo(code,dates,datee,countryc,mainChart);
 })
 
