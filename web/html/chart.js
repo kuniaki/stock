@@ -2,14 +2,13 @@ google.charts.load('current', {'packages':['corechart']});
 
 $('#btn').click(function(){
     var code = $('#input').val()
-    var span = $('#span').val()
     var dates = $('#inputs').val()
     var datee = $('#inpute').val()
     var countryc =  $('#inputc').val()
-    getInfo(code, span,dates,datee,countryc, mainChart);
+    getInfo(code,dates,datee,countryc,mainChart);
 })
 
-function getInfo(code, span,dates,datee,countryc,callback){
+function getInfo(code,dates,datee,countryc,callback){
     $.ajax({
         url : 'http://192.168.11.60/api/v1/stock?code=' + code + '&country='+ countryc  + '&from_date=' + dates + '&to_date=' + datee,
         type : 'GET',       
