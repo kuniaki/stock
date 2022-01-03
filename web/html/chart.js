@@ -7,8 +7,8 @@ $('#btn').click(function(){
     var countryc =  $('#country').val()
     var ds = dates.split('-'); 
     var de = datee.split('-'); 
-    dates  = ds[1] + '/' +  ds[0] + '/' +  ds[2]
-    datee  = de[1] + '/' +  de[0] + '/' +  de[2]
+    dates  = ds[1] + '/' +  ds[2] + '/' +  ds[0]
+    datee  = de[1] + '/' +  de[2] + '/' +  de[0]
     getInfo(code,dates,datee,countryc,mainChart);
 })
 
