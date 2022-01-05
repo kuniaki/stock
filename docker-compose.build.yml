@@ -10,10 +10,10 @@ services:
     depends_on:
       - app
     ports:
-      - 80:80
+      - 3000:3000
     environment:
       DEBUG: "false"
-      APP_SERVER: http://app:80
+      APP_SERVER: http://app:3000
   app:
     build:
       context: ./app
