@@ -24,7 +24,6 @@ def after_request(response):
 """
 
 @app.route('/')
-@cross_origin()
 def root():
     return "Chart Server"
 
