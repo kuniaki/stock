@@ -12,6 +12,7 @@ import json
 APP_PORT = int(os.environ['PORT'])
 DEBUG = os.environ['DEBUG'].lower() == 'true'
 app = Flask(__name__)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 """
 @api.after_request
@@ -23,6 +24,7 @@ def after_request(response):
 """
 
 @app.route('/')
+@cross_origin()
 def root():
     return "Chart Server"
 
