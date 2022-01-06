@@ -10,7 +10,10 @@ COPY ./src/test3.py /src/
 
 RUN pip install --upgrade pip && \
     pip install --upgrade setuptools && \
-    pip install --upgrade Flask flask_cors mplfinance
+    pip install --upgrade Flask flask_cors mplfinance && \
+    pip install pyopenssl
+
+RUN openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
 
 ENV PORT 80
 ENV DEBUG false
