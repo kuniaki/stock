@@ -1,0 +1,82 @@
+import hudson.tasks.test.AbstractTestResultAction
+import hudson.model.Actionable
+import hudson.tasks.junit.CaseResult
+import hudson.util.DescribableList
+import hudson.slaves.EnvironmentVariablesNodeProperty
+import jenkins.model.Jenkins
+
+
+def now = new Date()
+def TIME_STAMP = now.format("yyMMdd.HHmm", TimeZone.getTimeZone('UTC'))
+def test_stage = '1'
+
+node('StockSlave') {
+
+
+    //Clean up Build machine Workspace
+    stage('init') {
+       
+      withCredentials([usernamePassword(credentialsId: '5e570ab5-17cb-4740-8393-547b1200e31f', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+        sh 'docker login -u $USERNAME -p $PASSWORD'
+      }
+
+       sh '''
+       git config --global user.name kuniaki
+       git config --global user.email kuniaki.kudo@gmail.com
+       '''
+
+       sh "docker rm -f stock_web"
+       sh "docker rm -f stock_app"
+       sh "docker rm -f  dockerkvs_app"
+       sh "docker rm -f  dockerkvs_web"
+       sh "docker rm -f stock_apptest"
+       sh "docker rm -f dockerkvs_db"
+
+       try {
+          sh "docker rmi -f `docker images -q`"
+       }catch(e) {
+           echo " web image is already deleted"
+       }
+       
+
+     //Clean up WORKSPACE
+     step([$class: 'WsCleanup'])
+    }
+
+    //Get Source Code
+    stage('Checkout') {
+
+       println "Current branch ${env.BRANCH_NAME}"
+       println "Change branch ${env.CHANGE_BRANCH}"
+       println "Target branch ${env.CHANGE_TARGET}"
+       branch = env.BRANCH_NAME
+
+       if(env.CHANGE_BRANCH) {
+         branch = env.CHANGE_BRANCH
+       }
+
+       checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: branch]],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions: []
+                    .plus(env.CHANGE_TARGET == null ? [] : [
+                        [$class: 'PreBuildMerge', options: [fastForwardMode: 'NO_FF', mergeRemote: 'origin', mergeTarget: env.CHANGE_TARGET]],
+                    ]),
+                    submoduleCfg: [],
+                    userRemoteConfigs: [[name: 'origin', url: 'https://github.com/kuniaki/stock.git',credentialsId: '9607f15b-ab8b-478a-8f88-c6fb7e651541']]
+       ])
+
+    }
+
+    stage('Build') {
+        sh "cat docker-compose.build.yml"
+        sh "docker-compose -f docker-compose.build.yml down"
+        sh "docker volume prune -f"
+        sh "docker-compose -f docker-compose.build.yml build"
+        sh "docker-compose -f docker-compose.build.yml up -d"
+        sh "docker-compose -f docker-compose.build.yml ps"
+    }
+
+}
+
