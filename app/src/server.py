@@ -12,7 +12,7 @@ import json
 APP_PORT = int(os.environ['PORT'])
 DEBUG = os.environ['DEBUG'].lower() == 'true'
 app = Flask(__name__)
-app.config['CORS_HEADERS'] = 'Content-Type'
+#app.config['CORS_HEADERS'] = 'Content-Type'
 
 """
 @api.after_request
