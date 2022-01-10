@@ -14,7 +14,7 @@ $('#btn-getinfo').click(function(){
 
 function getInfo(code,dates,datee,countryc,callback){
     $.ajax({
-        url : '//stock.jenkins-software.com/api/v1/stock?code=' + code + '&country='+ countryc  + '&from_date=' + dates + '&to_date=' + datee,
+        url : '//www.jenkins-software.com/api/v1/stock?code=' + code + '&country='+ countryc  + '&from_date=' + dates + '&to_date=' + datee,
         type : 'GET',       
         async : true,        
         cashe : false,     
