@@ -116,9 +116,10 @@ function mainChart(result){
                    ,hAxis: [{
                          format: 'yy/MM/dd',
                          direction: -1,
-                    },
-                    ticks: {stepSize:360}
-                    ]
+                         ticks: {
+                             stepSize:360
+                         },
+                    }]
 
          };
         //描画の処理
