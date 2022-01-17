@@ -130,6 +130,10 @@ function mainChart(result){
                     ,vAxes: [
                         { title: "%",minValue:-20,maxValue:80 }
                    ]
+                   ,hAxis: [{
+                         format: 'yy/MM/dd',
+                         direction: -1
+                   }]
                 };
         //描画の処理
         var chart = new google.visualization.ComboChart(document.getElementById('appendMain'));
