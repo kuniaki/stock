@@ -103,9 +103,10 @@ function mainChart(result){
         };
 */
           var options = {
-                     title: "折れ線グラフ" 
-                    ,width: "100%"
-                    ,height: "100%"
+                     chartArea:{left:80,top:10,right:80,bottom:10}
+                    ,title: "期間:5年間" 
+                    ,width: "1200"
+                    ,height: "400"
                     ,series: [
                         { type: "line" }
                        ,{ type: "line" }
@@ -113,6 +114,11 @@ function mainChart(result){
                     ,vAxes: [
                         { title: "%",viewWindowMode:'maximized'}
                    ]
+                   ,hAxis: {
+                         format: 'yy/MM/dd',
+                         direction: -1,
+                    }
+
          };
         //描画の処理
         var chart = new google.visualization.ComboChart(document.getElementById('appendMain'));
