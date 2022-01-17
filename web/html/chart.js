@@ -90,7 +90,8 @@ function mainChart(result){
             lineWidth: 2,
             curveType: 'function',
             //チャートのタイプとして、ローソク足を指定
-            seriesType: "candlesticks",  
+      //    seriesType: "candlesticks",  
+            seriesType: "line",  
             //ローソク足だでなく、線グラフも三種類表示することを記述
             series: {
                 1:{
