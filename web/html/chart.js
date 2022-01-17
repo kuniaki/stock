@@ -2,14 +2,7 @@ google.charts.load('current', {'packages':['corechart']});
 
 $('#btn-getinfo').click(function(){
     var code = $('#code').val()
-    var dates = $('#start').val()
-    var datee = $('#end').val()
     var countryc =  $('#country').val()
-    var ds = dates.split('-'); 
-    var de = datee.split('-'); 
-    dates  = ds[2] + '/' +  ds[1] + '/' +  ds[0]
-    datee  = de[2] + '/' +  de[1] + '/' +  de[0]
-
 
     date = new Date();
     year = date.getFullYear();
