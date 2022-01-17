@@ -117,21 +117,17 @@ function mainChart(result){
                     }]
 
          };
-*/
                 var options = {
-                     title: "期間:5年間"
+                    title: "期間:5年間" 
                     ,width: "100%"
                     ,height: "100%"
                     ,series: [
-                        { type: "line" }
-                       ,{ type: "line" }
+                        { type: "line", targetAxisIndex: 0 }
+                       ,{ type: "line", targetAxisIndex: 0 }
+                       ,{ type: "line", targetAxisIndex: 0 }
                     ]
-                   ,hAxis: [{
-                         format: 'yy/MM/dd',
-                         direction: -1
-                    }]
                     ,vAxes: [
-                        { title: "%" }
+                        { title: "%",minValue:-20,maxValue:80 }
                    ]
                 };
         //描画の処理
