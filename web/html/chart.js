@@ -71,8 +71,8 @@ function mainChart(result){
                 format: 'yy/MM/dd',
                 direction: -1,
             },
-            width: 1200,
-            height: 400,
+            width: 600,
+            height: 200,
             lineWidth: 1,
             seriesType: "line",  
             series: {
