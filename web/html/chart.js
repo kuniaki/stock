@@ -51,7 +51,7 @@ function mainChart(result){
         date_d = result["date"]
         var length = date_d.length;
         close_d = result["close"]
-        nikkei_d = result["nikei"]
+        nikkei_d = result["nikkei"]
         //描画用のデータを一時的に入れる
         var insertingData = new Array(length);
 
