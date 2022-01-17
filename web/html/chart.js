@@ -113,10 +113,7 @@ function mainChart(result){
                    ]
                    ,hAxis: [{
                          format: 'yy/MM/dd',
-                         direction: -1//,
-                 //      ticks: {
-                 //          stepSize:360
-                 //      },
+                         direction: -1
                     }]
 
          };
