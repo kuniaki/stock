@@ -87,8 +87,8 @@ function mainChart(result){
             bar: { 
                 groupWidth: '100%' 
             },
-            width: 600,
-            height: 200,
+            width: 1200,
+            height: 400,
             lineWidth: 1,
             curveType: 'function',
             //チャートのタイプとして、ローソク足を指定
