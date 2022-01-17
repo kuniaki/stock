@@ -39,7 +39,6 @@ function getInfo(code,dates,datee,countryc,callback){
 }
 
 function mainChart(result){
-    //チャートに描画するための最終的なデータを入れる
     var chartData = new google.visualization.DataTable();
         chartData.addColumn("string","day");
         chartData.addColumn("number","2502.T");
@@ -105,8 +104,8 @@ function mainChart(result){
           var options = {
                      chartArea:{left:80,top:10,right:80,bottom:10}
                     ,title: "期間:5年間" 
-                    ,width: "1200"
-                    ,height: "400"
+                    ,width: "600"
+                    ,height: "200"
                     ,series: [
                         { type: "line" }
                        ,{ type: "line" }
@@ -122,6 +121,7 @@ function mainChart(result){
          };
         //描画の処理
         var chart = new google.visualization.ComboChart(document.getElementById('appendMain'));
+        Chart.defaults.global.defaultFontSize = '24';
         chart.draw(chartData, options);
 }
 
