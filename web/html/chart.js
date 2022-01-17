@@ -111,7 +111,7 @@ function mainChart(result){
                        ,{ type: "line" }
                     ]
                     ,vAxes: [
-                        { title: "%",viewWindowMode:'maximized'}
+                        { title: "%",,minValue:-20,maxValue:80 }
                    ]
                    ,hAxis: [{
                          format: 'yy/MM/dd',
