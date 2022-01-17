@@ -72,6 +72,7 @@ function mainChart(result){
             hAxis: {
                 format: 'yy/MM/dd',
                 direction: -1,
+                stepSize: 360
             },
             bar: { 
                 groupWidth: '100%' 
