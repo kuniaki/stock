@@ -107,14 +107,11 @@ function mainChart(result){
                     ,width: "100%"
                     ,height: "100%"
                     ,series: [
-                        { type: "line", targetAxisIndex: 0, pointShape: "star" , pointSize: 10 }
-                       ,{ type: "line", targetAxisIndex: 0, pointShape: "polygon", pointSize: 10 }
-                       ,{ type: "line", targetAxisIndex: 0, pointShape: "cross", pointSize: 10 }
+                        { type: "line" }
+                       ,{ type: "line" }
                     ]
                     ,vAxes: [
-                        { title: "順位",direction:-1 ,minValue:1,maxValue:100 }
-                       ,{ title: "",direction:-1 ,minValue:1,maxValue:100 }
-                       ,{ title: "",direction:-1  ,minValue:1,maxValue:100 }
+                        { title: "%",viewWindowMode:'maximized'}
                    ]
          };
         //描画の処理
