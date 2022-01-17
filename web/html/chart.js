@@ -63,7 +63,8 @@ function mainChart(result){
         }
 
         var options = {
-            chartArea:{left:80,top:10,right:80,bottom:10},
+            title: "期間:5年間",
+     //      chartArea:{left:80,top:10,right:80,bottom:10},
             colors: ['#003A76'],
             vAxis:{
                 viewWindowMode:'maximized'
