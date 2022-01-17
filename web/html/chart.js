@@ -60,6 +60,10 @@ function mainChart(result){
             bar: { 
                 groupWidth: '100%' 
             },
+            hAxis: {
+                format: 'yy/MM/dd',
+                direction: -1,
+            },
             width: 1200,
             height: 400,
             lineWidth: 1,
