@@ -43,13 +43,14 @@ function mainChart(result){
     var chartData = new google.visualization.DataTable();
         //日付ようにString型のカラムを一つ、チャート描画用に数値型のカラムを７つ作成
         chartData.addColumn('string');
-        for(var x = 0;x < 1; x++){
+        for(var x = 0;x < 2; x++){
             chartData.addColumn('number');
         }
         //いちいち書くのが面倒なので、取得した情報の長さを配列に入れる
         date_d = result["date"]
         var length = date_d.length;
         close_d = result["close"]
+        nikkei_d = result["nikei"]
         //描画用のデータを一時的に入れる
         var insertingData = new Array(length);
 
@@ -61,7 +62,7 @@ function mainChart(result){
 
         //配列insertingDataの中に、[終値]の形で値を入れ込む
         for(var a = 0; a < length; a++){
-            insertingData[a] = [dates[a],parseFloat(close_d[a])]
+            insertingData[a] = [dates[a],parseFloat(close_d[a]),parseFloat(nikkei_d[a])]
         }
         //チャート描画用の配列の中に、insertingDataの値を入れ込む
         for (var i = insertingData.length-1; i > 0; i--){
@@ -85,9 +86,9 @@ function mainChart(result){
             bar: { 
                 groupWidth: '100%' 
             },
-            width: 1200,
-            height: 400,
-            lineWidth: 2,
+            width: 600,
+            height: 200,
+            lineWidth: 1,
             curveType: 'function',
             //チャートのタイプとして、ローソク足を指定
       //    seriesType: "candlesticks",  

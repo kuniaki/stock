@@ -1,12 +1,15 @@
 import os, re
 import investpy
 import io
+from yahoo_finance_api2 import share
+from yahoo_finance_api2.exceptions import YahooFinanceError
 from flask import Flask, jsonify, request ,session
 from datetime import datetime
 import pandas as pd
 import sys
 import numpy as np
 import json
+
  
 
 APP_PORT = int(os.environ['PORT'])
@@ -48,8 +51,64 @@ def api_stock():
   for item in keys:
     da = str(item.year) + "-" + str(item.month) + "-" + str(item.day)
     dates.append(da)
-  dc = dict(date=dates,close=close_d)
+
+
+###  Nikkei Average
+  result = kabuka(code,5,1)
+  diff = list(set(result[2]) - set(dates))
+  for rr in diff:
+    result[3].pop(rr)
+
+  n =[]
+  for vv in result[3].values():
+     f = 100*float(vv-nikeibase)/float(nikeibase)
+     n.append(f)
+
+
+  dc = dict(date=dates,close=close_d,nikkei=n)
+
   return success(dc)
+
+def kabuka(code,S_year,S_day):
+  company_code = str(code) + '.T'
+  my_share = share.Share(company_code)
+  symbol_data = None
+
+  try:
+        symbol_data = my_share.get_historical(share.PERIOD_TYPE_YEAR,
+                                              S_year,
+                                              share.FREQUENCY_TYPE_DAY,
+                                              S_day)
+  except YahooFinanceError as e:
+        print(e.message)
+        sys.exit(1)
+  df_base = pd.DataFrame(symbol_data)
+  df_base = pd.DataFrame(symbol_data.values(), index=symbol_data.keys()).T
+  df_base.timestamp = pd.to_datetime(df_base.timestamp, unit='ms')
+  df_base.index = pd.DatetimeIndex(df_base.timestamp, name='timestamp').tz_localize('UTC').tz_convert('Asia/Tokyo')
+  df_base = df_base.reset_index(drop=True)
+
+  ccc = []
+  for dd in df_base["close"]:
+       ccc.append(dd)
+   
+  ddd = []
+  for dd in df_base["timestamp"]:
+       x = pd.to_datetime(dd)
+       yyy = x.strftime('%Y')
+       mmm = x.strftime('%m').lstrip('0')
+       da  = x.strftime('%d').lstrip('0')
+       ddd.append(yyy+'-'+mmm+'-'+da)
+
+  dc = dict(date=ddd,close=ccc)
+
+  ff = {}
+  for index in range(len(ddd)):
+      ff[ddd[index]] = ccc[index]
+
+  return company_code, df_base, ddd ,ff
+
+
 
 
 def isalnum(text):
