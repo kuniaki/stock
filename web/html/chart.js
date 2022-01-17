@@ -57,16 +57,18 @@ function mainChart(result){
 
         var options = {
             title: "期間:5年間",
-            vAxis:{
+            yAxes:{
                 viewWindowMode:'maximized'
             },
-            hAxis: {
-                direction: -1,
+            xAxes: [{
+              direction: -1,
+              ticks: {
                 minRotation:0,
                 maxRotation:0,
                 maxTicksLimit:6
+              }
      //         showTextEvery: 360
-            },
+            }],
             bar: { 
                 groupWidth: '100%' 
             },
