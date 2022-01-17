@@ -91,9 +91,9 @@ function mainChart(result){
                         fontSize: 18             
                         stepSize: 360            
                     },
-                    },
                 }],
-            };
+             }
+        };
 /*
         var options = {
             chartArea:{left:80,top:10,right:80,bottom:10},
