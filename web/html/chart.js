@@ -121,7 +121,7 @@ function mainChart(result){
 
          };
 */
-                var option = {
+                var options = {
                      title: "期間:5年間"
                     ,width: "100%"
                     ,height: "100%"
