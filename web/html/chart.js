@@ -63,7 +63,7 @@ function mainChart(result){
         }
         options: {                             
             responsive: true,                 
-                yAxes: {                      
+                vAxis: {                      
                     display: true,             
                     ticks: {                    
                         min: -20,                
@@ -72,7 +72,7 @@ function mainChart(result){
                         stepSize: 5         
                     }
                 },
-                xAxes: {                  
+                hAxis: {                  
                     display: true,        
                     ticks: {
                         fontSize: 18             
