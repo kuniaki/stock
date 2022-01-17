@@ -117,6 +117,7 @@ function mainChart(result){
                     }]
 
          };
+*/
                 var options = {
                     title: "期間:5年間" 
                     ,width: "100%"
