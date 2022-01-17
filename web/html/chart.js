@@ -9,6 +9,14 @@ $('#btn-getinfo').click(function(){
     var de = datee.split('-'); 
     dates  = ds[2] + '/' +  ds[1] + '/' +  ds[0]
     datee  = de[2] + '/' +  de[1] + '/' +  de[0]
+
+
+    date = new Date();
+    year = date.getFullYear();
+    month = date.getMonth() + 1;
+    day = date.getDate();
+    datee = day + '/' + month + '/' + year
+
     getInfo(code,dates,datee,countryc,mainChart);
 })
 
