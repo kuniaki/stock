@@ -61,13 +61,9 @@ function mainChart(result){
             ttt = insertingData[i];
             chartData.addRow(insertingData[i]);
         }
-        options: {                             //◆オプション
+        options: {                             //オプション
             responsive: true,                  //グラフ自動設定
-            title: {                           //タイトル設定
-                display: true,                 //表示設定
-                fontSize: 18,                  //フォントサイズ
-                text: '期間:5年間'                //ラベル
-            },
+            title:"期間:5年間",
             scales: {                          //軸設定
                 yAxes: [{                      //y軸設定
                     display: true,             //表示設定
@@ -101,7 +97,6 @@ function mainChart(result){
             };
 /*
         var options = {
-            title:"期間:5年間",
             chartArea:{left:80,top:10,right:80,bottom:10},
             vAxis:{
                 viewWindowMode:'maximized'
