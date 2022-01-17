@@ -61,13 +61,12 @@ function mainChart(result){
                 viewWindowMode:'maximized'
             },
             xAxes: [{
-              direction: -1,
               ticks: {
+                direction: -1,
                 minRotation:0,
                 maxRotation:0,
                 maxTicksLimit:6
               }
-     //         showTextEvery: 360
             }],
             bar: { 
                 groupWidth: '100%' 
