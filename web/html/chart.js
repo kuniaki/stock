@@ -138,9 +138,6 @@ function mainChart(result){
                     ,vAxes: [
                         { title: "%",minValue:-20,maxValue:80 }
                    ]
-                   ,hAxis: [{
-                         direction: -1
-                    }]
 
        };
         //描画の処理
