@@ -61,8 +61,8 @@ function mainChart(result){
             ttt = insertingData[i];
             chartData.addRow(insertingData[i]);
         }
+/*
         options: {                             
-            responsive: true,                 
                 vAxis: {                      
                     display: true,             
                     ticks: {                    
@@ -80,7 +80,6 @@ function mainChart(result){
                     }
                 }
         };
-/*
         var options = {
             chartArea:{left:80,top:10,right:80,bottom:10},
             vAxis:{
@@ -126,6 +125,7 @@ function mainChart(result){
                     }]
 
          };
+*/
                 var options = {
                     title: "期間:5年間" 
                     ,width: "100%"
@@ -143,7 +143,6 @@ function mainChart(result){
                          direction: -1
                    }]
                 };
-*/
         //描画の処理
         var chart = new google.visualization.ComboChart(document.getElementById('appendMain'));
         chart.draw(chartData, options);
