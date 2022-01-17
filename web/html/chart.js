@@ -61,6 +61,48 @@ function mainChart(result){
             ttt = insertingData[i];
             chartData.addRow(insertingData[i]);
         }
+        options: {                             //◆オプション
+            responsive: true,                  //グラフ自動設定
+            legend: {                          //凡例設定
+                display: true                 //表示設定
+           },
+            title: {                           //タイトル設定
+                display: true,                 //表示設定
+                fontSize: 18,                  //フォントサイズ
+                text: '期間:5年間'                //ラベル
+            },
+            scales: {                          //軸設定
+                yAxes: [{                      //y軸設定
+                    display: true,             //表示設定
+                    scaleLabel: {              //軸ラベル設定
+                       display: true,          //表示設定
+                       labelString: '縦軸ラベル',  //ラベル
+                       fontSize: 18               //フォントサイズ
+                    },
+                    ticks: {                      //最大値最小値設定
+                        min: 0,                   //最小値
+                        max: 30,                  //最大値
+                        fontSize: 18,             //フォントサイズ
+                        stepSize: 5               //軸間隔
+                    },
+                }],
+                xAxes: [{                         //x軸設定
+                    display: true,                //表示設定
+                    barPercentage: 0.4,           //棒グラフ幅
+                    categoryPercentage: 0.4,      //棒グラフ幅
+                    scaleLabel: {                 //軸ラベル設定
+                       display: true,             //表示設定
+                       labelString: '横軸ラベル',  //ラベル
+                       fontSize: 18               //フォントサイズ
+                    },
+                    ticks: {
+                        fontSize: 18             //フォントサイズ
+                        stepSize: 360             //軸間隔
+                    },
+                    },
+                }],
+            };
+/*
         var options = {
             title:"期間:5年間",
             chartArea:{left:80,top:10,right:80,bottom:10},
@@ -90,7 +132,6 @@ function mainChart(result){
                 },
             } 
         };
-/*
           var options = {
                     title: "期間:5年間" 
                     ,width: "100%"
