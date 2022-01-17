@@ -64,8 +64,11 @@ def success(d):
 
 def makeArray(df,text):
   dd = []
+  base = df[text][0]
   for item in df[text]:
-    dd.append(item)
+    ff = float(item)/float(base)
+    ff = ff * 100
+    dd.append(ff)
   return dd
 
 def error(code):
