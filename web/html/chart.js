@@ -61,6 +61,7 @@ function mainChart(result){
                 groupWidth: '100%' 
             },
             hAxis: {
+                stepSize:365
                 format: 'yy/MM/dd',
                 direction: -1,
             },
