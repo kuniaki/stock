@@ -63,34 +63,22 @@ function mainChart(result){
         }
         options: {                             
             responsive: true,                 
-                yAxes: [{                      
+                yAxes: {                      
                     display: true,             
-                    scaleLabel: {              
-                       display: true,          
-                       labelString: '縦軸ラベル', 
-                       fontSize: 18              
-                    },
                     ticks: {                    
-                        min: 0,                
-                        max: 30,              
+                        min: -20,                
+                        max: 80,              
                         fontSize: 18,        
                         stepSize: 5         
-                    },
-                }],
-                xAxes: [{                  
+                    }
+                },
+                xAxes: {                  
                     display: true,        
-                    barPercentage: 0.4,  
-                    categoryPercentage: 0.4, 
-                    scaleLabel: {           
-                       display: true,      
-                       labelString: '横軸ラベル',  
-                       fontSize: 18               
-                    },
                     ticks: {
                         fontSize: 18             
                         stepSize: 360            
-                    },
-                }]
+                    }
+                }
         };
 /*
         var options = {
