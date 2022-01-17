@@ -62,6 +62,7 @@ function mainChart(result){
             ttt = insertingData[i];
             chartData.addRow(insertingData[i]);
         }
+/*
         var options = {
             title:"Term: 5 years",
             chartArea:{left:80,top:10,right:80,bottom:10},
@@ -100,6 +101,22 @@ function mainChart(result){
                 },
             } 
         };
+*/
+          var options = {
+                     title: "折れ線グラフ" 
+                    ,width: "100%"
+                    ,height: "100%"
+                    ,series: [
+                        { type: "line", targetAxisIndex: 0, pointShape: "star" , pointSize: 10 }
+                       ,{ type: "line", targetAxisIndex: 0, pointShape: "polygon", pointSize: 10 }
+                       ,{ type: "line", targetAxisIndex: 0, pointShape: "cross", pointSize: 10 }
+                    ]
+                    ,vAxes: [
+                        { title: "順位",direction:-1 ,minValue:1,maxValue:100 }
+                       ,{ title: "",direction:-1 ,minValue:1,maxValue:100 }
+                       ,{ title: "",direction:-1  ,minValue:1,maxValue:100 }
+                   ]
+         };
         //描画の処理
         var chart = new google.visualization.ComboChart(document.getElementById('appendMain'));
         chart.draw(chartData, options);
