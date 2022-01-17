@@ -121,7 +121,7 @@ function mainChart(result){
          };
         //描画の処理
         var chart = new google.visualization.ComboChart(document.getElementById('appendMain'));
-        Chart.defaults.global.defaultFontSize = '24';
+        chart.defaults.global.defaultFontSize = '24';
         chart.draw(chartData, options);
 }
 
