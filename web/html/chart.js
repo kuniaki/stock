@@ -139,7 +139,6 @@ function mainChart(result){
                         { title: "%",minValue:-20,maxValue:80 }
                    ]
                    ,hAxis: [{
-                         format: 'yy/MM/dd',
                          direction: -1
                     }]
 
