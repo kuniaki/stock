@@ -102,10 +102,9 @@ function mainChart(result){
         };
 */
           var options = {
-                     chartArea:{left:80,top:10,right:80,bottom:10}
                     ,title: "期間:5年間" 
-                    ,width: "1200"
-                    ,height: "400"
+                    ,width: "100%"
+                    ,height: "100%"
                     ,series: [
                         { type: "line" }
                        ,{ type: "line" }
