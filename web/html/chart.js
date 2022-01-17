@@ -100,7 +100,6 @@ function mainChart(result){
                 },
             } 
         };
-*/
           var options = {
                     title: "期間:5年間" 
                     ,width: "100%"
@@ -121,6 +120,19 @@ function mainChart(result){
                     }]
 
          };
+*/
+                var option = {
+                     title: "期間:5年間"
+                    ,width: "100%"
+                    ,height: "100%"
+                    ,series: [
+                        { type: "line" }
+                       ,{ type: "line" }
+                    ]
+                    ,vAxes: [
+                        { title: "%",direction:-1 }
+                   ]
+                };
         //描画の処理
         var chart = new google.visualization.ComboChart(document.getElementById('appendMain'));
         chart.draw(chartData, options);
