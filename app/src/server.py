@@ -41,10 +41,6 @@ def api_stock():
                                         from_date=fromD,
                                         to_date=toD)
   close_d = makeArray(symbol_data,"Close")
-  open_d = makeArray(symbol_data,"Open")
-  high_d = makeArray(symbol_data,"High")
-  low_d = makeArray(symbol_data,"Low")
-  volume_d = makeArray(symbol_data,"Volume")
 
   dates = []
   dd = symbol_data.to_dict()
@@ -52,7 +48,7 @@ def api_stock():
   for item in keys:
     da = str(item.year) + "-" + str(item.month) + "-" + str(item.day)
     dates.append(da)
-  dc = dict(date=dates,open=open_d,high=high_d,low=low_d,close=close_d,volume=volume_d)
+  dc = dict(date=dates,close=close_d)
   return success(dc)
 
 
