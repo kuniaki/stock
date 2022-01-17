@@ -57,10 +57,10 @@ function mainChart(result){
 
         var options = {
             title: "期間:5年間",
-            yAxes:{
+            vAxes:{
                 viewWindowMode:'maximized'
             },
-            xAxes: [{
+            hAxes: [{
               ticks: {
                 direction: -1,
                 minRotation:0,
