@@ -70,7 +70,6 @@ function mainChart(result){
                 viewWindowMode:'maximized'
             },
             hAxis: {
-                format: 'yy/MM/dd',
                 direction: -1,
                 stepSize: 360
             },
@@ -81,23 +80,7 @@ function mainChart(result){
             height: 400,
             lineWidth: 1,
             curveType: 'function',
-            //チャートのタイプとして、ローソク足を指定
             seriesType: "Line",  
-            //ローソク足だでなく、線グラフも三種類表示することを記述
-            series: {
-                1:{
-                    type: "line",
-                    color: 'green',
-                },
-                2:{
-                    type: "line",
-                    color: 'red',                
-                },
-                3:{
-                    type: "line",
-                    color: 'orange',                
-                },
-            } 
         };
 /*
       var options = {
