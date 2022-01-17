@@ -31,8 +31,7 @@ function getInfo(code,dates,datee,countryc,callback){
         cashe : false,     
         dataType : 'json',  
         contentType : 'application/json' 
-    }).done(function(result){
-        callback(result);
+    }).done(function(result){ callback(result);
     }).fail(function(result){
         alert('Failed to load the information');
         console.log(result)
@@ -64,6 +63,7 @@ function mainChart(result){
             chartData.addRow(insertingData[i]);
         }
         var options = {
+            title = "Term: 5 years",
             chartArea:{left:80,top:10,right:80,bottom:10},
             colors: ['#003A76'],
             legend: {
