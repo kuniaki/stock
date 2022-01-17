@@ -57,14 +57,12 @@ function mainChart(result){
 
         var options = {
             title: "期間:5年間",
-     //      chartArea:{left:80,top:10,right:80,bottom:10},
-     //     colors: ['#003A76'],
             vAxis:{
                 viewWindowMode:'maximized'
             },
             hAxis: {
                 direction: -1,
-                stepSize: 360
+                showTextEvery: 100
             },
             bar: { 
                 groupWidth: '100%' 
