@@ -62,7 +62,7 @@ function mainChart(result){
             },
             hAxis: {
                 direction: -1,
-                showTextEvery: 100
+                showTextEvery: 360
             },
             bar: { 
                 groupWidth: '100%' 
