@@ -63,7 +63,6 @@ function mainChart(result){
         }
         options: {                             
             responsive: true,                 
-            scales: {                        
                 yAxes: [{                      
                     display: true,             
                     scaleLabel: {              
@@ -91,8 +90,7 @@ function mainChart(result){
                         fontSize: 18             
                         stepSize: 360            
                     },
-                }],
-             }
+                }]
         };
 /*
         var options = {
