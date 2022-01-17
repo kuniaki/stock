@@ -63,7 +63,7 @@ function mainChart(result){
             chartData.addRow(insertingData[i]);
         }
         var options = {
-            title = "Term: 5 years",
+            title:"Term: 5 years",
             chartArea:{left:80,top:10,right:80,bottom:10},
             colors: ['#003A76'],
             legend: {
