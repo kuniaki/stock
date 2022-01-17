@@ -54,19 +54,19 @@ def api_stock():
 
 
 ###  Nikkei Average
-  print('*******Hello world!*****************', file=sys.stderr)
-  result = kabuka(1320,5,1)
-  diff = list(set(result[2]) - set(dates))
-  for rr in diff:
-    result[3].pop(rr)
-
-  n =[]
-  for vv in result[3].values():
-     f = 100*float(vv-nikeibase)/float(nikeibase)
-     n.append(f)
-
-
-  dc = dict(date=dates,close=close_d,nikkei=n)
+# print('*******Hello world!*****************', file=sys.stderr)
+# result = kabuka(1320,5,1)
+# diff = list(set(result[2]) - set(dates))
+# for rr in diff:
+#   result[3].pop(rr)
+#
+# n =[]
+# for vv in result[3].values():
+#    f = 100*float(vv-nikeibase)/float(nikeibase)
+#    n.append(f)
+#
+# dc = dict(date=dates,close=close_d,nikkei=n)
+  dc = dict(date=dates,close=close_d,nikkei=close_d)
 
   return success(dc)
 
