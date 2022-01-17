@@ -102,9 +102,8 @@ function mainChart(result){
         };
           var options = {
                     title: "期間:5年間" 
-                    ,chartArea:{left:80,top:10,right:80,bottom:10},
-                    ,width: "1200"
-                    ,height: "400"
+                    ,width: "100%"
+                    ,height: "100%"
                     ,series: [
                         { type: "line" }
                        ,{ type: "line" }
@@ -114,10 +113,10 @@ function mainChart(result){
                    ]
                    ,hAxis: [{
                          format: 'yy/MM/dd',
-                         direction: -1,
-                         ticks: {
-                             stepSize:360
-                         },
+                         direction: -1//,
+                 //      ticks: {
+                 //          stepSize:360
+                 //      },
                     }]
 
          };
