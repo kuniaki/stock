@@ -64,10 +64,6 @@ function mainChart(result){
         var options = {
             title:"期間:5年間",
             chartArea:{left:80,top:10,right:80,bottom:10},
-            colors: ['#003A76'],
-            legend: {
-                position: 'none',
-            },
             vAxis:{
                 viewWindowMode:'maximized'
             },
@@ -75,13 +71,9 @@ function mainChart(result){
                 format: 'yy/MM/dd',
                 direction: -1,
             },
-            bar: { 
-                groupWidth: '100%' 
-            },
             width: 1200,
             height: 400,
             lineWidth: 1,
-            curveType: 'function',
             seriesType: "line",  
             series: {
                 1:{
