@@ -62,8 +62,10 @@ function mainChart(result){
             },
             hAxis: {
                 direction: -1,
-                minValue: '2017-1-18',
-                showTextEvery: 360
+                minRotation:0,
+                maxRotation:0,
+                maxTicksLimit:6
+     //         showTextEvery: 360
             },
             bar: { 
                 groupWidth: '100%' 
