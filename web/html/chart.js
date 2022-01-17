@@ -57,15 +57,6 @@ function mainChart(result){
 
         var options = {
             title: "期間:5年間",
-            vAxes:{
-                viewWindowMode:'maximized'
-            },
-            hAxis: {
-                direction: -1,
-                minRotation:0,
-                maxRotation:0,
-                maxTicksLimit:6
-            },
             bar: { 
                 groupWidth: '100%' 
             },
@@ -75,22 +66,6 @@ function mainChart(result){
             curveType: 'function',
             seriesType: "Line",  
         };
-/*
-      var options = {
-                     title: "期間:5年間" 
-                    ,width: "100%"
-                    ,height: "100%"
-                    ,series: [
-                        { type: "line", targetAxisIndex: 0 }
-                       ,{ type: "line", targetAxisIndex: 0 }
-                       ,{ type: "line", targetAxisIndex: 0 }
-                    ]
-                    ,vAxes: [
-                        { title: "%",minValue:-20,maxValue:80 }
-                   ]
-
-       };
-*/
         //描画の処理
         var chart = new google.visualization.ComboChart(document.getElementById('appendMain'));
         chart.draw(chartData, options);
