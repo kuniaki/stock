@@ -61,27 +61,10 @@ function mainChart(result){
             ttt = insertingData[i];
             chartData.addRow(insertingData[i]);
         }
-/*
-        options: {                             
-                vAxis: {                      
-                    display: true,             
-                    ticks: {                    
-                        min: -20,                
-                        max: 80,              
-                        fontSize: 18,        
-                        stepSize: 5         
-                    }
-                },
-                hAxis: {                  
-                    display: true,        
-                    ticks: {
-                        fontSize: 18             
-                        stepSize: 360            
-                    }
-                }
-        };
+
         var options = {
             chartArea:{left:80,top:10,right:80,bottom:10},
+            colors: ['#003A76'],
             vAxis:{
                 viewWindowMode:'maximized'
             },
@@ -89,10 +72,16 @@ function mainChart(result){
                 format: 'yy/MM/dd',
                 direction: -1,
             },
-            width: 600,
-            height: 200,
+            bar: { 
+                groupWidth: '100%' 
+            },
+            width: 1200,
+            height: 400,
             lineWidth: 1,
-            seriesType: "line",  
+            curveType: 'function',
+            //チャートのタイプとして、ローソク足を指定
+            seriesType: "Line",  
+            //ローソク足だでなく、線グラフも三種類表示することを記述
             series: {
                 1:{
                     type: "line",
@@ -108,24 +97,7 @@ function mainChart(result){
                 },
             } 
         };
-          var options = {
-                    title: "期間:5年間" 
-                    ,width: "100%"
-                    ,height: "100%"
-                    ,series: [
-                        { type: "line" }
-                       ,{ type: "line" }
-                    ]
-                    ,vAxes: [
-                        { title: "%",minValue:-20,maxValue:80 }
-                   ]
-                   ,hAxis: [{
-                         format: 'yy/MM/dd',
-                         direction: -1
-                    }]
-
-         };
-*/
+/*
       var options = {
                      title: "期間:5年間" 
                     ,width: "100%"
@@ -140,6 +112,7 @@ function mainChart(result){
                    ]
 
        };
+*/
         //描画の処理
         var chart = new google.visualization.ComboChart(document.getElementById('appendMain'));
         chart.draw(chartData, options);
