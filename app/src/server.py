@@ -54,6 +54,7 @@ def api_stock():
 
 
 ###  Nikkei Average
+  print('*******Hello world!*****************', file=sys.stderr)
   result = kabuka(code,5,1)
   diff = list(set(result[2]) - set(dates))
   for rr in diff:
