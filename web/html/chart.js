@@ -62,6 +62,7 @@ function mainChart(result){
             },
             hAxis: {
                 direction: -1,
+                minValue: '2017-1-18',
                 showTextEvery: 360
             },
             bar: { 
