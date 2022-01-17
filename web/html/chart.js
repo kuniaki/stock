@@ -57,7 +57,6 @@ function mainChart(result){
         var dates = new Array();
         for(var s = 0; s < length; s++){
                 dates[s] = String(date_d[s]);
-            }
         }
 
         //配列insertingDataの中に、[終値]の形で値を入れ込む
