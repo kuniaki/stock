@@ -65,6 +65,7 @@ function mainChart(result){
         //チャート描画用の配列の中に、insertingDataの値を入れ込む
         //最古の50日分のデータまでは移動平均線のデータが揃っていないので、取り除く
         for (var i = insertingData.length-1; i > 0; i--){
+            ttt = insertingData[i];
             chartData.addRow(insertingData[i]);
         }
         //チャートの見た目に関する記述、詳細は公式ドキュメントをご覧になってください
