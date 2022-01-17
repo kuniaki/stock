@@ -124,7 +124,7 @@ function volumeChart(volume, dates, length){
         insertingData[a] = [dates[a],parseInt(volume[a])]
     }
     //insertingDataの値をチャート描画用の変数に入れ込む
-    for (var i = insertingData.length; i > 0; i--){
+    for (var i = insertingData.length-1; i > 0; i--){
         chartData.addRow(insertingData[i]);
     }
     //ローソク足の時と同じように、見た目の設定をする
