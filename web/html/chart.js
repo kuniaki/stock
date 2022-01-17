@@ -42,35 +42,27 @@ function getInfo(code,dates,datee,countryc,callback){
 function mainChart(result){
     //チャートに描画するための最終的なデータを入れる
     var chartData = new google.visualization.DataTable();
-        //日付ようにString型のカラムを一つ、チャート描画用に数値型のカラムを７つ作成
-        chartData.addColumn('string');
-        for(var x = 0;x < 2; x++){
-            chartData.addColumn('number');
-        }
-        //いちいち書くのが面倒なので、取得した情報の長さを配列に入れる
+        chartData.addColumn("string","day");
+        chartData.addColumn("number","2502.T");
+        chartData.addColumn("number","N225");
         date_d = result["date"]
         var length = date_d.length;
         close_d = result["close"]
         nikkei_d = result["nikkei"]
-        //描画用のデータを一時的に入れる
         var insertingData = new Array(length);
 
-       //チャートの日付を保持する配列
         var dates = new Array();
         for(var s = 0; s < length; s++){
                 dates[s] = String(date_d[s]);
         }
 
-        //配列insertingDataの中に、[終値]の形で値を入れ込む
         for(var a = 0; a < length; a++){
             insertingData[a] = [dates[a],parseFloat(close_d[a]),parseFloat(nikkei_d[a])]
         }
-        //チャート描画用の配列の中に、insertingDataの値を入れ込む
         for (var i = insertingData.length-1; i > 0; i--){
             ttt = insertingData[i];
             chartData.addRow(insertingData[i]);
         }
-        //チャートの見た目に関する記述、詳細は公式ドキュメントをご覧になってください
         var options = {
             chartArea:{left:80,top:10,right:80,bottom:10},
             colors: ['#003A76'],
@@ -91,10 +83,8 @@ function mainChart(result){
             height: 400,
             lineWidth: 1,
             curveType: 'function',
-            //チャートのタイプとして、ローソク足を指定
       //    seriesType: "candlesticks",  
             seriesType: "line",  
-            //ローソク足だでなく、線グラフも三種類表示することを記述
             series: {
                 1:{
                     type: "line",
