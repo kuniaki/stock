@@ -102,8 +102,9 @@ function mainChart(result){
         };
           var options = {
                     title: "期間:5年間" 
-                    ,width: "100%"
-                    ,height: "100%"
+                    ,chartArea:{left:80,top:10,right:80,bottom:10},
+                    ,width: "1200"
+                    ,height: "400"
                     ,series: [
                         { type: "line" }
                        ,{ type: "line" }
@@ -129,8 +130,15 @@ function mainChart(result){
                         { type: "line" }
                        ,{ type: "line" }
                     ]
+                   ,hAxis: [{
+                         format: 'yy/MM/dd',
+                         direction: -1,
+                         ticks: {
+                             stepSize:360
+                         },
+                    }]
                     ,vAxes: [
-                        { title: "%",direction:-1 }
+                        { title: "%" }
                    ]
                 };
         //描画の処理
