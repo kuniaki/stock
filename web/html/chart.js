@@ -17,7 +17,8 @@ $('#btn-getinfo').click(function(){
     day = date.getDate();
     datee = day + '/' + month + '/' + year
     year5 = date.getFullYear() - 5;
-    dates = day + '/' + month + '/' + year5
+    day1 = date.getDate()+1;
+    dates = day1 + '/' + month + '/' + year5
 
     getInfo(code,dates,datee,countryc,mainChart);
 })
