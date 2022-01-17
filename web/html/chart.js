@@ -53,17 +53,6 @@ function mainChart(result){
         //描画用のデータを一時的に入れる
         var insertingData = new Array(length);
 
-        //for文をまとめるため、出来高棒グラフの処理もここで行う
-        //出来高を保持する配列
-        var volume = new Array();
-        //チャートの日付を保持する配列
-        var dates = new Array();
-        for(var s = 0; s < length; s++){
-            if(volume_d[s] != ''){
-                volume[s] = volume_d[s];
-                dates[s] = String(date_d[s]);
-            }
-        }
         //配列insertingDataの中に、[終値]の形で値を入れ込む
         for(var a = 0; a < length; a++){
             insertingData[a] = [dates[a],parseFloat(close_d[a])]
