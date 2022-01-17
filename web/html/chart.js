@@ -60,14 +60,12 @@ function mainChart(result){
             vAxes:{
                 viewWindowMode:'maximized'
             },
-            hAxes: [{
-              ticks: {
+            hAxis: {
                 direction: -1,
                 minRotation:0,
                 maxRotation:0,
                 maxTicksLimit:6
-              }
-            }],
+            },
             bar: { 
                 groupWidth: '100%' 
             },
