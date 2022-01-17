@@ -63,9 +63,6 @@ function mainChart(result){
         }
         options: {                             //◆オプション
             responsive: true,                  //グラフ自動設定
-            legend: {                          //凡例設定
-                display: true                 //表示設定
-           },
             title: {                           //タイトル設定
                 display: true,                 //表示設定
                 fontSize: 18,                  //フォントサイズ
