@@ -33,7 +33,7 @@ function mainChart(result){
     var chartData = new google.visualization.DataTable();
         //日付ようにString型のカラムを一つ、チャート描画用に数値型のカラムを７つ作成
         chartData.addColumn('string');
-        for(var x = 0;x < 7; x++){
+        for(var x = 0;x < 4; x++){
             chartData.addColumn('number');
         }
         //いちいち書くのが面倒なので、取得した情報の長さを配列に入れる
