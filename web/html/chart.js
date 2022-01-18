@@ -54,14 +54,17 @@ function mainChart(result){
             ttt = insertingData[i];
             chartData.addRow(insertingData[i]);
         }
+       
+        title = "期間:5年間"
+        stepSize = 1000
 
         var options = {
-            title: "期間:5年間",
+            title: title,
             bar: { 
                 groupWidth: '100%' 
             },
             hAxis: {
-                stepSize:365,
+                stepSize:stepSize,
                 format: 'yy/MM/dd',
                 direction: -1,
             },
