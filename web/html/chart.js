@@ -50,6 +50,11 @@ function main1years(result) {
         nikkei_d = result["nikkei"]
         var insertingData = new Array(length);
 
+        ////////////////////////////////////
+        //                                //
+        // Find the data of one year ago  //
+        //                                //
+        ///////////////////////////////////
         one_year_ago = oneYearAgo();
         oneYearD     = new Date(one_year_ago);
         var term = 0;//246;
@@ -61,7 +66,13 @@ function main1years(result) {
             break;
            }
         }
+        term = length - term
 
+        ////////////////////////////////////
+        //                                //
+        //   Normarized data              //
+        //                                //
+        ///////////////////////////////////
         baseClose  = close_d[insertingData.length -term];
         baseNikkei = nikkei_d[insertingData.length -term];
 
@@ -78,6 +89,11 @@ function main1years(result) {
           ff = 100*parseFloat(ll - baseNikkei)/parseFloat(baseNikkei) 
           dNikkei.push(ff)
         }
+        ////////////////////////////////////
+        //                                //
+        //   prepare 1 year data          //
+        //                                //
+        ///////////////////////////////////
         var dates = new Array();
         var k = 0;
         for(var s = insertingData.length -term; s < length; s++){
@@ -89,7 +105,6 @@ function main1years(result) {
             insertingData[a] = [dates[a],parseFloat(dClose[a]),parseFloat(dNikkei[a])]
         }
         for (var i = 0 ; i < term; i++){
-            ttt = insertingData[i];
             chartData.addRow(insertingData[i]);
         }
        
