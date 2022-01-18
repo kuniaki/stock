@@ -54,7 +54,7 @@ function main1years(result) {
         oneYearD     = new Date(one_year_ago);
         var term = 0;//246;
         oneYearUnix  = Date.parse(oneYearAgo);
-        for(var i = length; i > 0; i--) {
+        for(var i = length-1; i >= 0; i--) {
            dateD    = new Date(date_d[i]);
            if(dateD <= oneYearD) {
             term = i;
