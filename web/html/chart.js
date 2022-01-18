@@ -30,8 +30,8 @@ function getInfo(code,dates,datee,countryc,callback){
         console.log(result)
     });  
 }
-
-function mainChart(result){
+ 
+function main5years(result) {
     var chartData = new google.visualization.DataTable();
         chartData.addColumn("string","day");
         chartData.addColumn("number","2502.T");
@@ -77,6 +77,11 @@ function mainChart(result){
         //描画の処理
         var chart = new google.visualization.ComboChart(document.getElementById('appendMain'));
         chart.draw(chartData, options);
+
+}
+
+function mainChart(result){
+   main5years(result)
 }
 
 function volumeChart(volume, dates, length){
