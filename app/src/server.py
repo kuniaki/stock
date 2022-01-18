@@ -121,11 +121,12 @@ def success(d):
 
 def makeArray(df,text):
   dd = []
-  base = df[text][0]
+//base = df[text][0]
   for item in df[text]:
-    ff = float(item - base)/float(base)
-    ff = ff * 100
-    dd.append(ff)
+//  ff = float(item - base)/float(base)
+//  ff = ff * 100
+//  dd.append(ff)
+    dd.append(item)
   return dd
 
 def error(code):
