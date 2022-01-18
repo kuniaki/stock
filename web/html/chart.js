@@ -31,6 +31,14 @@ function getInfo(code,dates,datee,countryc,callback){
     });  
 }
 
+function oneYearAgo() {
+    date = new Date();
+    year = date.getFullYear()-1;
+    month = date.getMonth() + 1;
+    day = date.getDate();
+    return  year + '-' + month + '-' + day;
+}
+
 function main1years(result) {
     var chartData = new google.visualization.DataTable();
         chartData.addColumn("string","day");
@@ -41,7 +49,15 @@ function main1years(result) {
         close_d = result["close"]
         nikkei_d = result["nikkei"]
         var insertingData = new Array(length);
-        var term = 246;
+
+        one_year_ago = oneYearAgo();
+        var term = 0;//246;
+        for(var i = length: i > 0; i--) {
+           if(date_d[i] == one_year_ago) {
+            term = i;
+            break;
+           }
+        }
 
         baseClose  = close_d[insertingData.length -term];
         baseNikkei = nikkei_d[insertingData.length -term];
