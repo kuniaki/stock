@@ -58,8 +58,10 @@ function main1years(result) {
           dNikkei.push(ff)
         }
         var dates = new Array();
+        var k = 0;
         for(var s = insertingData.length -365; s < length; s++){
-                dates[s] = String(date_d[s]);
+                k = k + 1;
+                dates[k] = String(date_d[s]);
         }
 
         for(var a = 0; a < 365; a++){
