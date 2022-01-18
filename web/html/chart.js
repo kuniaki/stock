@@ -30,6 +30,7 @@ function getInfo(code,dates,datee,countryc,callback){
         console.log(result)
     });  
 }
+
 function main1years(result) {
     var chartData = new google.visualization.DataTable();
         chartData.addColumn("string","day");
@@ -40,7 +41,7 @@ function main1years(result) {
         close_d = result["close"]
         nikkei_d = result["nikkei"]
         var insertingData = new Array(length);
-        var term = 365;
+        var term = 400;
 
         baseClose  = close_d[insertingData.length -term];
         baseNikkei = nikkei_d[insertingData.length -term];
