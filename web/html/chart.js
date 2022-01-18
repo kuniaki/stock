@@ -40,7 +40,7 @@ function main1years(result) {
         close_d = result["close"]
         nikkei_d = result["nikkei"]
         var insertingData = new Array(length);
-        var term = 365*3;
+        var term = 365;
 
         baseClose  = close_d[insertingData.length -term];
         baseNikkei = nikkei_d[insertingData.length -term];
