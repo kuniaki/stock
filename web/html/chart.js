@@ -58,12 +58,12 @@ function main1years(result) {
           dNikkei.push(ff)
         }
         var dates = new Array();
-        for(var s = 0; s < length; s++){
+        for(var s = insertingData.length -365; s < length; s++){
                 dates[s] = String(date_d[s]);
         }
 
         for(var a = 0; a < 365; a++){
-            insertingData[a] = [dates[length-365+a],parseFloat(dClose[a]),parseFloat(dNikkei[a])]
+            insertingData[a] = [dates[a],parseFloat(dClose[a]),parseFloat(dNikkei[a])]
         }
         for (var i = 0 ; i < 365; i++){
             ttt = insertingData[i];
