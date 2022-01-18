@@ -54,7 +54,7 @@ function main1years(result) {
         let dNikkei = []
         for(var i = insertingData.length -365; i < length ; i++) {
           var ll = nikkei_d[i];
-          ff = parseFloat(ll - baseNikkei)/parseFloat(baseNikkei) 
+          ff = 100*parseFloat(ll - baseNikkei)/parseFloat(baseNikkei) 
           dNikkei.push(ff)
         }
         var dates = new Array();
@@ -119,7 +119,7 @@ function main5years(result) {
         let dNikkei = []
         for(var i = 0; i < length ; i++) {
           var ll = nikkei_d[i];
-          ff = parseFloat(ll - baseNikkei)/parseFloat(baseNikkei) 
+          ff = 100*parseFloat(ll - baseNikkei)/parseFloat(baseNikkei) 
           dNikkei.push(ff)
         }
 
