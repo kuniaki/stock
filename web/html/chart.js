@@ -74,7 +74,7 @@ function main1years(result) {
             seriesType: "Line",  
         };
         //描画の処理
-        var chart = new google.visualization.ComboChart(document.getElementById('appendMain'));
+        var chart = new google.visualization.ComboChart(document.getElementById('append1year'));
         chart.draw(chartData, options);
 
 }
@@ -123,14 +123,14 @@ function main5years(result) {
             seriesType: "Line",  
         };
         //描画の処理
-        var chart = new google.visualization.ComboChart(document.getElementById('appendMain'));
+        var chart = new google.visualization.ComboChart(document.getElementById('append5year'));
         chart.draw(chartData, options);
 
 }
 
 function mainChart(result){
-   main5years(result)
    main1years(result)
+   main5years(result)
 }
 
 function volumeChart(volume, dates, length){
