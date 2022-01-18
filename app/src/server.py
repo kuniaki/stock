@@ -60,11 +60,9 @@ def api_stock():
   for rr in diff:
     result[3].pop(rr)
 #
-  nikeibase = list(result[3].values())[0]
   n =[]
   for vv in result[3].values():
-     f = 100*float(vv-nikeibase)/float(nikeibase)
-     n.append(f)
+     n.append(vv)
  
   dc = dict(date=dates,close=close_d,nikkei=n)
 # dc = dict(date=dates,close=close_d,nikkei=close_d)
