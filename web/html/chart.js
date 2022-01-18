@@ -63,7 +63,7 @@ function main1years(result) {
         }
 
         for(var a = 0; a < 365; a++){
-            insertingData[a] = [dates[a],parseFloat(dClose[a]),parseFloat(dNikkei[a])]
+            insertingData[a] = [dates[length-365+a],parseFloat(dClose[a]),parseFloat(dNikkei[a])]
         }
         for (var i = 0 ; i < 365; i++){
             ttt = insertingData[i];
@@ -81,7 +81,6 @@ function main1years(result) {
             hAxis: {
                 stepSize:stepSize,
                 format: 'yy/MM/dd',
-                direction: -1,
             },
             width: 1200,
             height: 400,
