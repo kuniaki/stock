@@ -51,11 +51,12 @@ function main1years(result) {
         var insertingData = new Array(length);
 
         one_year_ago = oneYearAgo();
+        oneYearD     = new Date(one_year_ago);
         var term = 0;//246;
         oneYearUnix  = Date.parse(oneYearAgo);
         for(var i = length; i > 0; i--) {
-           dateUnix = Date.parse(date_d[i]);
-           if(date_d[i] <= one_year_ago) {
+           dateD    = new Date((date_d[i]);
+           if(dateD <= oneYearD) {
             term = i;
             break;
            }
