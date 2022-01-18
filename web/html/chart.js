@@ -90,13 +90,27 @@ function main5years(result) {
         nikkei_d = result["nikkei"]
         var insertingData = new Array(length);
 
+        baseClose  = close_d[0];
+        baseNikkei = nikkei_d[0];
+
+        let dClose = []
+        for i in close_d:
+          ff = float(i - baseClose)/float(baseClose) 
+          dClose.push(ff)
+
+        let dNikkei = []
+        for i in nikkei_d:
+          ff = float(i - baseNikkei)/float(baseNikkei) 
+          dNikkei.push(ff)
+
         var dates = new Array();
         for(var s = 0; s < length; s++){
                 dates[s] = String(date_d[s]);
         }
 
         for(var a = 0; a < length; a++){
-            insertingData[a] = [dates[a],parseFloat(close_d[a]),parseFloat(nikkei_d[a])]
+      //    insertingData[a] = [dates[a],parseFloat(close_d[a]),parseFloat(nikkei_d[a])]
+            insertingData[a] = [dates[a],parseFloat(dClose[a]),parseFloat(dNikkei[a])]
         }
         for (var i = insertingData.length-1; i > 0; i--){
             ttt = insertingData[i];
