@@ -40,34 +40,35 @@ function main1years(result) {
         close_d = result["close"]
         nikkei_d = result["nikkei"]
         var insertingData = new Array(length);
+        var term = 365*3;
 
-        baseClose  = close_d[insertingData.length -365];
-        baseNikkei = nikkei_d[insertingData.length -365];
+        baseClose  = close_d[insertingData.length -term];
+        baseNikkei = nikkei_d[insertingData.length -term];
 
         let dClose = []
-        for(var i = insertingData.length -365; i < length ; i++) {
+        for(var i = insertingData.length -term; i < length ; i++) {
           var ll = close_d[i];
           ff = 100*parseFloat(ll - baseClose)/parseFloat(baseClose); 
           dClose.push(ff);
         }
 
         let dNikkei = []
-        for(var i = insertingData.length -365; i < length ; i++) {
+        for(var i = insertingData.length -term; i < length ; i++) {
           var ll = nikkei_d[i];
           ff = 100*parseFloat(ll - baseNikkei)/parseFloat(baseNikkei) 
           dNikkei.push(ff)
         }
         var dates = new Array();
         var k = 0;
-        for(var s = insertingData.length -365; s < length; s++){
+        for(var s = insertingData.length -term; s < length; s++){
                 k = k + 1;
                 dates[k] = String(date_d[s]);
         }
 
-        for(var a = 0; a < 365; a++){
+        for(var a = 0; a < term; a++){
             insertingData[a] = [dates[a],parseFloat(dClose[a]),parseFloat(dNikkei[a])]
         }
-        for (var i = 0 ; i < 365; i++){
+        for (var i = 0 ; i < term; i++){
             ttt = insertingData[i];
             chartData.addRow(insertingData[i]);
         }
