@@ -47,7 +47,7 @@ function main1years(result) {
         let dClose = []
         for(var i = insertingData.length -365; i < length ; i++) {
           var ll = close_d[i];
-          ff = parseFloat(ll - baseClose)/parseFloat(baseClose); 
+          ff = 100*parseFloat(ll - baseClose)/parseFloat(baseClose); 
           dClose.push(ff);
         }
 
@@ -62,7 +62,7 @@ function main1years(result) {
                 dates[s] = String(date_d[s]);
         }
 
-        for(var a = insertingData.length -365; a < length; a++){
+        for(var a = 0; a < 365; a++){
             insertingData[a] = [dates[a],parseFloat(dClose[a]),parseFloat(dNikkei[a])]
         }
         for (var i = insertingData.length-1; i > insertingData.length -366; i--){
@@ -112,7 +112,7 @@ function main5years(result) {
         let dClose = []
         for(var i = 0; i < length ; i++) {
           var ll = close_d[i];
-          ff = parseFloat(ll - baseClose)/parseFloat(baseClose); 
+          ff = 100*parseFloat(ll - baseClose)/parseFloat(baseClose); 
           dClose.push(ff);
         }
 
