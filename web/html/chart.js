@@ -96,14 +96,14 @@ function main5years(result) {
         let dClose = []
         for(var i = 0; i < length ; i++) {
           var ll = close_d[i];
-          ff = parsefloat(ll - baseClose)/parsefloat(baseClose); 
+          ff = parseFloat(ll - baseClose)/parseFloat(baseClose); 
           dClose.push(ff);
         }
 
         let dNikkei = []
         for(var i = 0; i < length ; i++) {
           var ll = nikkei_d[i];
-          ff = parsefloat(ll - baseNikkei)/parsefloat(baseNikkei) 
+          ff = parseFloat(ll - baseNikkei)/parseFloat(baseNikkei) 
           dNikkei.push(ff)
         }
 
