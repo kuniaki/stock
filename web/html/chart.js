@@ -41,13 +41,29 @@ function main1years(result) {
         nikkei_d = result["nikkei"]
         var insertingData = new Array(length);
 
+        baseClose  = close_d[insertingData.length -365];
+        baseNikkei = nikkei_d[insertingData.length -365];
+
+        let dClose = []
+        for(var i = insertingData.length -365; i < length ; i++) {
+          var ll = close_d[i];
+          ff = parseFloat(ll - baseClose)/parseFloat(baseClose); 
+          dClose.push(ff);
+        }
+
+        let dNikkei = []
+        for(var i = insertingData.length -365; i < length ; i++) {
+          var ll = nikkei_d[i];
+          ff = parseFloat(ll - baseNikkei)/parseFloat(baseNikkei) 
+          dNikkei.push(ff)
+        }
         var dates = new Array();
         for(var s = 0; s < length; s++){
                 dates[s] = String(date_d[s]);
         }
 
-        for(var a = 0; a < length; a++){
-            insertingData[a] = [dates[a],parseFloat(close_d[a]),parseFloat(nikkei_d[a])]
+        for(var a = insertingData.length -365; a < length; a++){
+            insertingData[a] = [dates[a],parseFloat(dClose[a]),parseFloat(dNikkei[a])]
         }
         for (var i = insertingData.length-1; i > insertingData.length -366; i--){
             ttt = insertingData[i];
