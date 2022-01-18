@@ -65,7 +65,7 @@ function main1years(result) {
         for(var a = 0; a < 365; a++){
             insertingData[a] = [dates[a],parseFloat(dClose[a]),parseFloat(dNikkei[a])]
         }
-        for (var i = insertingData.length-1; i > insertingData.length -366; i--){
+        for (var i = 0 ; i < 365; i++){
             ttt = insertingData[i];
             chartData.addRow(insertingData[i]);
         }
