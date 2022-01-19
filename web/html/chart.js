@@ -39,6 +39,17 @@ function oneYearAgo() {
     return  year + '-' + month + '-' + day;
 }
 
+function normarize(dd,index_s,index_e) {
+   let base = dd[index_s];
+   let normarized  = [];
+   for(var i = index_s; i < index_eh ; i++) {
+      var ll = dd[i];
+      ff = 100*parseFloat(ll - base)/parseFloat(base); 
+      normarized.push(ff);
+   }
+   return normarized;
+}
+
 function main1years(result) {
     var chartData = new google.visualization.DataTable();
         chartData.addColumn("string","day");
@@ -73,22 +84,8 @@ function main1years(result) {
         //   Normarized data              //
         //                                //
         ///////////////////////////////////
-        baseClose  = close_d[insertingData.length -term];
-        baseNikkei = nikkei_d[insertingData.length -term];
-
-        let dClose = []
-        for(var i = insertingData.length -term; i < length ; i++) {
-          var ll = close_d[i];
-          ff = 100*parseFloat(ll - baseClose)/parseFloat(baseClose); 
-          dClose.push(ff);
-        }
-
-        let dNikkei = []
-        for(var i = insertingData.length -term; i < length ; i++) {
-          var ll = nikkei_d[i];
-          ff = 100*parseFloat(ll - baseNikkei)/parseFloat(baseNikkei) 
-          dNikkei.push(ff)
-        }
+        let dClose  = normarize(close_d,insertingData.length -term,length);
+        let dNikkei = normarize(nikkei_d,insertingData.length -term,length);
         ////////////////////////////////////
         //                                //
         //   prepare 1 year data          //
@@ -97,8 +94,8 @@ function main1years(result) {
         var dates = new Array();
         var k = 0;
         for(var s = insertingData.length -term; s < length; s++){
-                k = k + 1;
                 dates[k] = String(date_d[s]);
+                k = k + 1;
         }
 
         for(var a = 0; a < term; a++){
@@ -143,22 +140,8 @@ function main5years(result) {
         nikkei_d = result["nikkei"]
         var insertingData = new Array(length);
 
-        baseClose  = close_d[0];
-        baseNikkei = nikkei_d[0];
-
-        let dClose = []
-        for(var i = 0; i < length ; i++) {
-          var ll = close_d[i];
-          ff = 100*parseFloat(ll - baseClose)/parseFloat(baseClose); 
-          dClose.push(ff);
-        }
-
-        let dNikkei = []
-        for(var i = 0; i < length ; i++) {
-          var ll = nikkei_d[i];
-          ff = 100*parseFloat(ll - baseNikkei)/parseFloat(baseNikkei) 
-          dNikkei.push(ff)
-        }
+        let dClose  = normarize(close_d,0,length);
+        let dNikkei = normarize(nikkei_d,0,length);
 
         var dates = new Array();
         for(var s = 0; s < length; s++){
@@ -166,11 +149,9 @@ function main5years(result) {
         }
 
         for(var a = 0; a < length; a++){
-      //    insertingData[a] = [dates[a],parseFloat(close_d[a]),parseFloat(nikkei_d[a])]
             insertingData[a] = [dates[a],parseFloat(dClose[a]),parseFloat(dNikkei[a])]
         }
         for (var i = insertingData.length-1; i > 0; i--){
-            ttt = insertingData[i];
             chartData.addRow(insertingData[i]);
         }
        
