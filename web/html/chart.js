@@ -42,7 +42,7 @@ function oneYearAgo() {
 function normarize(dd,index_s,index_e) {
    let base = dd[index_s];
    let normarized  = [];
-   for(var i = index_s; i < index_eh ; i++) {
+   for(var i = index_s; i < index_e; i++) {
       var ll = dd[i];
       ff = 100*parseFloat(ll - base)/parseFloat(base); 
       normarized.push(ff);
