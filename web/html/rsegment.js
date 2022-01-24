@@ -17,11 +17,25 @@ function getRSegmentInfo(){
 
 function rSegmentChart(result){
     var chartData = new google.visualization.DataTable();
-    chartData.addColumn('string');
-    chartData.addColumn('number');
+    chartData.addColumn('年度');
+    chartData.addColumn('その他');
+    chartData.addColumn('酒類');
+    chartData.addColumn('食品');
+    chartData.addColumn('飲料');
+    chartData.addColumn('国際');
     var insertingData = new Array();
+
+    year_d   = result["year"]
+    others_d = result["others"]
+    food_d = result["food"]
+    drink_d = result["drink"]
+    alchohol_d = result["alcohol"]
+    international_d = result["international"]
+    var length = year_d.length;
+
+
     for(var a = 0; a < length; a++){
-        insertingData[a] = [dates[a],parseInt(volume[a])]
+        insertingData[a] = [year_d[a],parseInt(others_d[a]),parseInt(food_d[a]),parseInt(drink_d[a]),parseInt(alcohol_d[a]),parseInt(international_d[a])]
     }
     for (var i = insertingData.length-1; i > 0; i--){
         chartData.addRow(insertingData[i]);
@@ -41,6 +55,6 @@ function rSegmentChart(result){
             viewWindowMode:'maximized'
         },
     }
-    var chart = new google.visualization.ColumnChart(document.getElementById('appendVolume'));
+    var chart = new google.visualization.ColumnChart(document.getElementById('rsegment'));
     chart.draw(chartData, options);
 }
