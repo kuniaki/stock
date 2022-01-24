@@ -4,6 +4,7 @@ RUN pip install investpy
 RUN pip install yahoo_finance_api2
 WORKDIR /src
 COPY ./src/server.py /src/
+COPY ./src/segment_revenue.csv /src/
 COPY ./src/test.py /src/
 COPY ./src/test1.py /src/
 COPY ./src/test2.py /src/

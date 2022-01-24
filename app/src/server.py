@@ -1,4 +1,5 @@
 import os, re
+import csv
 import investpy
 import io
 from yahoo_finance_api2 import share
@@ -30,6 +31,41 @@ def after_request(response):
 @app.route('/')
 def root():
     return "Chart Server"
+
+@app.route('/api/v1/rsegment/',methods=['GET'])
+def api_rsegment():
+  filename  = "./segment_revenue.csv"
+  with open(filename, encoding='utf-8-sig', newline='') as f:
+    csvreader = csv.DictReader(f)
+    content = [row for row in csvreader]
+
+  year = []
+  for i in content:
+    year.append(i["年度"])
+
+  others = []
+  for i in content:
+    others.append(i["その他"])
+
+  food = []
+  for i in content:
+    food.append(i["食品"])
+
+  drink = []
+  for i in content:
+    drink.append(i["飲料"])
+
+  alcohol = []
+  for i in content:
+    alcohol.append(i["酒類"])
+
+  international = []
+  for i in content:
+    international.append(i["国際"])
+
+  dc = dict(year=year,others=others,food=food,drink=drink,alcohol=alcohol,international=international)
+
+  return success(dc)
 
 #http://server/api/v1/stock?code=7494&country=japan&from_date=01/01/2020&to_date=01/01/2021
 @app.route('/api/v1/stock/',methods=['GET'])
