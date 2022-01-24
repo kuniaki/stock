@@ -17,12 +17,12 @@ function getRSegmentInfo(){
 
 function rSegmentChart(result){
     var chartData = new google.visualization.DataTable();
-    chartData.addColumn('年度');
-    chartData.addColumn('その他');
-    chartData.addColumn('酒類');
-    chartData.addColumn('食品');
-    chartData.addColumn('飲料');
-    chartData.addColumn('国際');
+    chartData.addColumn("string","年度");
+    chartData.addColumn("number","その他");
+    chartData.addColumn("number","酒類");
+    chartData.addColumn("number","食品");
+    chartData.addColumn("number","飲料");
+    chartData.addColumn("number","国際");
     var insertingData = new Array();
 
     year_d   = result["year"]
