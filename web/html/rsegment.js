@@ -43,7 +43,7 @@ function rSegmentChart(result){
     var options = {
         title: 'セングメント　売上',
         bar: { 
-            groupWidth: '100%' 
+            groupWidth: '75%' 
         },
         hAxis: {title: '年度'},
         isStacked: true,
