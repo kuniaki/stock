@@ -41,7 +41,7 @@ function rSegmentChart(result){
         chartData.addRow(insertingData[i]);
     }
     var options = {
-        title: 'セングメント　売上',
+        title: 'セングメント 通期売上',
         bar: { 
             groupWidth: '75%' 
         },
@@ -50,7 +50,7 @@ function rSegmentChart(result){
          direction: -1,
         },
         isStacked: true,
-        width: 1200,
+        width: 600,
         height: 400,
     }
     var chart = new google.visualization.ColumnChart(document.getElementById('rsegment'));
