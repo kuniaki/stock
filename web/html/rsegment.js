@@ -35,7 +35,7 @@ function rSegmentChart(result){
 
 
     for(var a = 0; a < length; a++){
-        insertingData[a] = [year_d[a],parseInt(others_d[a]),parseInt(food_d[a]),parseInt(drink_d[a]),parseInt(alcohol_d[a]),parseInt(international_d[a])]
+        insertingData[a] = [year_d[a],parseInt(others_d[a]),parseInt(food_d[a]),parseInt(drink_d[a]),parseInt(alchohol_d[a]),parseInt(international_d[a])]
     }
     for (var i = insertingData.length-1; i > 0; i--){
         chartData.addRow(insertingData[i]);
