@@ -19,9 +19,9 @@ function rSegmentChart(result){
     var chartData = new google.visualization.DataTable();
     chartData.addColumn("string","年度");
     chartData.addColumn("number","その他");
-    chartData.addColumn("number","酒類");
     chartData.addColumn("number","食品");
     chartData.addColumn("number","飲料");
+    chartData.addColumn("number","酒類");
     chartData.addColumn("number","国際");
     var insertingData = new Array();
 
@@ -45,7 +45,10 @@ function rSegmentChart(result){
         bar: { 
             groupWidth: '75%' 
         },
-        hAxis: {title: '年度'},
+        hAxis: { 
+         title: '年度',
+         direction: -1,
+        },
         isStacked: true,
         width: 1200,
         height: 400,
