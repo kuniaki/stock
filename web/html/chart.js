@@ -12,8 +12,9 @@ $('#btn-getinfo').click(function(){
     year5 = date.getFullYear() - 5;
     day1 = date.getDate()+1;
     dates = day1 + '/' + month + '/' + year5
-
     getInfo(code,dates,datee,countryc,mainChart);
+
+    getRSegmentInfo();
 })
 
 function getInfo(code,dates,datee,countryc,callback){

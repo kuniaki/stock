@@ -16,18 +16,16 @@ select{
 </style>
 </head>
 <body>
-<!--- 銘柄コードを受け付けるボックス --->
    <p><label>code:<input value="2502" type = "text" maxlength = "4" id='code'> 
       <label>country:<input value="japan" type = "text" maxlength = "10" id='country'>
                   <button id='btn-getinfo'>Get Info</button></label></label></label></label></p>
-<!--- ローソク足及び移動平均線グラフを配置 --->
     <div id='append1year'></div>
     <div id='append5year'></div>
-<!--- 出来高の棒グラフを配置 --->
-    <div id='appendVolume'></div>
+    <div id='rsegment'></div>
 <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
 <!--- ここでGoogle Chartの読み込み --->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="chart.js"></script>
+<script src="rsegment.js"></script>
 </body>
 </html>
