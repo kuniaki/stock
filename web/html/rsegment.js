@@ -41,8 +41,6 @@ function rSegmentChart(result){
         chartData.addRow(insertingData[i]);
     }
     var options = {
-        chartArea:{left:80,top:10,right:80,bottom:80},
-        colors: ['#003A76'],
         legend: {
             position: 'none',
         },
