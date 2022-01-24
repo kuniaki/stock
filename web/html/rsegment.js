@@ -41,17 +41,12 @@ function rSegmentChart(result){
         chartData.addRow(insertingData[i]);
     }
     var options = {
-        legend: {
-            position: 'none',
-        },
+        title: 'セングメント　売上',
         bar: { 
             groupWidth: '100%' 
         },
-        hAxis: {direction: -1},
-        width: 1200,
-        vAxis:{
-            viewWindowMode:'maximized'
-        },
+        hAxis: {title: '年度'},
+        isStacked: true,
     }
     var chart = new google.visualization.ColumnChart(document.getElementById('rsegment'));
     chart.draw(chartData, options);
