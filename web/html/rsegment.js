@@ -47,6 +47,8 @@ function rSegmentChart(result){
         },
         hAxis: {title: '年度'},
         isStacked: true,
+        width: 1200,
+        height: 400,
     }
     var chart = new google.visualization.ColumnChart(document.getElementById('rsegment'));
     chart.draw(chartData, options);
