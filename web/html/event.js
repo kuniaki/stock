@@ -1,6 +1,7 @@
-$('#btn-getinfo').click(function(){
+$('#btn-getinfo').click(function () {
 
     getStock();
-    getRSegmentInfo();
-
+    if ($("#code").val() == 2502) {
+        getRSegmentInfo();
+    }
 })
