@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="ja">
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
 <head>
     <meta charset="utf-8">
     <title>Chart</title>
-<!--- デザインに関する規定はこれしかないので、cssファイルではなくstyleタグに記述 --->
-<style>
-input{
-    width: 140px;
-    margin: 10px;
-}
-select{
-    margin: 10px;
-}
-</style>
+    <!--- デザインに関する規定はこれしかないので、cssファイルではなくstyleタグに記述 --->
+    <style>
+        input {
+            width: 140px;
+            margin: 10px;
+        }
+
+        select {
+            margin: 10px;
+        }
+    </style>
 </head>
+
 <body>
-   <p><label>code:<input value="2502" type = "text" maxlength = "4" id='code'> 
-      <label>country:<input value="japan" type = "text" maxlength = "10" id='country'>
-                  <button id='btn-getinfo'>Get Info</button></label></label></label></label></p>
+    <p><label>code:<input value="2502" type="text" maxlength="4" id='code'>
+            <label>country:<input value="japan" type="text" maxlength="10" id='country'>
+                <button id='btn-getinfo'>Get Info</button></label></label></label></label></p>
     <div id='append1year'></div>
     <div id='append5year'></div>
     <div id='rsegment'></div>
-<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
-<!--- ここでGoogle Chartの読み込み --->
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="chart.js"></script>
-<script src="rsegment.js"></script>
-<script src="event.js"></script>
+    <div id='annual-revenue'></div>
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <!--- ここでGoogle Chartの読み込み --->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="chart.js"></script>
+    <script src="revenue.js"></script>
+    <script src="rsegment.js"></script>
+    <script src="event.js"></script>
 </body>
+
 </html>
