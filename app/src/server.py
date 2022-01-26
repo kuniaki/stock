@@ -32,13 +32,13 @@ def after_request(response):
 def root():
     return "Chart Server"
 
-#http://server/api/v1/revenue?code=7494&country=japan
+#http://server/api/v1/revenue/
 @app.route('/api/v1/revenue/', method=['GET'])
 def api_revenue():
-  code  = request.args.get('code')
-  country = request.args.get('country')
+  # code  = request.args.get('code')
+  # country = request.args.get('country')
 
-  annual_revenue = investpy.get_stock_financial_summary(stock=code, country=country, summary_type='income_statement', period='annual')
+  annual_revenue = investpy.get_stock_financial_summary(stock='2502', country='japan', summary_type='income_statement', period='annual')
   revenue = annual_revenue.reset_index()
 
   dc = dict(date=[i for i in revenue['Date']], \

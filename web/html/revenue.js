@@ -1,12 +1,9 @@
 google.charts.load('current', { 'packages': ['corechart'] });
 
 function getRevenueInfo() {
-
-    var code = $('#code').val()
-    var countryc = $('#country').val()
-
     $.ajax({
-        url: `//www.jenkins-asahi.com/api/v1/revenue?code=${code}&country=${countryc}`,
+        // url: `//www.jenkins-asahi.com/api/v1/revenue?code=${code}&country=${countryc}`,
+        url: '//www.jenkins-asahi.com/api/v1/revenue',
         type: 'GET',
         async: true,
         cashe: false,
