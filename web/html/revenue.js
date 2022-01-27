@@ -1,9 +1,12 @@
 google.charts.load('current', { 'packages': ['corechart'] });
 
 function getRevenueInfo() {
+    var code = $('#code').val();
+    var countryc = $('#country').val();
+
     $.ajax({
-        // url: `//www.jenkins-asahi.com/api/v1/revenue?code=${code}&country=${countryc}`,
-        url: '//www.jenkins-asahi.com/api/v1/revenue',
+        url: `//www.jenkins-asahi.com/api/v1/revenue?code=${code}&country=${countryc}`,
+        // url: '//www.jenkins-asahi.com/api/v1/revenue',
         type: 'GET',
         async: true,
         cashe: false,
@@ -13,10 +16,10 @@ function getRevenueInfo() {
         revenueChart(result);
     }).fail(function (result) {
         alert('Failed to load the information');
-        console.log(result)
+        console.log(result);
     });
 }
 
 function revenueChart(result) {
-    alert('on the right track!')
+    alert('on the right track!');
 }
