@@ -30,7 +30,7 @@ function revenueChart(result) {
     chartData.addColumn("number", "Net Income");
 
     for (let i = 0; i < result['date'].length; i++) {
-        chartData.addRow(list(result['date'][i], parseInt(result['total_revenue'][i]), parseInt(result['gross_profit'][i]), parseInt(result['operating_income'][i]), parseInt(result['net_income'][i])));
+        chartData.addRow([result['date'][i], parseInt(result['total_revenue'][i]), parseInt(result['gross_profit'][i]), parseInt(result['operating_income'][i]), parseInt(result['net_income'][i])]);
     }
 
     var options = {
@@ -43,7 +43,7 @@ function revenueChart(result) {
             direction: -1,
         },
         isStacked: false,
-        width: 600,
+        width: 800,
         height: 400,
     }
 
