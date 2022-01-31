@@ -11,7 +11,7 @@ function getStock() {
     day = date.getDate();
     datee = day + '/' + month + '/' + year
     year5 = date.getFullYear() - 5;
-    day1 = date.getDate() + 1;
+    day1 = date.getDate();
     dates = day1 + '/' + month + '/' + year5
 
     $.ajax({
