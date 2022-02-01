@@ -1,6 +1,6 @@
 google.charts.load("current", { packages: ["corechart"] });
 
-document.querySelector("btn-getinfo").addEventListener("click", function () {
+document.querySelector("#btn-getinfo").addEventListener("click", function () {
   refreshDiv();
   getStock();
   if ($("#code").val() == 2502) {
