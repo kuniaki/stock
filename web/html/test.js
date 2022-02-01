@@ -20,7 +20,7 @@ $(document).ready(function () {
     refreshDiv();
 
     let promisedStock = promiseGetStock();
-    let promisedSegment = promisedGetSegment();
+    let promisedSegment = promiseGetSegment();
 
     promisedStock.done(function (result) {
       mainChart(result);
