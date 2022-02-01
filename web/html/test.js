@@ -1,40 +1,37 @@
 google.charts.load("current", { packages: ["corechart"] });
 
-$("#btn-getinfo").click(function () {
-  refreshDiv();
-  console.log("running stock graph...");
-  getStock();
-  if ($("#code").val() == 2502) {
-    console.log("running segment graph...");
-    getRSegmentInfo();
-  }
-  //getRevenueInfo();
+let code, countryc;
+let date = new Date();
+let year = date.getFullYear();
+let month = date.getMonth() + 1;
+let day = date.getDate();
+let datee = day + "/" + month + "/" + year;
+let year5 = date.getFullYear() - 5;
+let day1 = date.getDate();
+let dates = day1 + "/" + month + "/" + year5;
+
+$(document).ready(function () {
+  $("#btn-getinfo").on("click", function () {
+    // store country and stock code
+    code = $("#code").val();
+    countryc = $("#country").val();
+
+    // refresh each graph div
+    refreshDiv();
+
+    let promisedStock = promiseGetStock();
+    let promisedSegment = promisedGetSegment();
+
+    promisedStock.done(function (result) {
+      mainChart(result);
+    });
+    promisedSegment.done(function (result) {
+      rSegmentChart(result);
+    });
+  });
 });
 
-function refreshDiv() {
-  console.log("refreshing all divs...");
-  $("#append1year").load(window.location.href + " #append1year");
-  $("#append5year").load(window.location.href + " #append5year");
-  $("#rsegment").load(window.location.href + " #rsegment");
-  $("#revenue").load(window.location.href + "#revenue");
-}
-
-function getStock() {
-  var code = $("#code").val();
-  var countryc = $("#country").val();
-
-  date = new Date();
-  year = date.getFullYear();
-  month = date.getMonth() + 1;
-  day = date.getDate();
-  datee = day + "/" + month + "/" + year;
-  year5 = date.getFullYear() - 5;
-  day1 = date.getDate();
-  dates = day1 + "/" + month + "/" + year5;
-
-  //   var that = $(this);
-  //   that.off("click");
-
+function promiseGetStock() {
   $.ajax({
     url:
       "//www.jenkins-asahi.com/api/v1/stock?code=" +
@@ -50,17 +47,37 @@ function getStock() {
     cashe: false,
     dataType: "json",
     contentType: "application/json",
-  })
-    .done(function (result) {
-      mainChart(result);
-    })
-    // .always(function () {
-    //   that.on("click", getStock);
-    // })
-    .fail(function (result) {
-      alert("Failed to load the information");
-      console.log(result);
-    });
+  });
+}
+
+function promiseGetSegment() {
+  $.ajax({
+    url: "//www.jenkins-asahi.com/api/v1/rsegment",
+    type: "GET",
+    async: true,
+    cashe: false,
+    dataType: "json",
+    contentType: "application/json",
+  });
+}
+
+// $("#btn-getinfo").click(function () {
+//   refreshDiv();
+//   console.log("running stock graph...");
+//   getStock();
+//   if ($("#code").val() == 2502) {
+//     console.log("running segment graph...");
+//     getRSegmentInfo();
+//   }
+//   //getRevenueInfo();
+// });
+
+function refreshDiv() {
+  console.log("refreshing all divs...");
+  $("#append1year").load(window.location.href + " #append1year");
+  $("#append5year").load(window.location.href + " #append5year");
+  $("#rsegment").load(window.location.href + " #rsegment");
+  $("#revenue").load(window.location.href + "#revenue");
 }
 
 function oneYearAgo() {
@@ -225,29 +242,6 @@ function main5years(result) {
 function mainChart(result) {
   main1years(result);
   main5years(result);
-}
-function getRSegmentInfo() {
-  //   var that = $(this);
-  //   that.off("click");
-
-  $.ajax({
-    url: "//www.jenkins-asahi.com/api/v1/rsegment",
-    type: "GET",
-    async: true,
-    cashe: false,
-    dataType: "json",
-    contentType: "application/json",
-  })
-    .done(function (result) {
-      rSegmentChart(result);
-    })
-    // .always(function () {
-    //   that.on("click", getRSegmentInfo);
-    // })
-    .fail(function (result) {
-      alert("Failed to load the information");
-      console.log(result);
-    });
 }
 
 function rSegmentChart(result) {
