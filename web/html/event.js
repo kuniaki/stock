@@ -1,6 +1,7 @@
 google.charts.load("current", { packages: ["corechart"] });
 
-document.querySelector("#btn-getinfo").addEventListener("click", function () {
+$("#btn-getinfo").click(function (event) {
+  event.preventDefault();
   refreshDiv();
   console.log("running stock graph...");
   getStock();
