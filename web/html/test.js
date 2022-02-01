@@ -32,7 +32,7 @@ $(document).ready(function () {
 });
 
 function promiseGetStock() {
-  $.ajax({
+  return $.ajax({
     url:
       "//www.jenkins-asahi.com/api/v1/stock?code=" +
       code +
@@ -51,7 +51,7 @@ function promiseGetStock() {
 }
 
 function promiseGetSegment() {
-  $.ajax({
+  return $.ajax({
     url: "//www.jenkins-asahi.com/api/v1/rsegment",
     type: "GET",
     async: true,
