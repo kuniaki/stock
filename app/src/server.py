@@ -32,6 +32,7 @@ def after_request(response):
 def root():
     return "Chart Server"
 
+'''
 #http://server/api/v1/revenue/
 @app.route('/api/v1/revenue/', methods=['GET'])
 def api_revenue():
@@ -44,7 +45,7 @@ def api_revenue():
   dc = dict(date=[i for i in revenue['Date'].dt.date], total_revenue=[i for i in revenue['Total Revenue']], gross_profit=[i for i in revenue['Gross Profit']], operating_income=[i for i in revenue['Operating Income']], net_income=[i for i in revenue['Net Income']])
 
   return success(dc)
-
+'''
 
 @app.route('/api/v1/rsegment/',methods=['GET'])
 def api_rsegment():
