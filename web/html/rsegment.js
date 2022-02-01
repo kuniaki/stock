@@ -1,8 +1,8 @@
 google.charts.load("current", { packages: ["corechart"] });
 
 function getRSegmentInfo() {
-  var that = $(this);
-  that.off("click");
+  //   var that = $(this);
+  //   that.off("click");
 
   $.ajax({
     url: "//www.jenkins-asahi.com/api/v1/rsegment",
@@ -15,9 +15,9 @@ function getRSegmentInfo() {
     .done(function (result) {
       rSegmentChart(result);
     })
-    .always(function () {
-      that.on("click", getRSegmentInfo);
-    })
+    // .always(function () {
+    //   that.on("click", getRSegmentInfo);
+    // })
     .fail(function (result) {
       alert("Failed to load the information");
       console.log(result);

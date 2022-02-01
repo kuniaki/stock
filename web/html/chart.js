@@ -13,8 +13,8 @@ function getStock() {
   day1 = date.getDate();
   dates = day1 + "/" + month + "/" + year5;
 
-  var that = $(this);
-  that.off("click");
+  //   var that = $(this);
+  //   that.off("click");
 
   $.ajax({
     url:
@@ -35,9 +35,9 @@ function getStock() {
     .done(function (result) {
       mainChart(result);
     })
-    .always(function () {
-      that.on("click", getStock);
-    })
+    // .always(function () {
+    //   that.on("click", getStock);
+    // })
     .fail(function (result) {
       alert("Failed to load the information");
       console.log(result);
