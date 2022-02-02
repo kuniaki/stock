@@ -16,8 +16,10 @@ $("#btn-getinfo").click(function () {
 });
 
 function addSegment() {
-  console.log("...segment graph added...");
-  segmentDiv.classList.remove("hidden");
+  if (segmentDiv.classList.contains("hidden")) {
+    console.log("...segment graph added...");
+    segmentDiv.classList.remove("hidden");
+  }
 }
 
 function removeSegment() {
