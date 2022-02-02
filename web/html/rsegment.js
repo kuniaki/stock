@@ -69,7 +69,7 @@ function rSegmentChart(result) {
     height: 400,
   };
   var chart = new google.visualization.ColumnChart(
-    document.getElementById("rsegment")
+    document.querySelector(".rsegment")
   );
   chart.draw(chartData, options);
 }
