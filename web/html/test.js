@@ -12,10 +12,6 @@ let dates = day1 + "/" + month + "/" + year5;
 
 $(document).ready(function () {
   $("#btn-getinfo").on("click", function () {
-    // store country and stock code
-    code = $("#code").val();
-    countryc = $("#country").val();
-
     // refresh each graph div
     refreshDiv();
 
@@ -32,6 +28,10 @@ $(document).ready(function () {
 });
 
 function promiseGetStock() {
+  // store country and stock code
+  code = $("#code").val();
+  countryc = $("#country").val();
+
   return $.ajax({
     url:
       "//www.jenkins-asahi.com/api/v1/stock?code=" +
