@@ -12,9 +12,6 @@ $("#btn-getinfo").click(function () {
 });
 
 function refreshDiv() {
-  console.log("refreshing all divs...");
-  $("#append1year").load(window.location.href + " #append1year");
-  $("#append5year").load(window.location.href + " #append5year");
+  console.log("refreshing segment graph...");
   $("#rsegment").load(window.location.href + " #rsegment");
-  $("#revenue").load(window.location.href + "#revenue");
 }
