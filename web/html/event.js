@@ -3,7 +3,6 @@ google.charts.load("current", { packages: ["corechart"] });
 const segmentDiv = document.querySelector(".hidden");
 
 $("#btn-getinfo").click(function () {
-  // refreshDiv();
   console.log("running stock graph...");
   getStock();
   if ($("#code").val() == 2502) {
@@ -22,7 +21,7 @@ function addSegment() {
 }
 
 function removeSegment() {
-  if (segmentDiv.classList.contains("hidden")) {
+  if (!segmentDiv.classList.contains("hidden")) {
     console.log("...segment graph removed...");
     segmentDiv.classList.add("hidden");
   }
