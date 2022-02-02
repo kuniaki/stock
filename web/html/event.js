@@ -1,5 +1,4 @@
 google.charts.load("current", { packages: ["corechart"] });
-
 const segmentDiv = document.querySelector(".hidden");
 
 $("#btn-getinfo").click(function () {
