@@ -16,17 +16,14 @@ $("#btn-getinfo").click(function () {
   getRevenueInfo();
 });
 
-// function refreshDiv() {
-//   console.log("refreshing segment graph...");
-//   $("#rsegment").load(window.location.href + " #rsegment");
-// }
-
 function addSegment() {
   console.log("...segment graph added...");
   segmentDiv.classList.remove("hidden");
 }
 
 function removeSegment() {
-  console.log("...segment graph removed...");
-  segmentDiv.classList.add("hidden");
+  if (segmentDiv.classList.contains("hidden")) {
+    console.log("...segment graph removed...");
+    segmentDiv.classList.add("hidden");
+  }
 }
