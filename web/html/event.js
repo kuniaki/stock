@@ -8,7 +8,7 @@ $("#btn-getinfo").click(function () {
     console.log("running segment graph...");
     getRSegmentInfo();
   }
-  //getRevenueInfo();
+  getRevenueInfo();
 });
 
 function refreshDiv() {
@@ -16,5 +16,5 @@ function refreshDiv() {
   $("#append1year").load(window.location.href + " #append1year");
   $("#append5year").load(window.location.href + " #append5year");
   $("#rsegment").load(window.location.href + " #rsegment");
-  // $("#revenue").load(window.location.href + "#revenue");
+  $("#revenue").load(window.location.href + "#revenue");
 }
