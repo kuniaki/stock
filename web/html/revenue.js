@@ -13,8 +13,7 @@ function getRevenueInfo() {
     contentType: "application/json",
   })
     .done(function (result) {
-      //   revenueChart(result);
-      console.log(result);
+      revenueChart(result);
     })
     .fail(function (result) {
       alert("Failed to load the information");
@@ -32,13 +31,13 @@ function revenueChart(result) {
   chartData.addColumn("number", "Operating Income");
   chartData.addColumn("number", "Net Income");
 
-  for (let i = 0; i < result["date"].length; i++) {
+  for (let i = 0; i < result["annual"]["date"].length; i++) {
     chartData.addRow([
-      result["date"][i],
-      parseInt(result["total_revenue"][i]),
-      parseInt(result["gross_profit"][i]),
-      parseInt(result["operating_income"][i]),
-      parseInt(result["net_income"][i]),
+      result["annual"]["date"][i],
+      parseInt(result["annual"]["total_revenue"][i]),
+      parseInt(result["annual"]["gross_profit"][i]),
+      parseInt(result["annual"]["operating_income"][i]),
+      parseInt(result["annual"]["net_income"][i]),
     ]);
   }
 

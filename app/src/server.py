@@ -49,8 +49,9 @@ def api_revenue():
 
   dc_q = dict(date=[i for i in revenue_q['Date'].dt.date], total_revenue=[i for i in revenue_q['Total Revenue']], gross_profit=[i for i in revenue_q['Gross Profit']], operating_income=[i for i in revenue_q['Operating Income']], net_income=[i for i in revenue_q['Net Income']])
 
+  dc_revenue = {'annual': dc_a, 'quarterly': dc_q}
 
-  return success(dc_a, dc_q)
+  return success(dc_revenue)
 
 
 @app.route('/api/v1/rsegment/',methods=['GET'])
