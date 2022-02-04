@@ -21,7 +21,7 @@ function getRevenueInfo() {
     });
 }
 
-function addRevenueChart(term, graph) {
+function addRevenueChart(result, term, graph) {
   var chartData = new google.visualization.DataTable();
 
   chartData.addColumn("string", "Date");
@@ -61,6 +61,6 @@ function addRevenueChart(term, graph) {
 }
 
 function revenueChart(result) {
-  addRevenueChart("annual", "annual-revenue");
-  addRevenueChart("quarterly", "quarterly-revenue");
+  addRevenueChart(result, "annual", "annual-revenue");
+  addRevenueChart(result, "quarterly", "quarterly-revenue");
 }
