@@ -21,8 +21,7 @@ function getRevenueInfo() {
     });
 }
 
-function revenueChart(result) {
-  console.log("on the right track!");
+function addRevenueChart(term, graph) {
   var chartData = new google.visualization.DataTable();
 
   chartData.addColumn("string", "Date");
@@ -31,18 +30,18 @@ function revenueChart(result) {
   chartData.addColumn("number", "Operating Income");
   chartData.addColumn("number", "Net Income");
 
-  for (let i = 0; i < result["annual"]["date"].length; i++) {
+  for (let i = 0; i < result[term]["date"].length; i++) {
     chartData.addRow([
-      result["annual"]["date"][i],
-      parseInt(result["annual"]["total_revenue"][i]),
-      parseInt(result["annual"]["gross_profit"][i]),
-      parseInt(result["annual"]["operating_income"][i]),
-      parseInt(result["annual"]["net_income"][i]),
+      result[term]["date"][i],
+      parseInt(result[term]["total_revenue"][i]),
+      parseInt(result[term]["gross_profit"][i]),
+      parseInt(result[term]["operating_income"][i]),
+      parseInt(result[term]["net_income"][i]),
     ]);
   }
 
   var options = {
-    title: "Annual Revenue Chart",
+    title: `${term === "annual" ? "Annual" : "Quarterly"} Revenue Chart`,
     bar: {
       groupWidth: "75%",
     },
@@ -56,7 +55,12 @@ function revenueChart(result) {
   };
 
   var chart = new google.visualization.ColumnChart(
-    document.getElementById("revenue")
+    document.getElementById(graph)
   );
   chart.draw(chartData, options);
+}
+
+function revenueChart(result) {
+  addRevenueChart("annual", "annual-revenue");
+  addRevenueChart("quarterly", "quarterly-revenue");
 }
