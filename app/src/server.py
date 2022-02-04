@@ -45,9 +45,9 @@ def api_revenue():
   quarterly_revenue = investpy.get_stock_financial_summary(stock=code, country=country, summary_type='income_statement', period='quarterly')
   revenue_q = quarterly_revenue.reset_index()
 
-  dc_a = dict(date=[i for i in revenue_a['Date'].dt.date], total_revenue=[i for i in revenue_a['Total Revenue']], gross_profit=[i for i in revenue_a['Gross Profit']], operating_income=[i for i in revenue_a['Operating Income']], net_income=[i for i in revenue_a['Net Income']])
+  dc_a = dict(date=dateFormatter([i for i in revenue_a['Date'].dt.date]), total_revenue=[i for i in revenue_a['Total Revenue']], gross_profit=[i for i in revenue_a['Gross Profit']], operating_income=[i for i in revenue_a['Operating Income']], net_income=[i for i in revenue_a['Net Income']])
 
-  dc_q = dict(date=[i for i in revenue_q['Date'].dt.date], total_revenue=[i for i in revenue_q['Total Revenue']], gross_profit=[i for i in revenue_q['Gross Profit']], operating_income=[i for i in revenue_q['Operating Income']], net_income=[i for i in revenue_q['Net Income']])
+  dc_q = dict(date=dateFormatter([i for i in revenue_q['Date'].dt.date]), total_revenue=[i for i in revenue_q['Total Revenue']], gross_profit=[i for i in revenue_q['Gross Profit']], operating_income=[i for i in revenue_q['Operating Income']], net_income=[i for i in revenue_q['Net Income']])
 
   dc_revenue = {'annual': dc_a, 'quarterly': dc_q}
 
@@ -167,7 +167,12 @@ def kabuka(code,S_year,S_day):
   return company_code, df_base, ddd ,ff
 
 
-
+def dateFormatter(data): 
+    result = []
+    for i in data:
+        date_str = '%s-%s-%s' % (i.year, i.month, i.day)
+        result.append(date_str)
+    return result
 
 def isalnum(text):
   return re.match(r'^[a-zA-Z0-9]+$', text) is not None
