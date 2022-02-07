@@ -87,6 +87,7 @@ function addRevenueChart(result, term, graph) {
     series: {
       4: {
         type: "line",
+        color: "red",
         targetAxisIndex: 1,
       },
     },
@@ -94,14 +95,11 @@ function addRevenueChart(result, term, graph) {
       groupWidth: "75%",
     },
     hAxis: {
-      title: "年度",
       direction: -1,
     },
     vAxis: {
-      0: { title: "need to confirm unit" },
       1: {
-        title: "Percentage",
-        format: "#%",
+        format: "percent",
       },
     },
     isStacked: false,
