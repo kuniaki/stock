@@ -19,9 +19,8 @@ print(revenue_a)
 print(revenue_q)
 print()
 
-print([i for i in revenue_q['Date']])
-print([i for i in revenue_q['Date'].dt.date])
-
+# print([i for i in revenue_q['Date']])
+# print([i for i in revenue_q['Date'].dt.date])
 
 
 def dateFormatter(data): 
@@ -31,5 +30,34 @@ def dateFormatter(data):
         result.append(date_str)
     return result
 
+def getPercentage(data):
+    # 2020 - 2019 / 2019 -> stored in 2020
+    '''
+        a_number = 1 / 3
+        percentage = "{:.2%}".format(a_number)
+        print(percentage)
+        OUTPUT: 33.33%
+    '''
+    result = []
+    index = 0;
+    while (index < len(data) - 1):
+        print(index)
+        percentage = (data[index] - data[index+1])/ data[index]
+        result.insert(index, "{:.1%}".format(percentage))
+        index += 1
+    # test if set as none OR string "undefined"
+    result.insert(index, None)
+    return result
 
-dateFormatter([i for i in revenue_q['Date'].dt.date])
+print("----------Annual Revenue----------")
+print(dateFormatter([i for i in revenue_a['Date'].dt.date]))
+print(dc_a["total_revenue"])
+print(getPercentage(dc_a["total_revenue"]))
+print()
+
+print("----------Quarterly Revenue----------")
+print(dateFormatter([i for i in revenue_q['Date'].dt.date]))
+print(dc_q["total_revenue"])
+print(getPercentage(dc_q["total_revenue"]))
+print()
+

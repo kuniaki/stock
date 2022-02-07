@@ -46,8 +46,9 @@ def api_revenue():
   revenue_q = quarterly_revenue.reset_index()
 
   dc_a = dict(date=dateFormatter([i for i in revenue_a['Date'].dt.date]), total_revenue=[i for i in revenue_a['Total Revenue']], gross_profit=[i for i in revenue_a['Gross Profit']], operating_income=[i for i in revenue_a['Operating Income']], net_income=[i for i in revenue_a['Net Income']])
-
+  dc_a['revenue_percentage'] = getPercentage(dc_a['total_revenue'])
   dc_q = dict(date=dateFormatter([i for i in revenue_q['Date'].dt.date]), total_revenue=[i for i in revenue_q['Total Revenue']], gross_profit=[i for i in revenue_q['Gross Profit']], operating_income=[i for i in revenue_q['Operating Income']], net_income=[i for i in revenue_q['Net Income']])
+  dc_q['revenue_percentage'] = getPercentage(dc_q['total_revenue'])
 
   dc_revenue = {'annual': dc_a, 'quarterly': dc_q}
 
@@ -166,12 +167,24 @@ def kabuka(code,S_year,S_day):
 
   return company_code, df_base, ddd ,ff
 
-
+# Change pd.DataFrame to string
 def dateFormatter(data): 
     result = []
     for i in data:
         date_str = '%s-%s-%s' % (i.year, i.month, i.day)
         result.append(date_str)
+    return result
+
+# Get percentage change base on given list
+def getPercentage(data):
+    result = []
+    index = 0;
+    while (index < len(data) - 1):
+        percentage = (data[index] - data[index+1])/ data[index]
+        result.insert(index, "{:.1%}".format(percentage))
+        index += 1
+    # test if set as none OR string "undefined"
+    result.insert(index, None)
     return result
 
 def isalnum(text):
