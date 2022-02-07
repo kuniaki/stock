@@ -182,7 +182,7 @@ def getPercentage(data):
     while (index < len(data) - 1):
         percentage = (data[index] - data[index+1])/ data[index]
         # result.insert(index, "{:.1%}".format(percentage))
-        result.insert(index, round(percentage, 4))
+        result.insert(index, round(percentage*100, 1))
         index += 1
     # test if set as none OR string "undefined"
     result.insert(index, None)
