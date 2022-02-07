@@ -97,8 +97,12 @@ function addRevenueChart(result, term, graph) {
     hAxis: {
       direction: -1,
     },
-    vAxis: {
+    vAxes: {
+      0: {
+        title: "Revenue",
+      },
       1: {
+        title: "Precentage",
         format: "percent",
       },
     },
