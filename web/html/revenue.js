@@ -102,7 +102,7 @@ function addRevenueChart(result, term, graph) {
         title: "Revenue",
       },
       1: {
-        title: "Precentage",
+        title: "Percentage",
         format: "percent",
       },
     },

@@ -178,13 +178,11 @@ def dateFormatter(data):
 # Get percentage change base on given list
 def getPercentage(data):
     result = []
-    index = 0;
+    index = 0
     while (index < len(data) - 1):
         percentage = (data[index] - data[index+1])/ data[index]
-        # result.insert(index, "{:.1%}".format(percentage))
         result.insert(index, round(percentage, 3))
         index += 1
-    # test if set as none OR string "undefined"
     result.insert(index, None)
     return result
 
