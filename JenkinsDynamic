@@ -31,6 +31,13 @@ node {
          branch = env.CHANGE_BRANCH
        }
 
+       sh '''
+       git config --global user.name kuniaki
+       git config --global user.email kuniaki.kudo@gmail.com
+       '''
+       
+       sh "git config --global -l"
+
        checkout([
                     $class: 'GitSCM',
                     branches: [[name: branch]],
@@ -46,9 +53,7 @@ node {
     }
     
     stage('Build') {
-        
         sh "cat docker-compose.build.yml"
-        sh "docker volume prune -f"
         sh "docker-compose -f docker-compose.build.yml build"
         sh "docker images"
     }
@@ -56,10 +61,10 @@ node {
     stage('Register') {
      withCredentials([usernamePassword(credentialsId: ' 4e5eb0df-c4bd-45e1-8a13-facb216e105d', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
         sh 'docker login -u $USERNAME -p $PASSWORD'
-        sh "docker tag stock_web $USERNAME/stock_web:$TIME_STAMP"
-        sh "docker tag stock_app $USERNAME/stock_app:$TIME_STAMP"
-        sh "docker push $USERNAME/stock_web:$TIME_STAMP"
-        sh "docker push $USERNAME/stock_app:$TIME_STAMP"
+        sh "docker tag stock_web $USERNAME/stock_web:${env.BRANCH_NAME}"
+        sh "docker tag stock_app $USERNAME/stock_app:${env.BRANCH_NAME}"
+        sh "docker push $USERNAME/stock_web:${env.BRANCH_NAME}"
+        sh "docker push $USERNAME/stock_app:${env.BRANCH_NAME}"
         sh "docker logout"
       }
     }
