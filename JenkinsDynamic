@@ -1,0 +1,66 @@
+import hudson.tasks.test.AbstractTestResultAction
+import hudson.model.Actionable
+import hudson.tasks.junit.CaseResult
+import hudson.util.DescribableList
+import hudson.slaves.EnvironmentVariablesNodeProperty
+import jenkins.model.Jenkins
+
+def now = new Date()
+def TIME_STAMP = now.format("yyMMdd.HHmm", TimeZone.getTimeZone('UTC'))
+def test_stage = '1'
+
+node {
+
+    println "${TIME_STAMP}"
+
+    //Get Source Code
+    stage('Checkout') {
+    
+       sh "sudo service docker start"
+       
+       //Confirm launching docker 
+       sh "docker ps"
+       sh "docker-compose -v"
+
+       println "Current branch ${env.BRANCH_NAME}"
+       println "Change branch ${env.CHANGE_BRANCH}"
+       println "Target branch ${env.CHANGE_TARGET}"
+       branch = env.BRANCH_NAME
+
+       if(env.CHANGE_BRANCH) {
+         branch = env.CHANGE_BRANCH
+       }
+
+       checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: branch]],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions: []
+                    .plus(env.CHANGE_TARGET == null ? [] : [
+                        [$class: 'PreBuildMerge', options: [fastForwardMode: 'NO_FF', mergeRemote: 'origin', mergeTarget: env.CHANGE_TARGET]],
+                    ]),
+                    submoduleCfg: [],
+                    userRemoteConfigs: [[name: 'origin', url: 'https://github.com/kuniaki/stock.git',credentialsId: 'kuniaki']]
+       ])
+
+    }
+    
+    stage('Build') {
+        
+        sh "cat docker-compose.build.yml"
+        sh "docker volume prune -f"
+        sh "docker-compose -f docker-compose.build.yml build"
+        sh "docker images"
+    }
+    
+    stage('Register') {
+     withCredentials([usernamePassword(credentialsId: ' 4e5eb0df-c4bd-45e1-8a13-facb216e105d', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+        sh 'docker login -u $USERNAME -p $PASSWORD'
+        sh "docker tag stock_web $USERNAME/stock_web:$TIME_STAMP"
+        sh "docker tag stock_app $USERNAME/stock_app:$TIME_STAMP"
+        sh "docker push $USERNAME/stock_web:$TIME_STAMP"
+        sh "docker push $USERNAME/stock_app:$TIME_STAMP"
+        sh "docker logout"
+      }
+    }
+}
