@@ -46,9 +46,7 @@ node {
     }
     
     stage('Build') {
-        
         sh "cat docker-compose.build.yml"
-        sh "docker volume prune -f"
         sh "docker-compose -f docker-compose.build.yml build"
         sh "docker images"
     }
