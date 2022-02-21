@@ -119,13 +119,13 @@ def api_stock():
 #   for rr in diff:
 #     result[3].pop(rr)
 # #
-#   n =[]
-#   for vv in result[3].values():
-#      n.append(vv)
+  n =[]
+  for vv in result[3].values():
+     n.append(vv)
  
 #   dc = dict(date=dates,close=close_d,nikkei=n)
-  n = result[3].values()
-#   eliminateNaN(n)
+
+  eliminateNaN(n)
   dc = dict(date=dates,close=close_d,nikkei=n)
 
   return success(dc)
