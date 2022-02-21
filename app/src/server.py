@@ -167,6 +167,7 @@ def kabuka(code,S_year,S_day):
 
   ff = {}
   for index in range(len(ddd)):
+    if(isNaN(ccc[index] == False:
       ff[ddd[index]] = ccc[index]
 
   return company_code, df_base, ddd ,ff
@@ -211,6 +212,9 @@ def error(code):
     409: "resource conflict. resource already exist",
   }
   return (jsonify({'error':message[code], 'code':int(code)}), int(code))
+
+def isNaN(num):
+    return num != num
 
 @app.errorhandler(404)
 def api_not_found_error(error):

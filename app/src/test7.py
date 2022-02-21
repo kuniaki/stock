@@ -11,6 +11,9 @@ import sys
 import numpy as np
 import json
 
+def isNaN(num):
+    return num != num
+
 
 def kabuka(code,S_year,S_day):
   company_code = str(code) + '.T'
@@ -47,6 +50,9 @@ def kabuka(code,S_year,S_day):
 
   ff = {}
   for index in range(len(ddd)):
+    if isNaN(ccc[index]) == False:
+      print(ccc[index])
+#   print(type(ccc[index]))
       ff[ddd[index]] = ccc[index]
 
   return company_code, df_base, ddd ,ff
@@ -60,6 +66,5 @@ def dateFormatter(data):
     return result
 
 
-
 result = kabuka(1320,5,1)
-print(result[3])
+##print(result[3])
