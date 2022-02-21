@@ -125,7 +125,7 @@ def api_stock():
  
 #   dc = dict(date=dates,close=close_d,nikkei=n)
   n = result[3].values()
-  eliminateNaN(n)
+#   eliminateNaN(n)
   dc = dict(date=dates,close=close_d,nikkei=n)
 
   return success(dc)
