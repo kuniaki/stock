@@ -126,9 +126,12 @@ def api_stock():
 #           n.append(None)
 #       else:
           n.append(vv)
+  t = []
+  t.append(len(dates))
+  t.append(len(n))
  
 #   dc = dict(date=dates,close=close_d,nikkei=n)
-  dc = dict(date=dates,close=close_d,nikkei=n,checksize=list(len(dates) - len(n)))
+  dc = dict(date=dates,close=close_d,nikkei=n,checksize=t)
 
   return success(dc)
 
