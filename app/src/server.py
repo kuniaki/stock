@@ -121,8 +121,8 @@ def api_stock():
 # #
   n =[]
   for vv in result[3].values():
-      if (vv == "NaN"):
-          n.append("None")
+      if (vv == NaN):
+          n.append(None)
       else:
           n.append(vv)
  
