@@ -123,8 +123,8 @@ def api_stock():
   for vv in result[3].values():
       if (vv == "NaN"):
           n.append(None)
-      else:
-          n.append(vv)
+#       else:
+#           n.append(vv)
  
 #   dc = dict(date=dates,close=close_d,nikkei=n)
   dc = dict(date=dates,close=close_d,nikkei=n)
