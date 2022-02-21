@@ -119,15 +119,15 @@ def api_stock():
   for rr in diff:
      result[3].pop(rr)
 
-  n =[]
-  for vv in result[3].values():
-      # check if item is NaN
-       if (pd.isna(vv)):
-           n.append(None)
-       else:
-           n.append(vv)
+# n =[]
+# for vv in result[3].values():
+#     # check if item is NaN
+#      if (pd.isna(vv)):
+#          n.append(None)
+#      else:
+#          n.append(vv)
  
-  dc = dict(date=dates,close=close_d,nikkei=[i for i in n if i != 'nan'])
+  dc = dict(date=dates,close=close_d,nikkei=result[3])
 # dc = dict(date=dates,close=close_d,nikkei=n,checksize=list(len(dates) - len(n)))
 
   return success(dc)
@@ -214,7 +214,7 @@ def error(code):
   return (jsonify({'error':message[code], 'code':int(code)}), int(code))
 
 def isNaN(num):
-    return num != num
+  return num != num
 
 @app.errorhandler(404)
 def api_not_found_error(error):
