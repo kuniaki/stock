@@ -10,7 +10,8 @@ import pandas as pd
 import sys
 import numpy as np
 import json
-
+import requests
+from bs4 import BeautifulSoup
  
 
 APP_PORT = int(os.environ['PORT'])
@@ -31,6 +32,11 @@ def after_request(response):
 @app.route('/')
 def root():
     return "Chart Server"
+
+@app.route('/api/v1/company_overview/', methods=['GET'])
+def api_overview():
+  code  = request.args.get('code')
+  return success(grabFromUrl(code, 'overview'))
 
 
 #http://server/api/v1/revenue/
@@ -172,6 +178,39 @@ def kabuka(code,S_year,S_day):
       ff[ddd[index]] = ccc[index]
 
   return company_code, df_base, ddd ,ff
+
+# take country code as parameter, grab company info from kabutan
+def grabFromUrl(code, section):
+
+  info = {}
+
+  URL = "https://kabutan.jp/stock/?code=" + code;
+  page = requests.get(URL) # issue an HTTP GET requests to given URL
+  # retrieves HTML data that the server sends back and stores in Python object with type <class 'requests.models.Response'>
+
+  soup = BeautifulSoup(page.content, "html.parser")
+  print("Type of soup: ", type(soup))
+
+  company_info = soup.find("div", class_ = "company_block").get_text();
+  print(company_info)
+
+  company_splitted = company_info.strip().split("\n\n\n\n");
+  company = company_splitted[0].split("\n")
+  splitted = company_splitted[1].split("\n\n\n")
+  splitted[-1] = ",".join(splitted[-1].split("\n"))
+  splitted[-2] = "\n".join(splitted[-2:])
+  splitted.pop(-1)
+  print(splitted)
+
+  result = dict({company[0]: company[1]})
+  for item in splitted:
+      temp = item.split("\n", maxsplit=1)
+      result[temp[0]] = temp[1]
+
+  info['overview'] = result
+
+  return info[section]
+
 
 # Change pd.DataFrame to string
 def dateFormatter(data): 
