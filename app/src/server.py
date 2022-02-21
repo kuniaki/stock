@@ -121,16 +121,14 @@ def api_stock():
 # #
   n =[]
   for vv in result[3].values():
-#       check if item is NaN
-#       if (pd.isna(vv)):
-#           n.append(None)
-#       else:
+      # check if item is NaN
+      # note that nikkei has more entries than asahi
+      if (pd.isna(vv)):
+          n.append(None)
+      else:
           n.append(vv)
-  t = []
-  t.append(len(dates))
-  t.append(len(n))
  
-  dc = dict(date=dates,close=close_d,nikkei=n,checksize=t)
+  dc = dict(date=dates,close=close_d,nikkei=n)
 #   dc = dict(date=dates,close=close_d,nikkei=n)
   
 
