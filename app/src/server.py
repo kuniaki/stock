@@ -127,8 +127,6 @@ def api_stock():
        else:
            n.append(vv)
  
-
-list(filter(None,codespeedy_list))
   dc = dict(date=dates,close=close_d,nikkei=[i for i in n if i != ''])
 # dc = dict(date=dates,close=close_d,nikkei=n,checksize=list(len(dates) - len(n)))
 
