@@ -124,7 +124,7 @@ def api_stock():
 #      n.append(vv)
  
 #   dc = dict(date=dates,close=close_d,nikkei=n)
-  dc = dict(date=dates,close=close_d,nikkei=result[3])
+  dc = dict(date=dates,close=close_d,nikkei=eliminateNaN(result[3]))
 
   return success(dc)
 
@@ -186,6 +186,11 @@ def getPercentage(data):
     result.insert(index, None)
     return result
 
+def eliminateNaN(arr):
+ for i in range(len(arr)):
+  if arr[i] == "NaN":
+   arr[i] = None
+   
 def isalnum(text):
   return re.match(r'^[a-zA-Z0-9]+$', text) is not None
 
