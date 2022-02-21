@@ -123,7 +123,7 @@ def api_stock():
   for vv in result[3].values():
       if (pd.isna(vv)):
           n.append(None)
-      else:
+      elif (vv != null):
           n.append(vv)
  
 #   dc = dict(date=dates,close=close_d,nikkei=n)
