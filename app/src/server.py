@@ -124,7 +124,7 @@ def api_stock():
 #      n.append(vv)
  
 #   dc = dict(date=dates,close=close_d,nikkei=n)
-  dc = dict(date=dates,close=close_d,nikkei=eliminateNaN(result[3]))
+  dc = dict(date=dates,close=close_d,nikkei=eliminateNaN(result[3].values()))
 
   return success(dc)
 
