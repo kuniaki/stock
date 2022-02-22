@@ -93,40 +93,7 @@ def api_rsegment():
 #http://server/api/v1/stock?code=7494&country=japan&from_date=01/01/2020&to_date=01/01/2021
 @app.route('/api/v1/stock/',methods=['GET'])
 def api_stock():
-  code  = request.args.get('code')
-# country = request.args.get('country')
-# fromD   = request.args.get('from_date')
-# toD     = request.args.get('to_date')
-# symbol_data = None
-# symbol_data = investpy.get_stock_historical_data(stock=code,
-#                                       country=country,
-#                                       from_date=fromD,
-#                                       to_date=toD)
-# close_d = makeArray(symbol_data,"Close")
-
-# dates = []
-# dd = symbol_data.to_dict()
-# keys = dd['Open'].keys()
-# for item in keys:
-#   da = str(item.year) + "-" + str(item.month) + "-" + str(item.day)
-#   dates.append(da)
-
-
-###  Nikkei Average
-# print('*******Hello world!*****************', file=sys.stderr)
-# result = kabuka(1320,5,1)
-# diff = list(set(result[2]) - set(dates))
-# for rr in diff:
-#    result[3].pop(rr)
-
-# n =[]
-# for vv in result[3].values():
-#     # check if item is NaN
-#      if (pd.isna(vv)):
-#          n.append(None)
-#      else:
-#          n.append(vv)
- 
+  code  = request.args.get('code') 
   result-code   = kabuka(code,5,1)
   result-nikkei = kabuka(1320,5,1)
 
