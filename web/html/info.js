@@ -10,11 +10,11 @@ function getCompanyInfo() {
     contentType: "application/json",
   })
     .done(function (result) {
-      console.log(result);
+      console.log("loading company info...");
       fillInTable(result, code);
     })
     .fail(function (result) {
-      alert("Failed to load the information");
+      alert("Info - Failed to load the information");
       console.log(result);
     });
 }
@@ -31,4 +31,6 @@ function fillInTable(result, code) {
   row2col1.textContent = result["業種"];
   row3col1.textContent = result["テーマ"];
   row4col1.textContent = result["会社サイト"];
+
+  show(".company-info");
 }

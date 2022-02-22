@@ -1,5 +1,3 @@
-google.charts.load("current", { packages: ["corechart"] });
-
 function getStock() {
   var code = $("#code").val();
   var countryc = $("#country").val();
@@ -13,12 +11,9 @@ function getStock() {
   day1 = date.getDate();
   dates = day1 + "/" + month + "/" + year5;
 
-  //   var that = $(this);
-  //   that.off("click");
-
   $.ajax({
     url:
-      "//www.jenkins-asahi.com/api/v1/stock?code=" +
+      "/api/v1/stock?code=" +
       code +
       "&country=" +
       countryc +
@@ -33,13 +28,11 @@ function getStock() {
     contentType: "application/json",
   })
     .done(function (result) {
+      console.log("running stock graph...");
       mainChart(result);
     })
-    // .always(function () {
-    //   that.on("click", getStock);
-    // })
     .fail(function (result) {
-      alert("Failed to load the information");
+      alert("Stock - Failed to load the information");
       console.log(result);
     });
 }

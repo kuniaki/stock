@@ -1,11 +1,9 @@
-google.charts.load("current", { packages: ["corechart"] });
-
 function getRSegmentInfo() {
   //   var that = $(this);
   //   that.off("click");
 
   $.ajax({
-    url: "//www.jenkins-asahi.com/api/v1/rsegment",
+    url: "/api/v1/rsegment",
     type: "GET",
     async: true,
     cashe: false,

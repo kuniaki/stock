@@ -5,7 +5,7 @@ function getRevenueInfo() {
   var countryc = $("#country").val();
 
   $.ajax({
-    url: `//www.jenkins-asahi.com/api/v1/revenue?code=${code}&country=${countryc}`,
+    url: `/api/v1/revenue?code=${code}&country=${countryc}`,
     type: "GET",
     async: true,
     cashe: false,
