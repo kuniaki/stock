@@ -6,10 +6,13 @@ $("#btn-getinfo").click(function () {
   //
   //
   const infoPromised = getCompanyInfoPromise();
-  infoPromised.done(infoPromiseDone);
-
   const stockPromised = getStockPromise();
-  stockPromised.done(stockPromiseDone);
+
+  Promise.all([infoPromised, stockPromised]).then(() => {
+    infoPromised.done(infoPromiseDone);
+    stockPromised.done(stockPromiseDone);
+    console.log("\n!!!promises done!!!\n");
+  });
 
   if ($("#code").val() == 2502) {
     console.log("running segment graph...");
