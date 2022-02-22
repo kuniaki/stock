@@ -66,11 +66,10 @@ def dateFormatter(data):
     return result
 
 
-result = kabuka(1320,5,1)
-print(result[3])
-print(len(result[3]))
-print("********************")
-result = kabuka(2502,5,1)
-print(result[3])
-print(len(result[3]))
-print(type(result[3]))
+
+result0 = kabuka(1320,5,1)
+result1 = kabuka(2502,5,1)
+
+print(result0.values())
+##dc = dict(date=result0[3].keys(),close=result1[3].values(),nikkei=result0.values())
+#print(dc)
