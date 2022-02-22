@@ -50,8 +50,8 @@ def kabuka(code,S_year,S_day):
 
   ff = {}
   for index in range(len(ddd)):
-    if isNaN(ccc[index]) == False:
-      print(ccc[index])
+#   if isNaN(ccc[index]) == False:
+#     print(ccc[index])
 #   print(type(ccc[index]))
       ff[ddd[index]] = ccc[index]
 
@@ -67,4 +67,4 @@ def dateFormatter(data):
 
 
 result = kabuka(1320,5,1)
-##print(result[3])
+print(result[3])

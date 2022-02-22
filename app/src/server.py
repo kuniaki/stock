@@ -167,7 +167,7 @@ def kabuka(code,S_year,S_day):
 
   ff = {}
   for index in range(len(ddd)):
-    if isNaN(ccc[index]) == False:
+#   if isNaN(ccc[index]) == False:
       ff[ddd[index]] = ccc[index]
 
   return company_code, df_base, ddd ,ff
