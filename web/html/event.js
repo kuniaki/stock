@@ -8,7 +8,7 @@ $("#btn-getinfo").click(function () {
 
   console.log("loading company info...");
   getCompanyInfo();
-  show("company-info");
+  show(".company-info");
 
   console.log("running stock graph...");
   getStock();
