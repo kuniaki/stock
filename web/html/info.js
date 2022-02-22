@@ -1,23 +1,44 @@
-function getCompanyInfo() {
-  var code = $("#code").val();
+// function getCompanyInfo() {
+//   var code = $("#code").val();
 
-  $.ajax({
+//   $.ajax({
+//     url: `/api/v1/company_overview?code=${code}`,
+//     type: "GET",
+//     async: true,
+//     cashe: false,
+//     dataType: "json",
+//     contentType: "application/json",
+//   })
+//     .done(function (result) {
+//       console.log("loading company info...");
+//       fillInTable(result, code);
+//     })
+//     .fail(function (result) {
+//       alert("Info - Failed to load the information");
+//       console.log(result);
+//     });
+// }
+let code;
+
+function getCompanyInfoPromise() {
+  code = $("#code").val();
+  return $.ajax({
     url: `/api/v1/company_overview?code=${code}`,
     type: "GET",
     async: true,
     cashe: false,
     dataType: "json",
     contentType: "application/json",
-  })
-    .done(function (result) {
-      console.log("loading company info...");
-      fillInTable(result, code);
-    })
-    .fail(function (result) {
-      alert("Info - Failed to load the information");
-      console.log(result);
-    });
+  }).fail(function (result) {
+    alert("Info - Failed to load the information");
+    console.log(result);
+  });
 }
+
+const infoPromiseDone = function (result) {
+  console.log("loading company info...");
+  fillInTable(result, code);
+};
 
 function fillInTable(result, code) {
   const rowHeader = document.querySelector("#company-name-code");
