@@ -130,7 +130,7 @@ def api_stock():
   result-code   = kabuka(code,5,1)
   result-nikkei = kabuka(1320,5,1)
 
-  dc = dict(date=dates,close=result-code[3],nikkei=result-nikkei[3])
+  dc = dict(date=result-code[3].keys(),close=result-code[3].values(),nikkei=result-nikkei[3].values())
 # dc = dict(date=dates,close=close_d,nikkei=n,checksize=list(len(dates) - len(n)))
 # dc = dict(date=dates,close=result[3],nikkei=result[3])
 
