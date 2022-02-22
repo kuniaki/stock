@@ -68,3 +68,9 @@ def dateFormatter(data):
 
 result = kabuka(1320,5,1)
 print(result[3])
+print(len(result[3]))
+print("********************")
+result = kabuka(2502,5,1)
+print(result[3])
+print(len(result[3]))
+print(type(result[3]))

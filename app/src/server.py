@@ -114,10 +114,10 @@ def api_stock():
 
 ###  Nikkei Average
 # print('*******Hello world!*****************', file=sys.stderr)
-  result = kabuka(1320,5,1)
-  diff = list(set(result[2]) - set(dates))
-  for rr in diff:
-     result[3].pop(rr)
+# result = kabuka(1320,5,1)
+# diff = list(set(result[2]) - set(dates))
+# for rr in diff:
+#    result[3].pop(rr)
 
 # n =[]
 # for vv in result[3].values():
@@ -127,9 +127,12 @@ def api_stock():
 #      else:
 #          n.append(vv)
  
-# dc = dict(date=dates,close=close_d,nikkei=result[3])
+  result-code   = kabuka(code,5,1)
+  result-nikkei = kabuka(1320,5,1)
+
+  dc = dict(date=dates,close=rresult-code[3],nikkei=result-nikkei[3])
 # dc = dict(date=dates,close=close_d,nikkei=n,checksize=list(len(dates) - len(n)))
-  dc = dict(date=dates,close=result[3],nikkei=result[3])
+# dc = dict(date=dates,close=result[3],nikkei=result[3])
 
   return success(dc)
 
