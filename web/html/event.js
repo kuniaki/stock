@@ -7,20 +7,22 @@ $("#btn-getinfo").click(function () {
   //
   const infoPromised = getCompanyInfoPromise();
   const stockPromised = getStockPromise();
+  const segementPromised = getSegmentPromise();
+  const revenuePromised = getRevenuePromise();
 
-  Promise.all([infoPromised, stockPromised]).then(() => {
+  Promise.all([
+    infoPromised,
+    stockPromised,
+    segementPromised,
+    revenuePromised,
+  ]).then(() => {
     infoPromised.done(infoPromiseDone);
     stockPromised.done(stockPromiseDone);
+    $("#code").val() == 2502
+      ? segementPromised.done(segmentPromiseDone)
+      : hide(".rsegment");
+    revenuePromised.done(revenuePromiseDone);
+
     console.log("\n!!!promises done!!!\n");
   });
-
-  if ($("#code").val() == 2502) {
-    console.log("running segment graph...");
-    getRSegmentInfo();
-    show(".rsegment");
-  } else {
-    hide(".rsegment");
-  }
-
-  getRevenueInfo();
 });
