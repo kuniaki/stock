@@ -94,22 +94,22 @@ def api_rsegment():
 @app.route('/api/v1/stock/',methods=['GET'])
 def api_stock():
   code  = request.args.get('code')
-  country = request.args.get('country')
-  fromD   = request.args.get('from_date')
-  toD     = request.args.get('to_date')
-  symbol_data = None
-  symbol_data = investpy.get_stock_historical_data(stock=code,
-                                        country=country,
-                                        from_date=fromD,
-                                        to_date=toD)
-  close_d = makeArray(symbol_data,"Close")
+# country = request.args.get('country')
+# fromD   = request.args.get('from_date')
+# toD     = request.args.get('to_date')
+# symbol_data = None
+# symbol_data = investpy.get_stock_historical_data(stock=code,
+#                                       country=country,
+#                                       from_date=fromD,
+#                                       to_date=toD)
+# close_d = makeArray(symbol_data,"Close")
 
-  dates = []
-  dd = symbol_data.to_dict()
-  keys = dd['Open'].keys()
-  for item in keys:
-    da = str(item.year) + "-" + str(item.month) + "-" + str(item.day)
-    dates.append(da)
+# dates = []
+# dd = symbol_data.to_dict()
+# keys = dd['Open'].keys()
+# for item in keys:
+#   da = str(item.year) + "-" + str(item.month) + "-" + str(item.day)
+#   dates.append(da)
 
 
 ###  Nikkei Average
@@ -130,7 +130,7 @@ def api_stock():
   result-code   = kabuka(code,5,1)
   result-nikkei = kabuka(1320,5,1)
 
-  dc = dict(date=dates,close=rresult-code[3],nikkei=result-nikkei[3])
+  dc = dict(date=dates,close=result-code[3],nikkei=result-nikkei[3])
 # dc = dict(date=dates,close=close_d,nikkei=n,checksize=list(len(dates) - len(n)))
 # dc = dict(date=dates,close=result[3],nikkei=result[3])
 
