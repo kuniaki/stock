@@ -1,6 +1,48 @@
-function getStock() {
-  var code = $("#code").val();
-  var countryc = $("#country").val();
+// function getStock() {
+//   var code = $("#code").val();
+//   var countryc = $("#country").val();
+
+//   date = new Date();
+//   year = date.getFullYear();
+//   month = date.getMonth() + 1;
+//   day = date.getDate();
+//   datee = day + "/" + month + "/" + year;
+//   year5 = date.getFullYear() - 5;
+//   day1 = date.getDate();
+//   dates = day1 + "/" + month + "/" + year5;
+
+//   $.ajax({
+//     url:
+//       "/api/v1/stock?code=" +
+//       code +
+//       "&country=" +
+//       countryc +
+//       "&from_date=" +
+//       dates +
+//       "&to_date=" +
+//       datee,
+//     type: "GET",
+//     async: true,
+//     cashe: false,
+//     dataType: "json",
+//     contentType: "application/json",
+//   })
+//     .done(function (result) {
+//       console.log("running stock graph...");
+//       mainChart(result);
+//     })
+//     .fail(function (result) {
+//       alert("Stock - Failed to load the information");
+//       console.log(result);
+//     });
+// }
+
+let code;
+let countryc;
+
+function getStockPromise() {
+  code = $("#code").val();
+  countryc = $("#country").val();
 
   date = new Date();
   year = date.getFullYear();
@@ -11,7 +53,7 @@ function getStock() {
   day1 = date.getDate();
   dates = day1 + "/" + month + "/" + year5;
 
-  $.ajax({
+  return $.ajax({
     url:
       "/api/v1/stock?code=" +
       code +
@@ -26,16 +68,16 @@ function getStock() {
     cashe: false,
     dataType: "json",
     contentType: "application/json",
-  })
-    .done(function (result) {
-      console.log("running stock graph...");
-      mainChart(result);
-    })
-    .fail(function (result) {
-      alert("Stock - Failed to load the information");
-      console.log(result);
-    });
+  }).fail(function (result) {
+    alert("Stock - Failed to load the information");
+    console.log(result);
+  });
 }
+
+const stockPromiseDone = function (result) {
+  console.log("running stock graph...");
+  mainChart(result);
+};
 
 function oneYearAgo() {
   date = new Date();

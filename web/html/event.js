@@ -5,10 +5,11 @@ $("#btn-getinfo").click(function () {
   //
   //
   //
-  let infoPromised = getCompanyInfo();
+  const infoPromised = getCompanyInfo();
   infoPromised.done(infoPromiseDone);
 
-  getStock();
+  const stockPromised = getStockPromise();
+  stockPromised.done(stockPromiseDone);
 
   if ($("#code").val() == 2502) {
     console.log("running segment graph...");
