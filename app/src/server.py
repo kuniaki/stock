@@ -33,10 +33,11 @@ def after_request(response):
 def root():
     return "Chart Server"
 
-@app.route('/api/v1/company_overview', methods=['GET'])
+@app.route('/api/v1/company_overview/', methods=['GET'])
 def api_overview():
   code  = request.args.get('code')
-  return success(grabFromUrl(code, 'overview'))
+  dc = grabFromUrl(code, 'overview')
+  return success(dc)
 
 
 #http://server/api/v1/revenue/

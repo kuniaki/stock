@@ -1,6 +1,8 @@
 function getCompanyInfo() {
+  var code = $("#code").val();
+
   $.ajax({
-    url: "/api/v1/company_overview",
+    url: `/api/v1/company_overview?code=${code}`,
     type: "GET",
     async: true,
     cashe: false,
