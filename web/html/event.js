@@ -9,8 +9,10 @@ $("#btn-getinfo").click(function () {
   console.log("loading company info...");
   getCompanyInfo();
   show("company-info");
+
   console.log("running stock graph...");
   getStock();
+
   if ($("#code").val() == 2502) {
     console.log("running segment graph...");
     getRSegmentInfo();
@@ -18,17 +20,22 @@ $("#btn-getinfo").click(function () {
   } else {
     hide(".rsegment");
   }
+
   getRevenueInfo();
 });
 
 function show(identifier) {
-  const div = document.querySelector(identifier);
-  div.classList.remove("hidden");
+  const item = document.querySelector(identifier);
+  if (item.classList.contains("hidden")) {
+    item.classList.remove("hidden");
+  }
   console.log(`...${identifier} added...`);
 }
 
 function hide(identifier) {
-  const div = document.querySelector(identifier);
-  div.classList.add("hidden");
+  const item = document.querySelector(identifier);
+  if (!item.classList.contains("hidden")) {
+    item.classList.add("hidden");
+  }
   console.log(`...${identifier} added...`);
 }
