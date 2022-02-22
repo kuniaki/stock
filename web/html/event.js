@@ -5,7 +5,7 @@ $("#btn-getinfo").click(function () {
   //
   //
   //
-  const infoPromised = getCompanyInfo();
+  const infoPromised = getCompanyInfoPromise();
   infoPromised.done(infoPromiseDone);
 
   const stockPromised = getStockPromise();

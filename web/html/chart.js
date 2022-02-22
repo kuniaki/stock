@@ -37,13 +37,7 @@
 //     });
 // }
 
-let code;
-let countryc;
-
 function getStockPromise() {
-  code = $("#code").val();
-  countryc = $("#country").val();
-
   date = new Date();
   year = date.getFullYear();
   month = date.getMonth() + 1;
@@ -56,9 +50,9 @@ function getStockPromise() {
   return $.ajax({
     url:
       "/api/v1/stock?code=" +
-      code +
+      $("#code").val() +
       "&country=" +
-      countryc +
+      $("#country").val() +
       "&from_date=" +
       dates +
       "&to_date=" +
