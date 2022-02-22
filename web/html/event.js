@@ -2,6 +2,8 @@ google.charts.load("current", { packages: ["corechart"] });
 const segmentDiv = document.querySelector(".hidden");
 
 $("#btn-getinfo").click(function () {
+  console.log("loading company info...");
+  getCompanyInfo();
   console.log("running stock graph...");
   getStock();
   if ($("#code").val() == 2502) {
