@@ -127,8 +127,9 @@ def api_stock():
 #      else:
 #          n.append(vv)
  
-  dc = dict(date=dates,close=close_d,nikkei=result[3])
+# dc = dict(date=dates,close=close_d,nikkei=result[3])
 # dc = dict(date=dates,close=close_d,nikkei=n,checksize=list(len(dates) - len(n)))
+  dc = dict(date=dates,close=result[3],nikkei=result[3])
 
   return success(dc)
 
