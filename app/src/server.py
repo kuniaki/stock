@@ -159,10 +159,10 @@ def array(v):
   for vv in v:
       # check if item is NaN
       # note that nikkei has more entries than asahi
-      if (pd.isna(vv)):
-          n.append(None)
-      else:
-          n.append(vv)
+      #if (pd.isna(vv)):
+       #   n.append(None)
+      #else:
+           n.append(vv)
   return n
 
 # Change pd.DataFrame to string
