@@ -79,4 +79,6 @@ date = result0[3].keys()
 
 dc = dict(date=date,close=co,nikkei=nik)
 
-print(dc)
+print(result0[2])
+
+#print(dc)
