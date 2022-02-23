@@ -94,13 +94,20 @@ def api_rsegment():
 #http://server/api/v1/stock?code=7494&country=japan&from_date=01/01/2020&to_date=01/01/2021
 @app.route('/api/v1/stock/',methods=['GET'])
 def api_stock():
-  code  = request.args.get('code')
- 
-  result0  = kabuka(code,5,1)
-  sleep(0.05)
-  result1  = kabuka(1320,5,1)
 
-  dc = dict(date=result0[3].keys(),close=result0[3].values(),nikkei=result1[3].values())
+  code  = request.args.get('code')
+
+  result0 = kabuka(1320,5,1)
+  nik = result0[3].values()
+
+  sleep(0.05)
+
+  result1 = kabuka(2502,5,1)
+  co = result1[3].values()
+
+  date = result0[3].keys()
+
+  dc = dict(date=date,close=co,nikkei=nik)
 
   return success(dc)
 
