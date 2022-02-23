@@ -99,19 +99,19 @@ def api_stock():
   country = request.args.get('country')
   fromD   = request.args.get('from_date')
   toD     = request.args.get('to_date')
-# symbol_data = None
-# symbol_data = investpy.get_stock_historical_data(stock=code,
-#                                       country=country,
-#                                       from_date=fromD,
-#                                       to_date=toD)
-# close_d = makeArray(symbol_data,"Close")
+  symbol_data = None
+  symbol_data = investpy.get_stock_historical_data(stock=code,
+                                        country=country,
+                                        from_date=fromD,
+                                        to_date=toD)
+  close_d = makeArray(symbol_data,"Close")
 
-# dates = []
-# dd = symbol_data.to_dict()
-# keys = dd['Open'].keys()
-# for item in keys:
-#   da = str(item.year) + "-" + str(item.month) + "-" + str(item.day)
-#   dates.append(da)
+  dates = []
+  dd = symbol_data.to_dict()
+  keys = dd['Open'].keys()
+  for item in keys:
+    da = str(item.year) + "-" + str(item.month) + "-" + str(item.day)
+    dates.append(da)
 
 
 ###  Nikkei Average
@@ -129,7 +129,7 @@ def api_stock():
 #         n.append(None)
 #     else:
 #         n.append(vv)
-  dates = result[2]
+# dates = result[2]
   co    = result[3].values()
  
 # dc = dict(date=dates,close=co,nikkei=co)
