@@ -102,12 +102,12 @@ def api_stock():
 
   sleep(0.1)
 
-  result1 = kabuka(code,5,1)
-  co = result1[3].values()
+# result1 = kabuka(code,5,1)
+# co = result1[3].values()
 
   date = result0[3].keys()
 
-  dc = dict(date=date,close=co,nikkei=nik)
+  dc = dict(date=date,close=nik,nikkei=nik)
 
   return success(dc)
 
