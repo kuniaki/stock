@@ -67,17 +67,16 @@ def dateFormatter(data):
     return result
 
 
-
 result0 = kabuka(1320,5,1)
-sleep(0.05)
-#rint(result0[3].values())
 nik = result0[3].values()
+
+sleep(0.05)
+
 result1 = kabuka(2502,5,1)
-#print(result1[3].keys())
 co = result1[3].values()
+
 date = result0[3].keys()
 
-
-
 dc = dict(date=date,close=co,nikkei=nik)
+
 print(dc)

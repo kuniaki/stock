@@ -100,9 +100,9 @@ def api_stock():
   result0 = kabuka(1320,5,1)
   nik = result0[3].values()
 
-  sleep(0.05)
+  sleep(0.1)
 
-  result1 = kabuka(2502,5,1)
+  result1 = kabuka(code,5,1)
   co = result1[3].values()
 
   date = result0[3].keys()
@@ -191,9 +191,6 @@ def error(code):
     409: "resource conflict. resource already exist",
   }
   return (jsonify({'error':message[code], 'code':int(code)}), int(code))
-
-def isNaN(num):
-  return num != num
 
 @app.errorhandler(404)
 def api_not_found_error(error):
