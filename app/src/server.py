@@ -101,12 +101,12 @@ def api_stock():
   toD     = request.args.get('to_date')
 
   result0 = kabuka(1320,5,1)
-  nik = list(result0[3].values())
+  nik = np.array(list(result0[3].values()))
 
   sleep(0.1)
 
   result1 = kabuka(code,5,1)
-  co = list(result1[3].values())
+  co = np.array(list(result1[3].values()))
 
   date = result0[2]
 

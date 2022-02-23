@@ -1,4 +1,5 @@
 import os, re
+import array 
 from time import sleep
 import csv
 import investpy
@@ -68,19 +69,20 @@ def dateFormatter(data):
 
 
 result0 = kabuka(1320,5,1)
-nik = result0[3].values()
+nik = array(result0[3].values())
+print(nik)
 
 sleep(0.15)
 
 result1 = kabuka(2502,5,1)
-co = result1[3].values()
+co = array(result1[3].values())
 
 date = result0[3].keys()
 
-#dc = dict(date=date,close=co,nikkei=nik)
+dc = dict(date=date,close=co,nikkei=nik)
 
 #print(result0[2])
 
 #print(list(co))
 
-#print(dc)
+print(dc)
