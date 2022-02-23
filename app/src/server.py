@@ -2,6 +2,7 @@ import os, re
 import csv
 import investpy
 import io
+from time import sleep
 from yahoo_finance_api2 import share
 from yahoo_finance_api2.exceptions import YahooFinanceError
 from flask import Flask, jsonify, request ,session
@@ -127,10 +128,11 @@ def api_stock():
 #      else:
 #          n.append(vv)
  
-  result-code   = kabuka(code,5,1)
-  result-nikkei = kabuka(1320,5,1)
+  result0  = kabuka(code,5,1)
+  sleep(0.05)
+  result1  = kabuka(1320,5,1)
 
-  dc = dict(date=result-code[3].keys(),close=result-code[3].values(),nikkei=result-nikkei[3].values())
+  dc = dict(date=result0[3].keys(),close=result0[3].values(),nikkei=result1[3].values())
 # dc = dict(date=dates,close=close_d,nikkei=n,checksize=list(len(dates) - len(n)))
 # dc = dict(date=dates,close=result[3],nikkei=result[3])
 
