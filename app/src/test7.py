@@ -70,15 +70,17 @@ def dateFormatter(data):
 result0 = kabuka(1320,5,1)
 nik = result0[3].values()
 
-sleep(0.05)
+sleep(0.15)
 
 result1 = kabuka(2502,5,1)
 co = result1[3].values()
 
 date = result0[3].keys()
 
-dc = dict(date=date,close=co,nikkei=nik)
+#dc = dict(date=date,close=co,nikkei=nik)
 
-print(result0[2])
+#print(result0[2])
+
+#print(list(co))
 
 #print(dc)

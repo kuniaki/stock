@@ -99,46 +99,20 @@ def api_stock():
   country = request.args.get('country')
   fromD   = request.args.get('from_date')
   toD     = request.args.get('to_date')
-  symbol_data = None
-  symbol_data = investpy.get_stock_historical_data(stock=code,
-                                        country=country,
-                                        from_date=fromD,
-                                        to_date=toD)
-  close_d = makeArray(symbol_data,"Close")
 
-  dates = []
-  dd = symbol_data.to_dict()
-  keys = dd['Open'].keys()
-  for item in keys:
-    da = str(item.year) + "-" + str(item.month) + "-" + str(item.day)
-    dates.append(da)
+  result0 = kabuka(1320,5,1)
+  nik = list(result0[3].values())
 
+  sleep(0.1)
 
-###  Nikkei Average
-# print('*******Hello world!*****************', file=sys.stderr)
-  result = kabuka(1320,5,1)
-# diff = list(set(result[2]) - set(dates))
-# for rr in diff:
-#    result[3].pop(rr)
+  result1 = kabuka(code,5,1)
+  co = list(result1[3].values())
 
-# n =[]
-# for vv in result[3].values():
-#     # check if item is NaN
-#     # note that nikkei has more entries than asahi
-#     if (pd.isna(vv)):
-#         n.append(None)
-#     else:
-#         n.append(vv)
-  datess = result[2]
-  co    = result[3].values()
- 
-# dc = dict(date=dates,close=co,nikkei=co)
-  dc = dict(date=datess,close=close_d,nikkei=close_d)
-#   dc = dict(date=dates,close=close_d,nikkei=n)
-  
+  date = result0[2]
+
+  dc = dict(date=date,close=co,nikkei=nik)
 
   return success(dc)
-
 
 def kabuka(code,S_year,S_day):
   company_code = str(code) + '.T'
