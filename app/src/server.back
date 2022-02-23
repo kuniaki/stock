@@ -11,8 +11,7 @@ import pandas as pd
 import sys
 import numpy as np
 import json
-import requests
-from bs4 import BeautifulSoup
+
  
 
 APP_PORT = int(os.environ['PORT'])
@@ -33,12 +32,6 @@ def after_request(response):
 @app.route('/')
 def root():
     return "Chart Server"
-
-@app.route('/api/v1/company_overview/', methods=['GET'])
-def api_overview():
-  code  = request.args.get('code')
-  dc = grabFromUrl(code, 'overview')
-  return success(dc)
 
 
 #http://server/api/v1/revenue/
@@ -108,16 +101,16 @@ def api_stock():
   toD     = request.args.get('to_date')
 
   result0 = kabuka(1320,5,1)
-  nik =  array(result0[3].values())
+  nik = list(result0[3].values())
 
   sleep(0.1)
 
   result1 = kabuka(code,5,1)
-  co =  array(result1[3].values())
+  co = list(result1[3].values())
 
   date = result0[2]
 
-  dc = dict(date=date,close=co,nikkei=nik)
+  dc = dict(date=date,close=nik,nikkei=nik)
 
   return success(dc)
 
@@ -160,50 +153,6 @@ def kabuka(code,S_year,S_day):
       ff[ddd[index]] = ccc[index]
 
   return company_code, df_base, ddd ,ff
-
-def array(v):
-  n =[]
-  for vv in v:
-      # check if item is NaN
-      # note that nikkei has more entries than asahi
-      #if (pd.isna(vv)):
-       #   n.append(None)
-      #else:
-      if pd.isna(vv) == False:
-           n.append(vv)
-  return n
-
-# take country code as parameter, grab company info from kabutan
-def grabFromUrl(code, section):
-
-  info = {}
-
-  URL = "https://kabutan.jp/stock/?code=" + code;
-  page = requests.get(URL) # issue an HTTP GET requests to given URL
-  # retrieves HTML data that the server sends back and stores in Python object with type <class 'requests.models.Response'>
-
-  soup = BeautifulSoup(page.content, "html.parser")
-  print("Type of soup: ", type(soup))
-
-  company_info = soup.find("div", class_ = "company_block").get_text();
-  print(company_info)
-
-  company_splitted = company_info.strip().split("\n\n\n\n");
-  company = company_splitted[0].split("\n")
-  splitted = company_splitted[1].split("\n\n\n")
-  splitted[-1] = ",".join(splitted[-1].split("\n"))
-  splitted[-2] = "\n".join(splitted[-2:])
-  splitted.pop(-1)
-  print(splitted)
-
-  result = dict({company[0]: company[1]})
-  for item in splitted:
-      temp = item.split("\n", maxsplit=1)
-      result[temp[0]] = temp[1]
-
-  info['overview'] = result
-
-  return info[section]
 
 # Change pd.DataFrame to string
 def dateFormatter(data): 
