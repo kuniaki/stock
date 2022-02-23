@@ -101,12 +101,12 @@ def api_stock():
   toD     = request.args.get('to_date')
 
   result0 = kabuka(1320,5,1)
-  nik = np.array(list(result0[3].values()))
+  nik =  array(result0[3].values())
 
   sleep(0.1)
 
   result1 = kabuka(code,5,1)
-  co = np.array(list(result1[3].values()))
+  co =  array(result1[3].values())
 
   date = result0[2]
 
@@ -153,6 +153,17 @@ def kabuka(code,S_year,S_day):
       ff[ddd[index]] = ccc[index]
 
   return company_code, df_base, ddd ,ff
+
+def array(v):
+  n =[]
+  for vv in v:
+      # check if item is NaN
+      # note that nikkei has more entries than asahi
+      if (pd.isna(vv)):
+          n.append(None)
+      else:
+          n.append(vv)
+  return n
 
 # Change pd.DataFrame to string
 def dateFormatter(data): 
