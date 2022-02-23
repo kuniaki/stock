@@ -96,6 +96,9 @@ def api_rsegment():
 def api_stock():
 
   code  = request.args.get('code')
+  country = request.args.get('country')
+  fromD   = request.args.get('from_date')
+  toD     = request.args.get('to_date')
 
   result0 = kabuka(1320,5,1)
   nik = result0[3].values()
