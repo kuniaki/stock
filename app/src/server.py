@@ -129,11 +129,11 @@ def api_stock():
 #         n.append(None)
 #     else:
 #         n.append(vv)
-# dates = result[2]
+  datess = result[2]
   co    = result[3].values()
  
-  dc = dict(date=dates,close=co,nikkei=co)
-# dc = dict(date=dates,close=close_d,nikkei=close_d)
+# dc = dict(date=dates,close=co,nikkei=co)
+  dc = dict(date=datess,close=close_d,nikkei=close_d)
 #   dc = dict(date=dates,close=close_d,nikkei=n)
   
 
