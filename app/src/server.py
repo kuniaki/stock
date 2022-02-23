@@ -162,6 +162,7 @@ def array(v):
       #if (pd.isna(vv)):
        #   n.append(None)
       #else:
+      if pd.isna(vv) == False:
            n.append(vv)
   return n
 
