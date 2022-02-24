@@ -24,6 +24,7 @@ const infoPromiseDone = function (result) {
 
 function fillInNews(info) {
   const newsTable = document.querySelector(".news-body");
+  newsTable.innerHTML = "";
   for (let i = 0; i < info["date"].length; i++) {
     const rowHtml = `<tr>${info["date"][i]}${info["link"][i]}</tr>`;
     newsTable.insertAdjacentHTML("beforeend", rowHtml);
