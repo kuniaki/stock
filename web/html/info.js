@@ -18,7 +18,17 @@ function getCompanyInfoPromise() {
 const infoPromiseDone = function (result) {
   console.log("loading company info...");
   fillInOverview(result["overview"], code);
+  fillInNews(result["news"]);
+  show(".company-info");
 };
+
+function fillInNews(info) {
+  const newsTable = document.querySelector(".news-body");
+  for (let i = 0; i < info["date"].length; i++) {
+    const rowHtml = `<tr>${info["date"][i]}${info["link"][i]}</tr>`;
+    newsTable.insertAdjacentHTML("beforeend", rowHtml);
+  }
+}
 
 function fillInOverview(info, code) {
   console.log();
@@ -33,6 +43,4 @@ function fillInOverview(info, code) {
   row2col1.textContent = info["業種"];
   row3col1.textContent = info["テーマ"];
   row4col1.textContent = info["会社サイト"];
-
-  show(".company-info");
 }

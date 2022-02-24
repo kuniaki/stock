@@ -214,10 +214,12 @@ def grabOverviewSoup(soup):
 def grabNewsSoup(soup):
   news_table = soup.select('table.s_news_list > tr')
 
-  news = {'date': list(), 'link': list()}
+  time = soup.select('table.s_news_list > tr > td.news_time')
+  time_list = list(str(i).replace('news_time', 'news-time').replace('\xa0', ' ') for i in time)
+  news = {'date': time_list, 'link': list()}
 
   for date in news_table:
-    news['date'].append(" ".join(date.get_text().strip().split("\n\n")[0].split("\xa0")))
+    # news['date'].append(" ".join(date.get_text().strip().split("\n\n")[0].split("\xa0")))
     for link in date.children:
         if "href" in str(link):
             news['link'].append(str(link).replace('/stock/news?', 'https://kabutan.jp/stock/news?').replace("&amp;", "&"))

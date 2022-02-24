@@ -58,13 +58,15 @@ newsRaw = soupNews.find("table", class_ = "s_news_list")
 # linkRaw = soupNews.find_all("td", class_ = "ctg3_kk")
 timeRaw = soupNews.find_all("td", class_ = "news_time")
 aRaw = soupNews.select('table.s_news_list > tr')
-news = {'date': list(), 'link': list()}
+time = soupNews.select('table.s_news_list > tr > td.news_time')
+timeList = list(str(i).replace('news_time', 'news-time').replace('\xa0', ' ') for i in time)
+news = {'date': timeList, 'link': list()}
 print(aRaw)
 
 for a in aRaw:
-    print("\n")
-    print(a.get_text().strip().split("\n\n"))
-    news['date'].append(" ".join(a.get_text().strip().split("\n\n")[0].split("\xa0")))
+    # print("\n")
+    # print(a.get_text().strip().split("\n\n"))
+    # news['date'].append(" ".join(a.get_text().strip().split("\n\n")[0].split("\xa0")))
     
     for i in a.children:
         if "href" in str(i):
