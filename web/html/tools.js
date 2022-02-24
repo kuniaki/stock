@@ -5,7 +5,7 @@ function show(identifier) {
   if (item.classList.contains("hidden")) {
     item.classList.remove("hidden");
   }
-  console.log(`...${identifier} added...`);
+  console.log(`...${identifier} is added...`);
 }
 
 function hide(identifier) {
@@ -13,5 +13,5 @@ function hide(identifier) {
   if (!item.classList.contains("hidden")) {
     item.classList.add("hidden");
   }
-  console.log(`...${identifier} added...`);
+  console.log(`...${identifier} is hidden...`);
 }
