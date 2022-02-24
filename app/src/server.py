@@ -178,15 +178,37 @@ def grabFromUrl(code, section):
 
   info = {}
 
-  URL = "https://kabutan.jp/stock/?code=" + code;
-  page = requests.get(URL) # issue an HTTP GET requests to given URL
+  overview_url = "https://kabutan.jp/stock/?code=" + code;
+  news_url = "https://kabutan.jp/stock/news?code=" + code + "&nmode=2"
+  
+  overview_page = requests.get(overview_url) # issue an HTTP GET requests to given URL
+  news_page = requests.get(news_url)
   # retrieves HTML data that the server sends back and stores in Python object with type <class 'requests.models.Response'>
 
-  soup = BeautifulSoup(page.content, "html.parser")
-  print("Type of soup: ", type(soup))
+  overview_soup = BeautifulSoup(overview_page.content, "html.parser")
 
+  # company_info = overview_soup.find("div", class_ = "company_block").get_text();
+
+  # company_splitted = company_info.strip().split("\n\n\n\n");
+  # company = company_splitted[0].split("\n")
+  # splitted = company_splitted[1].split("\n\n\n")
+  # splitted[-1] = ",".join(splitted[-1].split("\n"))
+  # splitted[-2] = "\n".join(splitted[-2:])
+  # splitted.pop(-1)
+  # print(splitted)
+
+  # result = dict({company[0]: company[1]})
+  # for item in splitted:
+  #     temp = item.split("\n", maxsplit=1)
+  #     result[temp[0]] = temp[1]
+
+  info['overview'] = grabOverviewSoup(overview_soup)
+
+  return info[section]
+
+# grab overview info, return in dict form
+def grabOverviewSoup(soup):
   company_info = soup.find("div", class_ = "company_block").get_text();
-  print(company_info)
 
   company_splitted = company_info.strip().split("\n\n\n\n");
   company = company_splitted[0].split("\n")
@@ -194,16 +216,12 @@ def grabFromUrl(code, section):
   splitted[-1] = ",".join(splitted[-1].split("\n"))
   splitted[-2] = "\n".join(splitted[-2:])
   splitted.pop(-1)
-  print(splitted)
 
   result = dict({company[0]: company[1]})
   for item in splitted:
       temp = item.split("\n", maxsplit=1)
       result[temp[0]] = temp[1]
-
-  info['overview'] = result
-
-  return info[section]
+  return result
 
 # Change pd.DataFrame to string
 def dateFormatter(data): 
