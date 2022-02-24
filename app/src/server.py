@@ -191,7 +191,7 @@ def grabFromUrl(code, section):
   info['overview'] = grabOverviewSoup(overview_soup)
   info['news'] = grabNewsSoup(news_soup)
 
-  return info
+  return info['news']
 
 # grab overview info, return in dict form
 def grabOverviewSoup(soup):
@@ -221,7 +221,7 @@ def grabNewsSoup(soup):
     for link in date.children:
         if "href" in str(link):
             news['link'].append(str(link).replace('/stock/news?', 'https://kabutan.jp/stock/news?').replace("&amp;", "&"))
-
+  
   return news
 
 # Change pd.DataFrame to string
