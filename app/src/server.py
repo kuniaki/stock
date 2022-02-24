@@ -37,7 +37,7 @@ def root():
 @app.route('/api/v1/company_overview/', methods=['GET'])
 def api_overview():
   code  = request.args.get('code')
-  dc = grabFromUrl(code, 'overview')
+  dc = grabFromUrl(code)
   return success(dc)
 
 
@@ -174,7 +174,7 @@ def array(v):
   return n
 
 # take country code as parameter, grab company info from kabutan
-def grabFromUrl(code, section):
+def grabFromUrl(code):
 
   info = {}
 
@@ -191,7 +191,7 @@ def grabFromUrl(code, section):
   info['overview'] = grabOverviewSoup(overview_soup)
   info['news'] = grabNewsSoup(news_soup)
 
-  return info['news']
+  return info
 
 # grab overview info, return in dict form
 def grabOverviewSoup(soup):
