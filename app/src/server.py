@@ -186,25 +186,12 @@ def grabFromUrl(code, section):
   # retrieves HTML data that the server sends back and stores in Python object with type <class 'requests.models.Response'>
 
   overview_soup = BeautifulSoup(overview_page.content, "html.parser")
-
-  # company_info = overview_soup.find("div", class_ = "company_block").get_text();
-
-  # company_splitted = company_info.strip().split("\n\n\n\n");
-  # company = company_splitted[0].split("\n")
-  # splitted = company_splitted[1].split("\n\n\n")
-  # splitted[-1] = ",".join(splitted[-1].split("\n"))
-  # splitted[-2] = "\n".join(splitted[-2:])
-  # splitted.pop(-1)
-  # print(splitted)
-
-  # result = dict({company[0]: company[1]})
-  # for item in splitted:
-  #     temp = item.split("\n", maxsplit=1)
-  #     result[temp[0]] = temp[1]
+  news_soup = BeautifulSoup(news_page.content, "html.parser")
 
   info['overview'] = grabOverviewSoup(overview_soup)
+  info['news'] = grabNewsSoup(news_soup)
 
-  return info[section]
+  return info
 
 # grab overview info, return in dict form
 def grabOverviewSoup(soup):
@@ -222,6 +209,20 @@ def grabOverviewSoup(soup):
       temp = item.split("\n", maxsplit=1)
       result[temp[0]] = temp[1]
   return result
+
+# grab news info, return in dict form
+def grabNewsSoup(soup):
+  news_table = soup.select('table.s_news_list > tr')
+
+  news = {'date': list(), 'link': list()}
+
+  for date in news_table:
+    news['date'].append(" ".join(date.get_text().strip().split("\n\n")[0].split("\xa0")))
+    for link in date.children:
+        if "href" in str(link):
+            news['link'].append(str(link).replace('/stock/news?', 'https://kabutan.jp/stock/news?').replace("&amp;", "&"))
+
+  return news
 
 # Change pd.DataFrame to string
 def dateFormatter(data): 
