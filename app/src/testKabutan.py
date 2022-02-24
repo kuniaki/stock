@@ -1,5 +1,8 @@
 import requests
+import codecs
 from bs4 import BeautifulSoup
+import re
+from collections import deque
 
 # URL - https://kabutan.jp/stock/?code=2502
 # query parameter - ?code=2502
@@ -43,3 +46,32 @@ print(result)
     # print(content)
 
 # company information: class = "company_block"
+print("\n\n=======================\n\n")
+# test grabbing kabutan news 決算速報
+newsURL = "https://kabutan.jp/stock/news?code=2502&nmode=2"
+newsPage = requests.get(newsURL)
+# div id="new_contents"
+# table class="s_news_list"
+
+soupNews = BeautifulSoup(newsPage.content, "html.parser")
+newsRaw = soupNews.find("table", class_ = "s_news_list")
+# linkRaw = soupNews.find_all("td", class_ = "ctg3_kk")
+timeRaw = soupNews.find_all("td", class_ = "news_time")
+aRaw = soupNews.select('table.s_news_list > tr')
+news = {'date': list(), 'link': list()}
+print(aRaw)
+
+for a in aRaw:
+    print("\n")
+    print(a.get_text().strip().split("\n\n"))
+    news['date'].append(" ".join(a.get_text().strip().split("\n\n")[0].split("\xa0")))
+    
+    for i in a.children:
+        if "href" in str(i):
+            news['link'].append(str(i).replace('/stock/news?', 'https://kabutan.jp/stock/news?').replace("&amp;", "&"))
+        
+print(news)
+
+# newsRaw.replace('/stock/news', 'https://kabutan.jp/stock/news')
+# print(newsRaw)
+

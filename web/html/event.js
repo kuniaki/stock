@@ -5,6 +5,9 @@ $("#btn-getinfo").click(function () {
   //
   //
   //
+
+  show(".loading-message");
+
   const infoPromised = getCompanyInfoPromise();
   const stockPromised = getStockPromise();
   const segementPromised = getSegmentPromise();
@@ -22,6 +25,7 @@ $("#btn-getinfo").click(function () {
       ? segementPromised.done(segmentPromiseDone)
       : hide(".rsegment");
     revenuePromised.done(revenuePromiseDone);
+    hide(".loading-message");
 
     console.log("\n!!!promises done!!!\n");
   });

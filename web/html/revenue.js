@@ -1,22 +1,3 @@
-// function getRevenueInfo() {
-
-//   $.ajax({
-//     url: `/api/v1/revenue?code=${$("#code").val()}&country=${$("#country").val()}`,
-//     type: "GET",
-//     async: true,
-//     cashe: false,
-//     dataType: "json",
-//     contentType: "application/json",
-//   })
-//     .done(function (result) {
-//       revenueChart(result);
-//     })
-//     .fail(function (result) {
-//       alert("Failed to load the information");
-//       console.log(result);
-//     });
-// }
-
 function getRevenuePromise() {
   return $.ajax({
     url: `/api/v1/revenue?code=${$("#code").val()}&country=${$(

@@ -10,3 +10,9 @@ select {
 .hidden {
   display: none;
 }
+
+.loading-mask {
+  display: none;
+  background-color: white;
+  position: relative;
+}
