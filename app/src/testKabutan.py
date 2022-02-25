@@ -48,7 +48,7 @@ print(result)
 # company information: class = "company_block"
 print("\n\n=======================\n\n")
 # test grabbing kabutan news 決算速報
-newsURL = "https://kabutan.jp/stock/news?code=2502&nmode=2"
+newsURL = "https://kabutan.jp/stock/news?code=2502&nmode=3"
 newsPage = requests.get(newsURL)
 # div id="new_contents"
 # table class="s_news_list"

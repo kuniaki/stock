@@ -180,16 +180,20 @@ def grabFromUrl(code):
 
   overview_url = "https://kabutan.jp/stock/?code=" + code;
   news_url = "https://kabutan.jp/stock/news?code=" + code + "&nmode=2"
+  disclosure_url = "https://kabutan.jp/stock/news?code=" + code + "&nmode=3"
   
   overview_page = requests.get(overview_url) # issue an HTTP GET requests to given URL
   news_page = requests.get(news_url)
+  disclosure_page = requests.get(disclosure_url)
   # retrieves HTML data that the server sends back and stores in Python object with type <class 'requests.models.Response'>
 
   overview_soup = BeautifulSoup(overview_page.content, "html.parser")
   news_soup = BeautifulSoup(news_page.content, "html.parser")
+  disclosure_soup = BeautifulSoup()
 
   info['overview'] = grabOverviewSoup(overview_soup)
-  info['news'] = grabNewsSoup(news_soup)
+  info['news'] = grabNewsSoup(news_soup, 2)
+  info['disclosure'] = grabNewsSoup(disclosure_page, 3)
 
   return info
 
@@ -211,7 +215,7 @@ def grabOverviewSoup(soup):
   return result
 
 # grab news info, return in dict form
-def grabNewsSoup(soup):
+def grabNewsSoup(soup, index):
   news_table = soup.select('table.s_news_list > tr')
 
   time = soup.select('table.s_news_list > tr > td.news_time')
@@ -222,8 +226,11 @@ def grabNewsSoup(soup):
     # news['date'].append(" ".join(date.get_text().strip().split("\n\n")[0].split("\xa0")))
     for link in date.children:
         if "href" in str(link):
+          if index == 2:
             news['link'].append(str(link).replace('/stock/news?', 'https://kabutan.jp/stock/news?').replace("&amp;", "&"))
-  
+          elif index == 3:
+            news['link'].append(str(link).replace('<img alt="pdf" src="/images/cmn/pdf16.gif"/>', '').replace(' target="pdf"', '').replace(' class="td_kaiji"', ''))
+            
   return news
 
 # Change pd.DataFrame to string

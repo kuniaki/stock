@@ -18,12 +18,13 @@ function getCompanyInfoPromise() {
 const infoPromiseDone = function (result) {
   console.log("loading company info...");
   fillInOverview(result["overview"], code);
-  fillInNews(result["news"]);
+  fillInNews(result["news"], ".news-body");
+  fillInNews(result["disclosure"], ".disclosure-body");
   show(".company-info");
 };
 
-function fillInNews(info) {
-  const newsTable = document.querySelector(".news-body");
+function fillInNews(info, identifier) {
+  const newsTable = document.querySelector(identifier);
   newsTable.innerHTML = "";
   for (let i = 0; i < info["date"].length; i++) {
     const rowHtml = `<tr>${info["date"][i]}${info["link"][i]}</tr>`;
