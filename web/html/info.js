@@ -21,15 +21,24 @@ const infoPromiseDone = function (result) {
   fillInOverview(result["overview"], code);
   fillInNews(result["news"], ".news-body");
   fillInNews(result["disclosure"], ".disclosure-body");
+  fillInCapital(result["capital"], ".capital-body");
   show(".company-info");
 };
 
+function fillInCapital(info, identifier) {
+  const table = document.querySelector(identifier);
+  table.innerHTML = "";
+  for (const row of info) {
+    table.insertAdjacentHTML("beforeend", row);
+  }
+}
+
 function fillInNews(info, identifier) {
-  const newsTable = document.querySelector(identifier);
-  newsTable.innerHTML = "";
+  const table = document.querySelector(identifier);
+  table.innerHTML = "";
   for (let i = 0; i < info["date"].length; i++) {
     const rowHtml = `<tr>${info["date"][i]}${info["link"][i]}</tr>`;
-    newsTable.insertAdjacentHTML("beforeend", rowHtml);
+    table.insertAdjacentHTML("beforeend", rowHtml);
   }
 }
 

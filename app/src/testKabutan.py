@@ -8,6 +8,8 @@ from collections import deque
 # query parameter - ?code=2502
 # code=2502 selects info about certain company
 
+'''
+
 URL = "https://kabutan.jp/stock/?code=2501"
 page = requests.get(URL) # issue an HTTP GET requests to given URL
 # retrieves HTML data that the server sends back and stores in Python object with type <class 'requests.models.Response'>
@@ -78,3 +80,17 @@ print(news)
 # newsRaw.replace('/stock/news', 'https://kabutan.jp/stock/news')
 # print(newsRaw)
 
+'''
+
+capitalURL = "https://kabutan.jp/stock/holder?code=2502"
+capital_page = requests.get(capitalURL)
+print(type(capital_page))
+capital_soup = BeautifulSoup(capital_page.content, "html.parser")
+
+capital_table = capital_soup.select('table.stock_holder_1 > tbody > tr')
+
+for i in capital_table:
+    print()
+    print(i)
+
+print(list(str(c).replace("/holder/lists/?", "https://kabutan.jp/holder/lists/?") for c in capital_table))

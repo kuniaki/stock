@@ -181,19 +181,24 @@ def grabFromUrl(code):
   overview_url = "https://kabutan.jp/stock/?code=" + code
   news_url = "https://kabutan.jp/stock/news?code=" + code + "&nmode=2"
   disclosure_url = "https://kabutan.jp/stock/news?code=" + code + "&nmode=3"
+  capital_url = "https://kabutan.jp/stock/holder?code=" + code
+
 
   overview_page = requests.get(overview_url) # issue an HTTP GET requests to given URL
   news_page = requests.get(news_url)
   disclosure_page = requests.get(disclosure_url)
+  capital_page = requests.get(capital_url)
   # retrieves HTML data that the server sends back and stores in Python object with type <class 'requests.models.Response'>
 
   overview_soup = BeautifulSoup(overview_page.content, "html.parser")
   news_soup = BeautifulSoup(news_page.content, "html.parser")
   disclosure_soup = BeautifulSoup(disclosure_page.content, "html.parser")
+  capital_soup = BeautifulSoup(capital_page.content, "html.parser")
 
   info['overview'] = grabOverviewSoup(overview_soup)
   info['news'] = grabNewsSoup(news_soup, 2)
   info['disclosure'] = grabNewsSoup(disclosure_soup, 3)
+  info['capital'] = grabCapitalSoup(capital_soup)
 
   return info
 
@@ -232,6 +237,12 @@ def grabNewsSoup(soup, index):
             news['link'].append(str(link).replace('<img alt="pdf" src="/images/cmn/pdf16.gif"/>', '').replace(' target="pdf"', '').replace(' class="td_kaiji"', ''))
 
   return news
+
+# grab capital info, return in dict form
+def grabCapitalSoup(soup):
+  capital_table = soup.select('table.stock_holder_1 > tbody > tr')
+  result = list(str(c).replace("/holder/lists/?", "https://kabutan.jp/holder/lists/?") for c in capital_table)
+  return result
 
 # Change pd.DataFrame to string
 def dateFormatter(data): 
