@@ -193,7 +193,7 @@ def grabFromUrl(code):
 
   info['overview'] = grabOverviewSoup(overview_soup)
   info['news'] = grabNewsSoup(news_soup, 2)
-  info['disclosure'] = grabNewsSoup(disclosure_page, 3)
+  info['disclosure'] = grabNewsSoup(disclosure_soup, 3)
 
   return info
 
@@ -230,7 +230,7 @@ def grabNewsSoup(soup, index):
             news['link'].append(str(link).replace('/stock/news?', 'https://kabutan.jp/stock/news?').replace("&amp;", "&"))
           elif index == 3:
             news['link'].append(str(link).replace('<img alt="pdf" src="/images/cmn/pdf16.gif"/>', '').replace(' target="pdf"', '').replace(' class="td_kaiji"', ''))
-            
+
   return news
 
 # Change pd.DataFrame to string

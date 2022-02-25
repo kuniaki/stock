@@ -70,7 +70,8 @@ for a in aRaw:
     
     for i in a.children:
         if "href" in str(i):
-            news['link'].append(str(i).replace('/stock/news?', 'https://kabutan.jp/stock/news?').replace("&amp;", "&"))
+            # news['link'].append(str(i).replace('/stock/news?', 'https://kabutan.jp/stock/news?').replace("&amp;", "&"))
+            news['link'].append(str(i).replace('<img alt="pdf" src="/images/cmn/pdf16.gif"/>', '').replace(' target="pdf"', '').replace(' class="td_kaiji"', ''))
         
 print(news)
 
