@@ -189,7 +189,7 @@ def grabFromUrl(code):
 
   overview_soup = BeautifulSoup(overview_page.content, "html.parser")
   news_soup = BeautifulSoup(news_page.content, "html.parser")
-  disclosure_soup = BeautifulSoup(disclosure_page, "html.parser")
+  disclosure_soup = BeautifulSoup(disclosure_page.content, "html.parser")
 
   info['overview'] = grabOverviewSoup(overview_soup)
   info['news'] = grabNewsSoup(news_soup, 2)
