@@ -17,6 +17,7 @@ function getCompanyInfoPromise() {
 
 const infoPromiseDone = function (result) {
   console.log("loading company info...");
+  console.log(result);
   fillInOverview(result["overview"], code);
   fillInNews(result["news"], ".news-body");
   fillInNews(result["disclosure"], ".disclosure-body");
