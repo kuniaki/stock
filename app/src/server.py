@@ -178,9 +178,10 @@ def grabFromUrl(code):
 
   info = {}
 
-  overview_url = "https://kabutan.jp/stock/?code=" + code;
+  overview_url = "https://kabutan.jp/stock/?code=" + code
   news_url = "https://kabutan.jp/stock/news?code=" + code + "&nmode=2"
   disclosure_url = "https://kabutan.jp/stock/news?code=" + code + "&nmode=3"
+  newsURL = "https://kabutan.jp/stock/news?code=2502&nmode=3"
   
   overview_page = requests.get(overview_url) # issue an HTTP GET requests to given URL
   news_page = requests.get(news_url)
@@ -226,10 +227,10 @@ def grabNewsSoup(soup, index):
     # news['date'].append(" ".join(date.get_text().strip().split("\n\n")[0].split("\xa0")))
     for link in date.children:
         if "href" in str(link):
-          if index == 2:
+          # if index == 2:
             news['link'].append(str(link).replace('/stock/news?', 'https://kabutan.jp/stock/news?').replace("&amp;", "&"))
-          elif index == 3:
-            news['link'].append(str(link).replace('<img alt="pdf" src="/images/cmn/pdf16.gif"/>', '').replace(' target="pdf"', '').replace(' class="td_kaiji"', ''))
+          # elif index == 3:
+            # news['link'].append(str(link).replace('<img alt="pdf" src="/images/cmn/pdf16.gif"/>', '').replace(' target="pdf"', '').replace(' class="td_kaiji"', ''))
 
   return news
 
