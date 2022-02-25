@@ -3,7 +3,7 @@
 function show(identifier) {
   const item = document.querySelectorAll(identifier);
   for (const i of item) {
-    if (!i.classList.contains("hidden")) {
+    if (i.classList.contains("hidden")) {
       i.classList.remove("hidden");
     }
   }
