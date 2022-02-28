@@ -1,0 +1,12 @@
+input {
+  width: 140px;
+  margin: 10px;
+}
+
+select {
+  margin: 10px;
+}
+
+.hidden {
+  display: none;
+}

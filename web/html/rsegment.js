@@ -1,27 +1,39 @@
-google.charts.load("current", { packages: ["corechart"] });
+// function getRSegmentInfo() {
+//   $.ajax({
+//     url: "/api/v1/rsegment",
+//     type: "GET",
+//     async: true,
+//     cashe: false,
+//     dataType: "json",
+//     contentType: "application/json",
+//   })
+//     .done(function (result) {
+//       rSegmentChart(result);
+//     })
+//     .fail(function (result) {
+//       alert("Failed to load the information");
+//       console.log(result);
+//     });
+// }
 
-function getRSegmentInfo() {
-  //   var that = $(this);
-  //   that.off("click");
-
-  $.ajax({
-    url: "//www.jenkins-asahi.com/api/v1/rsegment",
+function getSegmentPromise() {
+  return $.ajax({
+    url: "/api/v1/rsegment",
     type: "GET",
     async: true,
     cashe: false,
     dataType: "json",
     contentType: "application/json",
-  })
-    .done(function (result) {
-      rSegmentChart(result);
-    })
-    // .always(function () {
-    //   that.on("click", getRSegmentInfo);
-    // })
-    .fail(function (result) {
-      alert("Failed to load the information");
-      console.log(result);
-    });
+  }).fail(function (result) {
+    alert("Failed to load the information");
+    console.log(result);
+  });
+}
+
+function segmentPromiseDone(result) {
+  console.log("running segment graph...");
+  rSegmentChart(result);
+  show(".rsegment");
 }
 
 function rSegmentChart(result) {

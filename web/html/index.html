@@ -6,26 +6,43 @@
     <meta charset="utf-8">
     <title>Chart</title>
     <!--- デザインに関する規定はこれしかないので、cssファイルではなくstyleタグに記述 --->
-    <style>
-        input {
-            width: 140px;
-            margin: 10px;
-        }
-
-        select {
-            margin: 10px;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <p><label>code:<input value="2502" type="text" maxlength="4" id='code'>
             <label>country:<input value="japan" type="text" maxlength="10" id='country'>
                 <button id='btn-getinfo'>Get Info</button></label></label></label></label></p>
+    <div class='company-info hidden'>
+        <div class="company-overview">
+            <table class="overview-table">
+                <thead>
+                    <tr class="row row-header">
+                        <td rowspan="2"></td>
+                        <th colspan="2" scope="colgroup" id="company-name-code"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="row row-1">
+                        <th class="row-1 col-0">企業概要</td>
+                        <td class="row-1 col-1"></td>
+                    </tr>
+                    <tr class="row row-2">
+                        <th class="row-2 col-0">業種</td>
+                        <td class="row-2 col-1"></td>
+                    </tr>
+                    <tr class="row row-3">
+                        <th  class="row-3 col-0">商品</td>
+                        <td class="row-3 col-1"></td>
+                    </tr>
+                    <tr class="row row-4">
+                        <th class="row-4 col-0">企業サイト</td>
+                        <td class="row-4 col-1"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <div id='append1year'></div>
     <div id='append5year'></div>
     <div class='rsegment hidden'></div>
@@ -38,6 +55,8 @@
     <!--- ここでGoogle Chartの読み込み --->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="event.js" defer></script>
+    <script type="text/javascript" src = "tools.js"></script>
+    <script type="text/javascript" src = "info.js"></script>
     <script type="text/javascript" src="rsegment.js"></script>
     <script type="text/javascript" src="chart.js"></script>
     <script type="text/javascript" src="revenue.js"></script>

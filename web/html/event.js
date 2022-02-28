@@ -1,29 +1,28 @@
 google.charts.load("current", { packages: ["corechart"] });
-const segmentDiv = document.querySelector(".hidden");
 
 $("#btn-getinfo").click(function () {
-  console.log("running stock graph...");
-  getStock();
-  if ($("#code").val() == 2502) {
-    console.log("running segment graph...");
-    getRSegmentInfo();
-    addSegment();
-  } else {
-    removeSegment();
-  }
-  getRevenueInfo();
+  // need to define a function to cleanup all html graph & tables
+  //
+  //
+  //
+  const infoPromised = getCompanyInfoPromise();
+  const stockPromised = getStockPromise();
+  const segementPromised = getSegmentPromise();
+  const revenuePromised = getRevenuePromise();
+
+  Promise.all([
+    infoPromised,
+    stockPromised,
+    segementPromised,
+    revenuePromised,
+  ]).then(() => {
+    infoPromised.done(infoPromiseDone);
+    stockPromised.done(stockPromiseDone);
+    $("#code").val() == 2502
+      ? segementPromised.done(segmentPromiseDone)
+      : hide(".rsegment");
+    revenuePromised.done(revenuePromiseDone);
+
+    console.log("\n!!!promises done!!!\n");
+  });
 });
-
-function addSegment() {
-  if (segmentDiv.classList.contains("hidden")) {
-    console.log("...segment graph added...");
-    segmentDiv.classList.remove("hidden");
-  }
-}
-
-function removeSegment() {
-  if (!segmentDiv.classList.contains("hidden")) {
-    console.log("...segment graph removed...");
-    segmentDiv.classList.add("hidden");
-  }
-}

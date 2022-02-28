@@ -1,9 +1,4 @@
-google.charts.load("current", { packages: ["corechart"] });
-
-function getStock() {
-  var code = $("#code").val();
-  var countryc = $("#country").val();
-
+function getStockPromise() {
   date = new Date();
   year = date.getFullYear();
   month = date.getMonth() + 1;
@@ -13,15 +8,12 @@ function getStock() {
   day1 = date.getDate();
   dates = day1 + "/" + month + "/" + year5;
 
-  //   var that = $(this);
-  //   that.off("click");
-
-  $.ajax({
+  return $.ajax({
     url:
-      "//www.jenkins-asahi.com/api/v1/stock?code=" +
-      code +
+      "/api/v1/stock?code=" +
+      $("#code").val() +
       "&country=" +
-      countryc +
+      $("#country").val() +
       "&from_date=" +
       dates +
       "&to_date=" +
@@ -31,18 +23,16 @@ function getStock() {
     cashe: false,
     dataType: "json",
     contentType: "application/json",
-  })
-    .done(function (result) {
-      mainChart(result);
-    })
-    // .always(function () {
-    //   that.on("click", getStock);
-    // })
-    .fail(function (result) {
-      alert("Failed to load the information");
-      console.log(result);
-    });
+  }).fail(function (result) {
+    alert("Stock - Failed to load the information");
+    console.log(result);
+  });
 }
+
+const stockPromiseDone = function (result) {
+  console.log("running stock graph...");
+  mainChart(result);
+};
 
 function oneYearAgo() {
   date = new Date();
