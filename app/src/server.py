@@ -199,6 +199,7 @@ def grabFromUrl(code):
   info['news'] = grabNewsSoup(news_soup, 2)
   info['disclosure'] = grabNewsSoup(disclosure_soup, 3)
   info['capital'] = grabCapitalSoup(capital_soup)
+  # test if works fine
 
   return info
 
