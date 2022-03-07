@@ -82,6 +82,8 @@ print(news)
 
 '''
 
+# test kabutan capital scrapping
+'''
 capitalURL = "https://kabutan.jp/stock/holder?code=2502"
 capital_page = requests.get(capitalURL)
 print(type(capital_page))
@@ -94,3 +96,17 @@ for i in capital_table:
     print(i)
 
 print(list(str(c).replace("/holder/lists/?", "https://kabutan.jp/holder/lists/?") for c in capital_table))
+'''
+
+ulletNewsUrl = "https://www.ullet.com/2502.html#news"
+ulletNewsPage = requests.get(ulletNewsUrl)
+ulletNewsSoup = BeautifulSoup(ulletNewsPage.content, "html.parser")
+
+ulletNews = ulletNewsSoup.select('div.news_item > h3 > a')
+# ulletNews = ulletNewsSoup.findAll("div", class_ = "news_item")
+
+for i in ulletNews:
+    print(str(i).replace('<img alt="link.gif" height="13" src="https://www.ullet.com/img/icon/link.gif?218" width="13"/>', ''))
+    print()
+
+print(len(ulletNews))

@@ -22,6 +22,7 @@ const infoPromiseDone = function (result) {
   fillInNews(result["news"], ".news-body");
   fillInNews(result["disclosure"], ".disclosure-body");
   fillInCapital(result["capital"], ".capital-body");
+  fillInUlletNews(result["ulletnews"], ".ullet-news");
   show(".company-info");
 };
 
@@ -43,7 +44,6 @@ function fillInNews(info, identifier) {
 }
 
 function fillInOverview(info, code) {
-  console.log();
   const rowHeader = document.querySelector("#company-name-code");
   const row1col1 = document.querySelector(".row-1.col-1");
   const row2col1 = document.querySelector(".row-2.col-1");
@@ -55,4 +55,10 @@ function fillInOverview(info, code) {
   row2col1.textContent = info["業種"];
   row3col1.textContent = info["テーマ"];
   row4col1.textContent = info["会社サイト"];
+}
+
+function fillInUlletNews(info, identifier) {
+  const ulletNews = document.querySelector(identifier);
+  ulletNews.innerHTML = "";
+  info.forEach((item) => ulletNews.insertAdjacentHTML("beforeend", item));
 }

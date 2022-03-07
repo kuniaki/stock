@@ -178,27 +178,34 @@ def grabFromUrl(code):
 
   info = {}
 
-  overview_url = "https://kabutan.jp/stock/?code=" + code
-  news_url = "https://kabutan.jp/stock/news?code=" + code + "&nmode=2"
-  disclosure_url = "https://kabutan.jp/stock/news?code=" + code + "&nmode=3"
-  capital_url = "https://kabutan.jp/stock/holder?code=" + code
+  kabutan_overview_url = "https://kabutan.jp/stock/?code=" + code
+  kabutan_news_url = "https://kabutan.jp/stock/news?code=" + code + "&nmode=2"
+  kabutan_disclosure_url = "https://kabutan.jp/stock/news?code=" + code + "&nmode=3"
+  kabutan_capital_url = "https://kabutan.jp/stock/holder?code=" + code
+  
+  ullet_news_url = "https://www.ullet.com/" + code + ".html#news"
 
 
-  overview_page = requests.get(overview_url) # issue an HTTP GET requests to given URL
-  news_page = requests.get(news_url)
-  disclosure_page = requests.get(disclosure_url)
-  capital_page = requests.get(capital_url)
+  kabutan_overview_page = requests.get(kabutan_overview_url) # issue an HTTP GET requests to given URL
+  kabutan_news_page = requests.get(kabutan_news_url)
+  kabutan_disclosure_page = requests.get(kabutan_disclosure_url)
+  kabutan_capital_page = requests.get(kabutan_capital_url)
+
+  ullet_news_page = requests.get(ullet_news_url)
   # retrieves HTML data that the server sends back and stores in Python object with type <class 'requests.models.Response'>
 
-  overview_soup = BeautifulSoup(overview_page.content, "html.parser")
-  news_soup = BeautifulSoup(news_page.content, "html.parser")
-  disclosure_soup = BeautifulSoup(disclosure_page.content, "html.parser")
-  capital_soup = BeautifulSoup(capital_page.content, "html.parser")
+  kabutan_overview_soup = BeautifulSoup(kabutan_overview_page.content, "html.parser")
+  kabutan_news_soup = BeautifulSoup(kabutan_news_page.content, "html.parser")
+  kabutan_disclosure_soup = BeautifulSoup(kabutan_disclosure_page.content, "html.parser")
+  kabutan_capital_soup = BeautifulSoup(kabutan_capital_page.content, "html.parser")
 
-  info['overview'] = grabOverviewSoup(overview_soup)
-  info['news'] = grabNewsSoup(news_soup, 2)
-  info['disclosure'] = grabNewsSoup(disclosure_soup, 3)
-  info['capital'] = grabCapitalSoup(capital_soup)
+  ullet_news_soup = BeautifulSoup(ullet_news_page, "html.parser")
+
+  info['overview'] = grabOverviewSoup(kabutan_overview_soup)
+  info['news'] = grabNewsSoup(kabutan_news_soup, 2)
+  info['disclosure'] = grabNewsSoup(kabutan_disclosure_soup, 3)
+  info['capital'] = grabCapitalSoup(kabutan_capital_soup)
+  info['ulletnews'] = grabNewsUlletSoup(ullet_news_soup)
   # test if works fine
 
   return info
@@ -243,6 +250,12 @@ def grabNewsSoup(soup, index):
 def grabCapitalSoup(soup):
   capital_table = soup.select('table.stock_holder_1 > tbody > tr')
   result = list(str(c).replace("/holder/lists/?", "https://kabutan.jp/holder/lists/?") for c in capital_table)
+  return result
+
+# grab news from ullet, return in dict form
+def grabNewsUlletSoup(soup):
+  ullet_news = soup.select('div.news_item > h3 > a')
+  result = list(str(i).replace('<img alt="link.gif" height="13" src="https://www.ullet.com/img/icon/link.gif?218" width="13"/>', '') for i in ullet_news)
   return result
 
 # Change pd.DataFrame to string
