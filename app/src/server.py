@@ -183,15 +183,16 @@ def grabFromUrl(code):
   kabutan_disclosure_url = "https://kabutan.jp/stock/news?code=" + code + "&nmode=3"
   kabutan_capital_url = "https://kabutan.jp/stock/holder?code=" + code
   
+  #https://www.ullet.com/2502.html#news
   # ullet_news_url = "https://www.ullet.com/" + code + ".html#news"
-
+  ullet_news_url = "https://www.ullet.com/2502.html#news"
 
   kabutan_overview_page = requests.get(kabutan_overview_url) # issue an HTTP GET requests to given URL
   kabutan_news_page = requests.get(kabutan_news_url)
   kabutan_disclosure_page = requests.get(kabutan_disclosure_url)
   kabutan_capital_page = requests.get(kabutan_capital_url)
 
-  # ullet_news_page = requests.get(ullet_news_url)
+  ullet_news_page = requests.get(ullet_news_url)
   # retrieves HTML data that the server sends back and stores in Python object with type <class 'requests.models.Response'>
 
   kabutan_overview_soup = BeautifulSoup(kabutan_overview_page.content, "html.parser")
@@ -199,7 +200,7 @@ def grabFromUrl(code):
   kabutan_disclosure_soup = BeautifulSoup(kabutan_disclosure_page.content, "html.parser")
   kabutan_capital_soup = BeautifulSoup(kabutan_capital_page.content, "html.parser")
 
-  # ullet_news_soup = BeautifulSoup(ullet_news_page, "html.parser")
+  ullet_news_soup = BeautifulSoup(ullet_news_page, "html.parser")
 
   info['overview'] = grabOverviewSoup(kabutan_overview_soup)
   info['news'] = grabNewsSoup(kabutan_news_soup, 2)
