@@ -102,7 +102,7 @@ ulletNewsUrl = "https://www.ullet.com/2502.html#news"
 ulletNewsPage = requests.get(ulletNewsUrl)
 ulletNewsSoup = BeautifulSoup(ulletNewsPage.content, "html.parser")
 
-ulletNews = ulletNewsSoup.select('div.news_item > h3 > a')
+ulletNews = ulletNewsSoup.select('div.news_item > h3')
 # ulletNews = ulletNewsSoup.findAll("div", class_ = "news_item")
 
 for i in ulletNews:

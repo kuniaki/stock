@@ -22,7 +22,7 @@ const infoPromiseDone = function (result) {
   fillInNews(result["news"], ".news-body");
   fillInNews(result["disclosure"], ".disclosure-body");
   fillInCapital(result["capital"], ".capital-body");
-  //fillInUlletNews(result["ulletnews"], ".ullet-news");
+  fillInUlletNews(result["ulletnews"], ".ullet-news");
   show(".company-info");
 };
 
@@ -60,5 +60,7 @@ function fillInOverview(info, code) {
 function fillInUlletNews(info, identifier) {
   const ulletNews = document.querySelector(identifier);
   ulletNews.innerHTML = "";
-  info.forEach((item) => ulletNews.insertAdjacentHTML("beforeend", item));
+  info.forEach((item) =>
+    ulletNews.insertAdjacentHTML("beforeend", "<p>" + item + "</p>")
+  );
 }

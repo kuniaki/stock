@@ -183,9 +183,7 @@ def grabFromUrl(code):
   kabutan_disclosure_url = "https://kabutan.jp/stock/news?code=" + code + "&nmode=3"
   kabutan_capital_url = "https://kabutan.jp/stock/holder?code=" + code
   
-  #https://www.ullet.com/2502.html#news
   ullet_news_url = "https://www.ullet.com/" + code + ".html#news"
-  # ullet_news_url = "https://www.ullet.com/2502.html#news"
 
   kabutan_overview_page = requests.get(kabutan_overview_url) # issue an HTTP GET requests to given URL
   kabutan_news_page = requests.get(kabutan_news_url)
@@ -255,8 +253,8 @@ def grabCapitalSoup(soup):
 
 # grab news from ullet, return in dict form
 def grabNewsUlletSoup(soup):
-  ullet_news = soup.select('div.news_item > h3 > a')
-  result = list(str(i).replace('<img alt="link.gif" height="13" src="https://www.ullet.com/img/icon/link.gif?218" width="13"/>', '') for i in ullet_news)
+  ullet_news = soup.select('div.news_item > h3')
+  result = list(str(i).replace('<img alt="link.gif" height="13" src="https://www.ullet.com/img/icon/link.gif?218" width="13"/>', '').replace('h3', 'p') for i in ullet_news)
   return result
 
 # Change pd.DataFrame to string
