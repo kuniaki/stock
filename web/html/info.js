@@ -37,7 +37,7 @@ function fillInCapital(info, identifier) {
 function fillInNews(info, identifier) {
   const table = document.querySelector(identifier);
   table.innerHTML = "";
-  for (let i = 0; i < info["date"].length; i++) {
+  for (let i = 0; i < info["date"].length && i < 10; i++) {
     const rowHtml = `<tr>${info["date"][i]}${info["link"][i]}</tr>`;
     table.insertAdjacentHTML("beforeend", rowHtml);
   }
