@@ -205,7 +205,7 @@ def grabFromUrl(code):
   info['news'] = grabNewsSoup(kabutan_news_soup, 2)
   info['disclosure'] = grabNewsSoup(kabutan_disclosure_soup, 3)
   info['capital'] = grabCapitalSoup(kabutan_capital_soup)
-  info['ulletnews'] = grabNewsUlletSoup(ullet_news_soup)
+  #info['ulletnews'] = grabNewsUlletSoup(ullet_news_soup)
   # test if works fine
 
   return info
