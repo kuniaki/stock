@@ -254,7 +254,12 @@ def grabCapitalSoup(soup):
 # grab news from ullet, return in dict form
 def grabNewsUlletSoup(soup):
   ullet_news = soup.select('div.news_item > h3')
-  result = list(str(i).replace('<img alt="link.gif" height="13" src="https://www.ullet.com/img/icon/link.gif?218" width="13"/>', '').replace('h3', 'p') for i in ullet_news)
+  # result = list(str(i).replace('<img alt="link.gif" height="13" src="https://www.ullet.com/img/icon/link.gif?218" width="13"/>', '').replace('h3', 'p') for i in ullet_news)
+  result = {'date': list(), 'link': list()}
+  for item in ullet_news:
+    temp = str(item).replace('<img alt="link.gif" height="13" src="https://www.ullet.com/img/icon/link.gif?218" width="13"/>', '').replace('<h3>', '').replace('･</h3>', '').split('</a> ')
+    result['link'].append('<td>' + temp[0] + '</a></td>')
+    result['date'].append('<td class="ullet-news-time">' + temp[1] + '</td>')
   return result
 
 # Change pd.DataFrame to string

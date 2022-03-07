@@ -105,8 +105,19 @@ ulletNewsSoup = BeautifulSoup(ulletNewsPage.content, "html.parser")
 ulletNews = ulletNewsSoup.select('div.news_item > h3')
 # ulletNews = ulletNewsSoup.findAll("div", class_ = "news_item")
 
+
+result = {'date': list(), 'link': list()}
 for i in ulletNews:
-    print(str(i).replace('<img alt="link.gif" height="13" src="https://www.ullet.com/img/icon/link.gif?218" width="13"/>', ''))
+    temp = str(i).replace('<img alt="link.gif" height="13" src="https://www.ullet.com/img/icon/link.gif?218" width="13"/>', '').replace('<h3>', '').replace('･</h3>', '').split('</a> ')
+    result['link'].append('<td>' + temp[0] + '</a></td>')
+    result['date'].append('<td class="ullet-news-time">' + temp[1] + '</td>')
+    print(temp)
     print()
 
 print(len(ulletNews))
+print(result)
+
+'''
+<td class="news-time"><time datetime="2022-02-24T08:00:00+09:00">22/02/24 08:00</time></td>
+<td><a href="https://kabutan.jp/disclosures/pdf/20220224/140120220222594407/">CONVOCATION NOTICE OF THE 98th ANNUAL GENERAL MEETING OF SHAREHOLDERS</a></td>
+'''
