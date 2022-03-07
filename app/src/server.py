@@ -184,8 +184,8 @@ def grabFromUrl(code):
   kabutan_capital_url = "https://kabutan.jp/stock/holder?code=" + code
   
   #https://www.ullet.com/2502.html#news
-  # ullet_news_url = "https://www.ullet.com/" + code + ".html#news"
-  ullet_news_url = "https://www.ullet.com/2502.html#news"
+  ullet_news_url = "https://www.ullet.com/" + code + ".html#news"
+  # ullet_news_url = "https://www.ullet.com/2502.html#news"
 
   kabutan_overview_page = requests.get(kabutan_overview_url) # issue an HTTP GET requests to given URL
   kabutan_news_page = requests.get(kabutan_news_url)
@@ -200,13 +200,13 @@ def grabFromUrl(code):
   kabutan_disclosure_soup = BeautifulSoup(kabutan_disclosure_page.content, "html.parser")
   kabutan_capital_soup = BeautifulSoup(kabutan_capital_page.content, "html.parser")
 
-  ullet_news_soup = BeautifulSoup(ullet_news_page, "html.parser")
+  ullet_news_soup = BeautifulSoup(ullet_news_page.content, "html.parser")
 
   info['overview'] = grabOverviewSoup(kabutan_overview_soup)
   info['news'] = grabNewsSoup(kabutan_news_soup, 2)
   info['disclosure'] = grabNewsSoup(kabutan_disclosure_soup, 3)
   info['capital'] = grabCapitalSoup(kabutan_capital_soup)
-  #info['ulletnews'] = grabNewsUlletSoup(ullet_news_soup)
+  info['ulletnews'] = grabNewsUlletSoup(ullet_news_soup)
   # test if works fine
 
   return info
