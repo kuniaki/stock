@@ -23,6 +23,8 @@ const infoPromiseDone = function (result) {
   fillInNews(result["disclosure"], ".disclosure-body");
   fillInCapital(result["capital"], ".capital-body");
   fillInNews(result["ulletnews"], ".ullet-news-body");
+  fillInNews(result["ulletfeeds"], ".ullet-feeds-body");
+  fillInStakeholder(result[("ulletstakeholder", ".ullet-stakeholder")]);
   show(".company-info");
 };
 
@@ -57,10 +59,11 @@ function fillInOverview(info, code) {
   row4col1.textContent = info["会社サイト"];
 }
 
-// function fillInUlletNews(info, identifier) {
-//   const ulletNews = document.querySelector(identifier);
-//   ulletNews.innerHTML = "";
-//   info.forEach((item) => {
-//     ulletNews.insertAdjacentHTML("beforeend", "<p>" + item + "</p>");
-//   });
-// }
+function fillInStakeholder(info, identifier) {
+  const item = document.querySelector(identifier);
+  item.innerHTML = "";
+  item.insertAdjacentHTML(
+    "beforeend",
+    `<a class="ullet-stakeholder-link" href=${info}>Click here for more</a>`
+  );
+}

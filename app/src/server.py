@@ -185,6 +185,7 @@ def grabFromUrl(code):
   
   ullet_news_url = "https://www.ullet.com/" + code + ".html#news"
   ullet_feeds_url = "https://www.ullet.com/" + code + ".html#feed"
+  ullet_stakeholders = "https://www.ullet.com/" + code + ".html#official"
 
   kabutan_overview_page = requests.get(kabutan_overview_url) # issue an HTTP GET requests to given URL
   kabutan_news_page = requests.get(kabutan_news_url)
@@ -209,6 +210,7 @@ def grabFromUrl(code):
   info['capital'] = grabCapitalSoup(kabutan_capital_soup)
   info['ulletnews'] = grabNewsUlletSoup(ullet_news_soup, "news")
   info['ulletfeeds'] = grabNewsUlletSoup(ullet_feeds_soup, "feeds")
+  info['ulletstakeholder'] = ullet_stakeholders
 
   return info
 
