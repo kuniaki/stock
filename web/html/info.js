@@ -24,7 +24,7 @@ const infoPromiseDone = function (result) {
   fillInCapital(result["capital"], ".capital-body");
   fillInNews(result["ulletnews"], ".ullet-news-body");
   fillInNews(result["ulletfeeds"], ".ullet-feeds-body");
-  fillInStakeholder(result[("ulletstakeholder", ".ullet-stakeholder")]);
+  fillInStakeholder(result[("ulletstakeholder", ".ullet-stakeholder-fill")]);
   show(".company-info");
 };
 
