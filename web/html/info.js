@@ -65,6 +65,6 @@ function fillInStakeholder(info, identifier) {
   item.innerHTML = "";
   item.insertAdjacentHTML(
     "beforeend",
-    `<a class="ullet-stakeholder-link" href=${info}>Click here for more</a>`
+    `<a class="ullet-stakeholder-link" target="_blank" rel="noopener noreferrer" href=${info}>Click here for more</a>`
   );
 }
