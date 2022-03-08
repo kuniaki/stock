@@ -19,11 +19,11 @@ const infoPromiseDone = function (result) {
   console.log("loading company info...");
   console.log(result);
   fillInOverview(result["overview"], code);
-  fillInNews(result["news"], ".news-body");
-  fillInNews(result["disclosure"], ".disclosure-body");
+  fillInNews(result["news"], ".news-body", "news-table");
+  fillInNews(result["disclosure"], ".disclosure-body", "disclosure-table");
   fillInCapital(result["capital"], ".capital-body");
-  fillInNews(result["ulletnews"], ".ullet-news-body");
-  fillInNews(result["ulletfeeds"], ".ullet-feeds-body");
+  fillInNews(result["ulletnews"], ".ullet-news-body", "ullet-news-table");
+  fillInNews(result["ulletfeeds"], ".ullet-feeds-body", "ullet-feeds-table");
   fillInStakeholder(result["ulletstakeholder"], ".ullet-stakeholder-fill");
   show(".company-info");
 };
@@ -36,13 +36,12 @@ function fillInCapital(info, identifier) {
   }
 }
 
-function fillInNews(info, identifier) {
+function fillInNews(info, identifier, tableName) {
   const table = document.querySelector(identifier);
-  const tableParent = table.parentElement;
   table.innerHTML = "";
   // <td><input type="button" value="Delete" class="delete" onclick="deleteRow()"></td>
   for (let i = 0; i < info["date"].length && i < 10; i++) {
-    const buttonHtml = `<td><input type="button" value="Delete" class="delete" onclick="deleteRow(${i})"></td>`;
+    const buttonHtml = `<td><input type="button" value="Delete" class="delete" onclick="deleteRow(${tableName}, ${i})"></td>`;
     const rowHtml = `<tr class="row-${i}">${buttonHtml}${info["date"][i]}${info["link"][i]}</tr>`;
     table.insertAdjacentHTML("beforeend", rowHtml);
   }
@@ -71,4 +70,7 @@ function fillInStakeholder(info, identifier) {
   );
 }
 
-function deleteRow(index) {}
+function deleteRow(tableName, index) {
+  const table = document.getElementById(tableName);
+  table.deleteRow(+index);
+}
