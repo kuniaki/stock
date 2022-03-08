@@ -1,4 +1,4 @@
-const btnKabutanNewsDelete = document.getElementById("news-delete-button");
+const btnKabutanNewsDelete = document.getElementById("btn-kabutan-news-delete");
 const btnKabutanDisDelete = document.getElementById("btn-kabutan-dis-delete");
 const btnUlletNewsDelete = document.getElementById("btn-ullet-news-delete");
 const btnUlletFeedsDelete = document.getElementById("btn-ullet-feeds-delete");
@@ -10,17 +10,17 @@ btnKabutanNewsDelete.addEventListener("click", function (e) {
 
 btnKabutanDisDelete.addEventListener("click", function (e) {
   e.preventDefault();
-  removeCheckbox("kabutan-dis-check", "disclosure-table");
+  removeCheckbox(".kabutan-dis-check", "disclosure-table");
 });
 
 btnUlletNewsDelete.addEventListener("click", function (e) {
   e.preventDefault();
-  removeCheckbox("ullet-news-check", "ullet-news-table");
+  removeCheckbox(".ullet-news-check", "ullet-news-table");
 });
 
 btnUlletFeedsDelete.addEventListener("click", function (e) {
   e.preventDefault();
-  removeCheckbox("ullet-feeds-check", "ullet-feeds-table");
+  removeCheckbox(".ullet-feeds-check", "ullet-feeds-table");
 });
 
 function removeCheckbox(boxId, tableClass) {
