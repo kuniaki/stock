@@ -38,10 +38,12 @@ function fillInCapital(info, identifier) {
 
 function fillInNews(info, identifier) {
   const table = document.querySelector(identifier);
+  const tableParent = table.parentElement;
   table.innerHTML = "";
   // <td><input type="button" value="Delete" class="delete" onclick="deleteRow()"></td>
   for (let i = 0; i < info["date"].length && i < 10; i++) {
-    const rowHtml = `<tr>${info["date"][i]}${info["link"][i]}</tr>`;
+    const buttonHtml = `<td><input type="button" value="Delete" class="delete" onclick="deleteRow(${i})"></td>`;
+    const rowHtml = `<tr class="row-${i}">${buttonHtml}${info["date"][i]}${info["link"][i]}</tr>`;
     table.insertAdjacentHTML("beforeend", rowHtml);
   }
 }
@@ -69,4 +71,4 @@ function fillInStakeholder(info, identifier) {
   );
 }
 
-function deleteRow() {}
+function deleteRow(index) {}
