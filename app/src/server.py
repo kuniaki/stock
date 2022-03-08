@@ -184,6 +184,7 @@ def grabFromUrl(code):
   kabutan_capital_url = "https://kabutan.jp/stock/holder?code=" + code
   
   ullet_news_url = "https://www.ullet.com/" + code + ".html#news"
+  ullet_feeds_url = "https://www.ullet.com/" + code + ".html#feed"
 
   kabutan_overview_page = requests.get(kabutan_overview_url) # issue an HTTP GET requests to given URL
   kabutan_news_page = requests.get(kabutan_news_url)
@@ -191,6 +192,7 @@ def grabFromUrl(code):
   kabutan_capital_page = requests.get(kabutan_capital_url)
 
   ullet_news_page = requests.get(ullet_news_url)
+  ullet_feeds_page = requests.get(ullet_feeds_url)
   # retrieves HTML data that the server sends back and stores in Python object with type <class 'requests.models.Response'>
 
   kabutan_overview_soup = BeautifulSoup(kabutan_overview_page.content, "html.parser")
@@ -199,13 +201,14 @@ def grabFromUrl(code):
   kabutan_capital_soup = BeautifulSoup(kabutan_capital_page.content, "html.parser")
 
   ullet_news_soup = BeautifulSoup(ullet_news_page.content, "html.parser")
+  ullet_feeds_soup = BeautifulSoup(ullet_feeds_page.content, "html.parser")
 
   info['overview'] = grabOverviewSoup(kabutan_overview_soup)
   info['news'] = grabNewsSoup(kabutan_news_soup, 2)
   info['disclosure'] = grabNewsSoup(kabutan_disclosure_soup, 3)
   info['capital'] = grabCapitalSoup(kabutan_capital_soup)
-  info['ulletnews'] = grabNewsUlletSoup(ullet_news_soup)
-  # test if works fine
+  info['ulletnews'] = grabNewsUlletSoup(ullet_news_soup, "news")
+  info['ulletfeeds'] = grabNewsUlletSoup(ullet_feeds_soup, "feeds")
 
   return info
 
@@ -252,9 +255,13 @@ def grabCapitalSoup(soup):
   return result
 
 # grab news from ullet, return in dict form
-def grabNewsUlletSoup(soup):
-  ullet_news = soup.select('div.news_item > h3')
-  # result = list(str(i).replace('<img alt="link.gif" height="13" src="https://www.ullet.com/img/icon/link.gif?218" width="13"/>', '').replace('h3', 'p') for i in ullet_news)
+def grabNewsUlletSoup(soup, item):
+  ullet_news = None
+  if (item == "news"):
+    ullet_news = soup.select('div.news_item > h3')
+  else: 
+    ullet_news = soup.select('div.feed_item > h3')
+
   result = {'date': list(), 'link': list()}
   for item in ullet_news:
     temp = str(item).replace('<img alt="link.gif" height="13" src="https://www.ullet.com/img/icon/link.gif?218" width="13"/>', '').replace('<h3>', '').replace('･</h3>', '').split('</a> ')
