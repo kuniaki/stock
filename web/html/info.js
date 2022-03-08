@@ -39,9 +39,7 @@ function fillInCapital(info, identifier) {
 function fillInNews(info, identifier, className) {
   const table = document.querySelector(identifier);
   table.innerHTML = "";
-  // <td><input type="button" value="Delete" class="delete" onclick="deleteRow()"></td>
   for (let i = 0; i < info["date"].length && i < 10; i++) {
-    // const buttonHtml = `<td><input type="button" value="Delete" class="delete" onclick="deleteTableRow("${tableName}", ${i})"></td>`;
     const checkbox = `<td><input class="${className}" type="checkbox" name="row${i}" value=${i}></td>`;
     const rowHtml = `<tr>${checkbox}${info["date"][i]}${info["link"][i]}</tr>`;
     table.insertAdjacentHTML("beforeend", rowHtml);

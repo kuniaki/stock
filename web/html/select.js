@@ -28,14 +28,6 @@ function removeCheckbox(boxId, tableClass) {
   document.querySelectorAll(boxId).forEach((row) => {
     row.checked === true ? deleteTableRow(tableClass, trace) : trace++;
   });
-
-  //   for (let row of document.querySelectorAll(boxId)) {
-  //     if (row.checked === true) {
-  //       deleteTableRow(tableClass, trace);
-  //     } else {
-  //       trace++;
-  //     }
-  //   }
 }
 
 function deleteTableRow(tableClass, rowNum) {
