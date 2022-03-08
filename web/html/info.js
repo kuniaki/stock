@@ -41,8 +41,9 @@ function fillInNews(info, identifier, tableName) {
   table.innerHTML = "";
   // <td><input type="button" value="Delete" class="delete" onclick="deleteRow()"></td>
   for (let i = 0; i < info["date"].length && i < 10; i++) {
-    const buttonHtml = `<td><input type="button" value="Delete" class="delete" onclick="deleteRow(${tableName}, ${i})"></td>`;
-    const rowHtml = `<tr class="row-${i}">${buttonHtml}${info["date"][i]}${info["link"][i]}</tr>`;
+    // const buttonHtml = `<td><input type="button" value="Delete" class="delete" onclick="deleteTableRow("${tableName}", ${i})"></td>`;
+    const checkbox = `<td><input class="check" type="checkbox" name="row${i}" value=${i}></td>`;
+    const rowHtml = `<tr>${checkbox}${info["date"][i]}${info["link"][i]}</tr>`;
     table.insertAdjacentHTML("beforeend", rowHtml);
   }
 }
@@ -68,9 +69,4 @@ function fillInStakeholder(info, identifier) {
     "beforeend",
     `<a class="ullet-stakeholder-link" href=${info}>Click here for more</a>`
   );
-}
-
-function deleteRow(tableName, index) {
-  const table = document.getElementById(tableName);
-  table.deleteRow(+index);
 }
