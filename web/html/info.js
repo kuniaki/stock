@@ -19,11 +19,11 @@ const infoPromiseDone = function (result) {
   console.log("loading company info...");
   console.log(result);
   fillInOverview(result["overview"], code);
-  fillInNews(result["news"], ".news-body", "news-table");
-  fillInNews(result["disclosure"], ".disclosure-body", "disclosure-table");
+  fillInNews(result["news"], ".news-body", "kabutan-news-check");
+  fillInNews(result["disclosure"], ".disclosure-body", "kabutan-dis-check");
   fillInCapital(result["capital"], ".capital-body");
-  fillInNews(result["ulletnews"], ".ullet-news-body", "ullet-news-table");
-  fillInNews(result["ulletfeeds"], ".ullet-feeds-body", "ullet-feeds-table");
+  fillInNews(result["ulletnews"], ".ullet-news-body", "ullet-news-check");
+  fillInNews(result["ulletfeeds"], ".ullet-feeds-body", "ullet-feeds-check");
   fillInStakeholder(result["ulletstakeholder"], ".ullet-stakeholder-fill");
   show(".company-info");
 };
@@ -36,13 +36,13 @@ function fillInCapital(info, identifier) {
   }
 }
 
-function fillInNews(info, identifier, tableName) {
+function fillInNews(info, identifier, className) {
   const table = document.querySelector(identifier);
   table.innerHTML = "";
   // <td><input type="button" value="Delete" class="delete" onclick="deleteRow()"></td>
   for (let i = 0; i < info["date"].length && i < 10; i++) {
     // const buttonHtml = `<td><input type="button" value="Delete" class="delete" onclick="deleteTableRow("${tableName}", ${i})"></td>`;
-    const checkbox = `<td><input class="check" type="checkbox" name="row${i}" value=${i}></td>`;
+    const checkbox = `<td><input class="${className}" type="checkbox" name="row${i}" value=${i}></td>`;
     const rowHtml = `<tr>${checkbox}${info["date"][i]}${info["link"][i]}</tr>`;
     table.insertAdjacentHTML("beforeend", rowHtml);
   }
