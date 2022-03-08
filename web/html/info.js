@@ -24,7 +24,7 @@ const infoPromiseDone = function (result) {
   fillInCapital(result["capital"], ".capital-body");
   fillInNews(result["ulletnews"], ".ullet-news-body");
   fillInNews(result["ulletfeeds"], ".ullet-feeds-body");
-  fillInStakeholder(result[("ulletstakeholder", ".ullet-stakeholder-fill")]);
+  fillInStakeholder(result["ulletstakeholder"], ".ullet-stakeholder-fill");
   show(".company-info");
 };
 
@@ -39,6 +39,7 @@ function fillInCapital(info, identifier) {
 function fillInNews(info, identifier) {
   const table = document.querySelector(identifier);
   table.innerHTML = "";
+  // <td><input type="button" value="Delete" class="delete" onclick="deleteRow()"></td>
   for (let i = 0; i < info["date"].length && i < 10; i++) {
     const rowHtml = `<tr>${info["date"][i]}${info["link"][i]}</tr>`;
     table.insertAdjacentHTML("beforeend", rowHtml);
@@ -67,3 +68,5 @@ function fillInStakeholder(info, identifier) {
     `<a class="ullet-stakeholder-link" href=${info}>Click here for more</a>`
   );
 }
+
+function deleteRow() {}
