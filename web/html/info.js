@@ -49,7 +49,9 @@ function fillInNews(info, identifier, className) {
 function fillInOverview(info, identifier, code) {
   const table = document.querySelector(identifier);
   const tableTitle = document.querySelector(".overview-title");
-  tableTitle.innerHTML = `${code} ${info["会社情報"]}\n${info["英語社名"]}<span class="info-right">時価総額: ${info["時価総額"]}  PER(予): ${info["PER"]}</span>`;
+
+  table.innerHTML = "";
+  tableTitle.innerHTML = `${code} ${info["会社情報"]}\n${info["英語社名"]}<span class="info-right">時価総額: ${info["時価総額"]}   PER(予): ${info["PER"]}</span>`;
   table.insertAdjacentHTML(
     "beforeend",
     `<tr><td>概要</td><td>${info["概要"]}</td></tr>`
@@ -60,10 +62,8 @@ function fillInOverview(info, identifier, code) {
   );
   table.insertAdjacentHTML(
     "beforeend",
-    `<tr><td>企業サイト</td><td><a target="_blank" rel="noopener noreferrer" href="${info["概要"]}">${info["概要"]}</a></td></tr>`
+    `<tr><td>企業サイト</td><td><a target="_blank" rel="noopener noreferrer" href="${info["会社サイト"]}">${info["会社サイト"]}</a></td></tr>`
   );
-
-  companyOverview.rowHeader.textContent = `${code} ${info["会社情報"]}\n${info["英語社名"]}`;
 }
 
 function fillInStakeholder(info, identifier) {
