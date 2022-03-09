@@ -216,7 +216,9 @@ def grabFromUrl(code):
 
 # grab overview info, return in dict form
 def grabOverviewSoup(soup):
-  company_info = soup.find("div", class_ = "company_block").get_text();
+  company_info = soup.find("div", class_ = "company_block").get_text()
+  company_per = soup.select('div#stockinfo_i3 > table > tbody > tr > td')[0].get_text()
+  company_marketvalue = soup.select('div#stockinfo_i3 > table > tbody > tr > td.v_zika2')[0].get_text()
 
   company_splitted = company_info.strip().split("\n\n\n\n");
   company = company_splitted[0].split("\n")
@@ -225,7 +227,7 @@ def grabOverviewSoup(soup):
   splitted[-2] = "\n".join(splitted[-2:])
   splitted.pop(-1)
 
-  result = dict({company[0]: company[1]})
+  result = dict({company[0]: company[1], "PER": company_per, "時価総額": company_marketvalue})
   for item in splitted:
       temp = item.split("\n", maxsplit=1)
       result[temp[0]] = temp[1]

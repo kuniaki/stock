@@ -18,7 +18,7 @@ function getCompanyInfoPromise() {
 const infoPromiseDone = function (result) {
   console.log("loading company info...");
   console.log(result);
-  fillInOverview(result["overview"], code);
+  fillInOverview(result["overview"], ".overview-body", code);
   fillInNews(result["news"], ".news-body", "kabutan-news-check");
   fillInNews(result["disclosure"], ".disclosure-body", "kabutan-dis-check");
   fillInCapital(result["capital"], ".capital-body");
@@ -46,18 +46,24 @@ function fillInNews(info, identifier, className) {
   }
 }
 
-function fillInOverview(info, code) {
-  const rowHeader = document.querySelector("#company-name-code");
-  const row1col1 = document.querySelector(".row-1.col-1");
-  const row2col1 = document.querySelector(".row-2.col-1");
-  const row3col1 = document.querySelector(".row-3.col-1");
-  const row4col1 = document.querySelector(".row-4.col-1");
+function fillInOverview(info, identifier, code) {
+  const table = document.querySelector(identifier);
+  const tableTitle = document.querySelector(".overview-title");
+  tableTitle.innerHTML = `${code} ${info["会社情報"]}\n${info["英語社名"]}<span class="info-right">時価総額: ${info["時価総額"]}  PER(予): ${info["PER"]}</span>`;
+  table.insertAdjacentHTML(
+    "beforeend",
+    `<tr><td>概要</td><td>${info["概要"]}</td></tr>`
+  );
+  table.insertAdjacentHTML(
+    "beforeend",
+    `<tr><td>業種</td><td>${info["業種"]}</td></tr>`
+  );
+  table.insertAdjacentHTML(
+    "beforeend",
+    `<tr><td>企業サイト</td><td><a target="_blank" rel="noopener noreferrer" href="${info["概要"]}">${info["概要"]}</a></td></tr>`
+  );
 
-  rowHeader.textContent = `${code} ${info["会社情報"]}\n${info["英語社名"]}`;
-  row1col1.textContent = info["概要"];
-  row2col1.textContent = info["業種"];
-  row3col1.textContent = info["テーマ"];
-  row4col1.textContent = info["会社サイト"];
+  companyOverview.rowHeader.textContent = `${code} ${info["会社情報"]}\n${info["英語社名"]}`;
 }
 
 function fillInStakeholder(info, identifier) {

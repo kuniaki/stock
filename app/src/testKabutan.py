@@ -8,21 +8,22 @@ from collections import deque
 # query parameter - ?code=2502
 # code=2502 selects info about certain company
 
-'''
 
-URL = "https://kabutan.jp/stock/?code=2501"
+
+URL = "https://kabutan.jp/stock/?code=2502"
 page = requests.get(URL) # issue an HTTP GET requests to given URL
 # retrieves HTML data that the server sends back and stores in Python object with type <class 'requests.models.Response'>
 
-print("Type of page: ", type(page))
-
-
 soup = BeautifulSoup(page.content, "html.parser")
-print("Type of soup: ", type(soup))
-
+# print("Type of soup: ", type(soup))
 company_info = soup.find("div", class_ = "company_block").get_text();
-print(company_info)
+# print(company_info)
+company_per = soup.select('div#stockinfo_i3 > table > tbody > tr > td')[0].get_text()
+company_marketvalue = soup.select('div#stockinfo_i3 > table > tbody > tr > td.v_zika2')[0].get_text()
+print(company_marketvalue)
 
+
+'''
 company_splitted = company_info.strip().split("\n\n\n\n");
 company = company_splitted[0].split("\n")
 splitted = company_splitted[1].split("\n\n\n")
@@ -37,6 +38,7 @@ for item in splitted:
     result[temp[0]] = temp[1]
 
 print(result)
+
 
 # print(company_info.text.strip())
 # print(company_info.text.strip().splitlines(False))
@@ -98,6 +100,7 @@ for i in capital_table:
 print(list(str(c).replace("/holder/lists/?", "https://kabutan.jp/holder/lists/?") for c in capital_table))
 '''
 
+'''
 ulletNewsUrl = "https://www.ullet.com/2502.html#news"
 ulletNewsPage = requests.get(ulletNewsUrl)
 ulletNewsSoup = BeautifulSoup(ulletNewsPage.content, "html.parser")
@@ -116,7 +119,7 @@ for i in ulletNews:
 
 print(len(ulletNews))
 print(result)
-
+'''
 '''
 <td class="news-time"><time datetime="2022-02-24T08:00:00+09:00">22/02/24 08:00</time></td>
 <td><a href="https://kabutan.jp/disclosures/pdf/20220224/140120220222594407/">CONVOCATION NOTICE OF THE 98th ANNUAL GENERAL MEETING OF SHAREHOLDERS</a></td>
