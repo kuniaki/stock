@@ -128,12 +128,17 @@ kabutan_capital_url = "https://kabutan.jp/stock/holder?code=2502"
 kabutan_capital_page = requests.get(kabutan_capital_url)
 kabutan_capital_soup = BeautifulSoup(kabutan_capital_page.content, "html.parser")
 capital_table = kabutan_capital_soup.select('table.stock_holder_1 > tbody > tr')
-for i in capital_table:
-    print()
-    print(i)
-    print(i.select('td')[-1])
-result = list(str(c).replace("/holder/lists/?", "https://kabutan.jp/holder/lists/?").replace(str(c.select('td')[-1]), '').replace(str(c.select('td')[0]), '') for c in capital_table)
-print(result)
+result = []
+count = 0
+for c in capital_table:
+    if (count == len(capital_table)-1):
+        result.append(str(c).replace(str(c.select('td')[0]), '').replace(str(c.select('td')[-1]), '').replace(str(c.select('td')[1]), '').replace('\n</tr></tr>', '').replace('<tr><tr>\n', '').replace("\n\n", "\n"))
+    else:
+        print(c)
+        result.append(str(c).replace("/holder/lists/?", "https://kabutan.jp/holder/lists/?").replace(str(c.select('td')[-1]), '').replace(str(c.select('td')[0]), ''))
+    count += 1
+# result = list(str(c).replace("/holder/lists/?", "https://kabutan.jp/holder/lists/?").replace(str(c.select('td')[-1]), '').replace(str(c.select('td')[0]), '') for c in capital_table)
+# print(result)
 # for i in result:
 #     print()
 #     print(i)

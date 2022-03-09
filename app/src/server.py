@@ -255,11 +255,15 @@ def grabNewsSoup(soup, index):
 # grab capital info, return in dict form
 def grabCapitalSoup(soup):
   capital_table = soup.select('table.stock_holder_1 > tbody > tr')
-  result = list(str(c) \
-    .replace("/holder/lists/?", "https://kabutan.jp/holder/lists/?") \
-    .replace(str(c.select('td')[-1]), '') \
-    .replace(str(c.select('td')[0]), '') for c in capital_table)
-  # result = list(str(c).replace("/holder/lists/?", "https://kabutan.jp/holder/lists/?") for c in capital_table)
+  result = []
+  count = 0
+  for c in capital_table:
+    if (count == len(capital_table) - 1):
+        result.append(str(c).replace(str(c.select('td')[0]), '').replace(str(c.select('td')[-1]), '').replace(str(c.select('td')[1]), '').replace('\n</tr></tr>', '').replace('<tr><tr>\n', '').replace("\n\n", "\n"))
+    else:
+        print(c)
+        result.append(str(c).replace("/holder/lists/?", "https://kabutan.jp/holder/lists/?").replace(str(c.select('td')[-1]), '').replace(str(c.select('td')[0]), ''))
+    count += 1
   return result
 
 # grab news from ullet, return in dict form
