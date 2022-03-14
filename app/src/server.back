@@ -11,8 +11,7 @@ import pandas as pd
 import sys
 import numpy as np
 import json
-import requests
-from bs4 import BeautifulSoup
+
  
 
 APP_PORT = int(os.environ['PORT'])
@@ -33,12 +32,6 @@ def after_request(response):
 @app.route('/')
 def root():
     return "Chart Server"
-
-@app.route('/api/v1/company_overview/', methods=['GET'])
-def api_overview():
-  code  = request.args.get('code')
-  dc = grabFromUrl(code)
-  return success(dc)
 
 
 #http://server/api/v1/revenue/
@@ -108,16 +101,16 @@ def api_stock():
   toD     = request.args.get('to_date')
 
   result0 = kabuka(1320,5,1)
-  nik =  array(result0[3].values())
+  nik = list(result0[3].values())
 
   sleep(0.1)
 
   result1 = kabuka(code,5,1)
-  co =  array(result1[3].values())
+  co = list(result1[3].values())
 
   date = result0[2]
 
-  dc = dict(date=date,close=co,nikkei=nik)
+  dc = dict(date=date,close=nik,nikkei=nik)
 
   return success(dc)
 
@@ -160,126 +153,6 @@ def kabuka(code,S_year,S_day):
       ff[ddd[index]] = ccc[index]
 
   return company_code, df_base, ddd ,ff
-
-def array(v):
-  n =[]
-  for vv in v:
-      # check if item is NaN
-      # note that nikkei has more entries than asahi
-      #if (pd.isna(vv)):
-       #   n.append(None)
-      #else:
-      if pd.isna(vv) == False:
-           n.append(vv)
-  return n
-
-# take country code as parameter, grab company info from kabutan
-def grabFromUrl(code):
-
-  info = {}
-
-  kabutan_overview_url = "https://kabutan.jp/stock/?code=" + code
-  kabutan_news_url = "https://kabutan.jp/stock/news?code=" + code + "&nmode=2"
-  kabutan_disclosure_url = "https://kabutan.jp/stock/news?code=" + code + "&nmode=3"
-  kabutan_capital_url = "https://kabutan.jp/stock/holder?code=" + code
-  
-  ullet_news_url = "https://www.ullet.com/" + code + ".html#news"
-  ullet_feeds_url = "https://www.ullet.com/" + code + ".html#feed"
-  ullet_stakeholders = "https://www.ullet.com/" + code + ".html#official"
-
-  kabutan_overview_page = requests.get(kabutan_overview_url) # issue an HTTP GET requests to given URL
-  kabutan_news_page = requests.get(kabutan_news_url)
-  kabutan_disclosure_page = requests.get(kabutan_disclosure_url)
-  kabutan_capital_page = requests.get(kabutan_capital_url)
-
-  ullet_news_page = requests.get(ullet_news_url)
-  ullet_feeds_page = requests.get(ullet_feeds_url)
-  # retrieves HTML data that the server sends back and stores in Python object with type <class 'requests.models.Response'>
-
-  kabutan_overview_soup = BeautifulSoup(kabutan_overview_page.content, "html.parser")
-  kabutan_news_soup = BeautifulSoup(kabutan_news_page.content, "html.parser")
-  kabutan_disclosure_soup = BeautifulSoup(kabutan_disclosure_page.content, "html.parser")
-  kabutan_capital_soup = BeautifulSoup(kabutan_capital_page.content, "html.parser")
-
-  ullet_news_soup = BeautifulSoup(ullet_news_page.content, "html.parser")
-  ullet_feeds_soup = BeautifulSoup(ullet_feeds_page.content, "html.parser")
-
-  info['overview'] = grabOverviewSoup(kabutan_overview_soup)
-  info['news'] = grabNewsSoup(kabutan_news_soup, 2)
-  info['disclosure'] = grabNewsSoup(kabutan_disclosure_soup, 3)
-  info['capital'] = grabCapitalSoup(kabutan_capital_soup)
-  info['ulletnews'] = grabNewsUlletSoup(ullet_news_soup, "news")
-  info['ulletfeeds'] = grabNewsUlletSoup(ullet_feeds_soup, "feeds")
-  info['ulletstakeholder'] = ullet_stakeholders
-
-  return info
-
-# grab overview info, return in dict form
-def grabOverviewSoup(soup):
-  company_info = soup.find("div", class_ = "company_block").get_text()
-  company_per = soup.select('div#stockinfo_i3 > table > tbody > tr > td')[0].get_text()
-  company_marketvalue = soup.select('div#stockinfo_i3 > table > tbody > tr > td.v_zika2')[0].get_text()
-
-  company_splitted = company_info.strip().split("\n\n\n\n");
-  company = company_splitted[0].split("\n")
-  splitted = company_splitted[1].split("\n\n\n")
-  splitted[-1] = ",".join(splitted[-1].split("\n"))
-  splitted[-2] = "\n".join(splitted[-2:])
-  splitted.pop(-1)
-
-  result = dict({company[0]: company[1], "PER": company_per, "時価総額": company_marketvalue})
-  for item in splitted:
-      temp = item.split("\n", maxsplit=1)
-      result[temp[0]] = temp[1]
-  return result
-
-# grab news info, return in dict form
-def grabNewsSoup(soup, index):
-  news_table = soup.select('table.s_news_list > tr')
-
-  time = soup.select('table.s_news_list > tr > td.news_time')
-  time_list = list(str(i).replace('news_time', 'news-time').replace('\xa0', ' ') for i in time)
-  news = {'date': time_list, 'link': list()}
-
-  for date in news_table:
-    # news['date'].append(" ".join(date.get_text().strip().split("\n\n")[0].split("\xa0")))
-    for link in date.children:
-        if "href" in str(link):
-          if index == 2:
-            news['link'].append(str(link).replace('/stock/news?', 'https://kabutan.jp/stock/news?').replace("&amp;", "&"))
-          elif index == 3:
-            news['link'].append(str(link).replace('<img alt="pdf" src="/images/cmn/pdf16.gif"/>', '').replace(' target="pdf"', '').replace(' class="td_kaiji"', ''))
-
-  return news
-
-# grab capital info, return in dict form
-def grabCapitalSoup(soup):
-  capital_table = soup.select('table.stock_holder_1 > tbody > tr')
-  result = []
-  count = 0
-  for c in capital_table:
-    if (count == len(capital_table) - 1):
-        result.append(str(c).replace(str(c.select('td')[0]), '').replace(str(c.select('td')[-1]), '').replace(str(c.select('td')[1]), '').replace('\n</tr></tr>', '').replace('<tr><tr>\n', '').replace("\n\n", "\n"))
-    else:
-        print(c)
-        result.append(str(c).replace("/holder/lists/?", "https://kabutan.jp/holder/lists/?").replace(str(c.select('td')[-1]), '').replace(str(c.select('td')[0]), ''))
-    count += 1
-  return result
-
-# grab news from ullet, return in dict form
-def grabNewsUlletSoup(soup, item):
-  ullet_news = None
-  if (item == "news"):
-    ullet_news = soup.select('div.news_item > h3')
-  else: 
-    ullet_news = soup.select('div.feed_item > h3')
-
-  result = {'date': list(), 'link': list()}
-  for item in ullet_news:
-    temp = str(item).replace('<img alt="link.gif" height="13" src="https://www.ullet.com/img/icon/link.gif?218" width="13"/>', '').replace('<h3>', '').replace('･</h3>', '').split('</a> ')
-    result['link'].append('<td>' + temp[0] + '</a></td>')
-    result['date'].append('<td class="ullet-news-time">' + temp[1] + '</td>')
-  return result
 
 # Change pd.DataFrame to string
 def dateFormatter(data): 

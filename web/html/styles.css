@@ -1,0 +1,26 @@
+input {
+  width: 140px;
+  margin: 10px;
+}
+
+select {
+  margin: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.loading-mask {
+  display: none;
+  background-color: white;
+  position: relative;
+}
+
+.overview-title {
+  text-align: left;
+}
+
+.info-right {
+  float: right;
+}

@@ -1,34 +1,106 @@
 <!DOCTYPE html>
 <html lang="ja">
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
 <head>
     <meta charset="utf-8">
     <title>Chart</title>
-<!--- デザインに関する規定はこれしかないので、cssファイルではなくstyleタグに記述 --->
-<style>
-input{
-    width: 140px;
-    margin: 10px;
-}
-select{
-    margin: 10px;
-}
-</style>
+    <!--- デザインに関する規定はこれしかないので、cssファイルではなくstyleタグに記述 --->
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-<!--- 銘柄コードを受け付けるボックス --->
-   <p><label>code:<input value="2502" type = "text" maxlength = "4" id='code'> 
-      <label>from:<input value="2021-01-01" type = "date" maxlength = "10" id='start'>
-      <label>to:<input value="2022-01-01" type = "date" maxlength = "10" id='end'> 
-      <label>country:<input value="japan" type = "text" maxlength = "10" id='country'>
-                  <button id='btn-getinfo'>Get Info</button></label></label></label></label></p>
-<!--- ローソク足及び移動平均線グラフを配置 --->
-    <div id='appendMain'></div>
-<!--- 出来高の棒グラフを配置 --->
-    <div id='appendVolume'></div>
-<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
-<!--- ここでGoogle Chartの読み込み --->
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="chart.js"></script>
+    <p><label>code:<input value="2502" type="text" maxlength="4" id='code'>
+            <label>country:<input value="japan" type="text" maxlength="10" id='country'>
+                <button id='btn-getinfo'>Get Info</button></label></label></label></label></p>
+    <div class="display">
+        <p class="loading-message hidden"> Loading... </p>
+        <div class='company-info hidden'>
+            <div class="company-overview">
+                <table class="overview-table">
+                    <h3 class="overview-title"></h3>
+                    <tbody class="overview-body"></tbody>
+                </table>
+            </div>
+            <form id="company-news">
+                <h3>決算ニュース</h3>
+                <table id="news-table">
+                    <tbody class="news-body"></tbody>
+                </table>
+                <div>
+                    <button id="btn-kabutan-news-delete" type="submit" value="delete">Delete</button>
+                </div>
+            </form>
+        </div>
+        <div class="stock-graph">
+            <div id='append1year'></div>
+            <div id='append5year'></div>
+        </div>
+        <div class='rsegment hidden'></div>
+        <div class="revenue-graph">
+            <div id='annual-revenue'></div>
+            <div id='quarterly-revenue'></div>
+        </div>
+        <div class="company-info hidden">
+            <form="disclosure-news">
+                <h3>開示情報</h3>
+                <table id="disclosure-table">
+                    <tbody class="disclosure-body"></tbody>
+                </table>
+                <div>
+                    <button id="btn-kabutan-dis-delete" type="submit" value="delete">Delete</button>
+                </div>
+            </form>
+            <div class="capital-info">
+                <h3>資本構成</h3>
+                <table class="capital-table">
+                    <tbody class="capital-body"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="company-info ullet-info hidden">
+            <form id="ullet-news">
+                <h3>Ulletユーレット ニュース</h3>
+                <table id="ullet-news-table">
+                    <tbody class="ullet-news-body"></tbody>
+                </table>
+                <div>
+                    <button id="btn-ullet-news-delete" type="submit" value="delete">Delete</button>
+                </div>
+            </form>
+            <form id="ullet-feeds">
+                <h3>Ulletユーレット 配信情報</h3>
+                <table id="ullet-feeds-table">
+                    <tbody class="ullet-feeds-body"></tbody>
+                </table>
+                <div>
+                    <button id="btn-ullet-feeds-delete" type="submit" value="delete">Delete</button>
+                </div>
+            </form>
+            <div class="ullet-stakeholder">
+                <h3>役員構成</h3>
+                <div class="ullet-stakeholder-fill"></div>
+            </div>
+        </div>
+
+    </div>
+    
+
+    <!-- need to add div id=revenue here-->
+
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <!--- ここでGoogle Chartの読み込み --->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="event.js" defer></script>
+    <script type="text/javascript" src ="tools.js"></script>
+    <script type="text/javascript" src ="info.js"></script>
+    <script type="text/javascript" src="rsegment.js"></script>
+    <script type="text/javascript" src="chart.js"></script>
+    <script type="text/javascript" src="revenue.js"></script>
+    <script type="text/javascript" src="select.js"></script>
+
+
+
 </body>
+
 </html>
