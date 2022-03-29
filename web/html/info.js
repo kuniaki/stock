@@ -32,7 +32,7 @@ function fillInCapital(info, identifier) {
   const table = document.querySelector(identifier);
   table.innerHTML = "";
   for (const row of info) {
-    table.insertAdjacentHTML("beforeend", row);
+    table.insertAdjacentHTML("beforeend", row.replace("href", `target="_blank" href`));
   }
 }
 
@@ -41,7 +41,7 @@ function fillInNews(info, identifier, className) {
   table.innerHTML = "";
   for (let i = 0; i < info["date"].length && i < 10; i++) {
     const checkbox = `<td><input class="${className}" type="checkbox" name="row${i}" value=${i}></td>`;
-    const rowHtml = `<tr>${checkbox}${info["date"][i]}${info["link"][i]}</tr>`;
+    const rowHtml = `<tr>${checkbox}${info["date"][i]}${info["link"][i].replace("href", `target="_blank" href`)}</tr>`;
     table.insertAdjacentHTML("beforeend", rowHtml);
   }
 }

@@ -19,7 +19,7 @@ $("#btn-getinfo").click(function () {
     // $("#code").val() == 2502
     //   ? segementPromised.done(segmentPromiseDone)
     //   : hide(".rsegment");
-    // revenuePromised.done(revenuePromiseDone);
+    revenuePromised.done(revenuePromiseDone);
 
     console.log("\n!!!promises done!!!\n");
   });
