@@ -10,9 +10,14 @@
 </head>
 
 <body>
-    <p><label>code:<input value="2502" type="text" maxlength="4" id='code'>
-            <label>country:<input value="japan" type="text" maxlength="10" id='country'>
-                <button id='btn-getinfo'>Get Info</button></label></label></label></label></p>
+    <div id="search-bar">
+        <p>
+            <label for="code">Company Code:</label>
+            <input value="2502" type="text" maxlength="4" id='code'>
+            <!-- <label>country:<input value="japan" type="text" maxlength="10" id='country'> -->
+            <button id='btn-getinfo' type="button">Get Info</button>
+        </p>
+    </div>
     <div class="display">
         <p class="loading-message hidden"> Loading... </p>
         <div class='company-info hidden'>
@@ -91,13 +96,13 @@
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
     <!--- ここでGoogle Chartの読み込み --->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript" src="event.js" defer></script>
     <script type="text/javascript" src ="tools.js"></script>
     <script type="text/javascript" src ="info.js"></script>
     <script type="text/javascript" src="rsegment.js"></script>
     <script type="text/javascript" src="chart.js"></script>
     <script type="text/javascript" src="revenue.js"></script>
     <script type="text/javascript" src="select.js"></script>
+    <script type="text/javascript" src="event.js"></script>
 
 
 
