@@ -4,7 +4,6 @@ google.charts.load("current", { packages: ["corechart"] });
 
 $("#btn-getinfo").click(function () {
   // need to define a function to cleanup all html graph & tables
-  // hide(".loading-mask");
 
   const infoPromised = getCompanyInfoPromise();
   const stockPromised = getStockPromise();
@@ -23,7 +22,6 @@ $("#btn-getinfo").click(function () {
     //   ? segementPromised.done(segmentPromiseDone)
     //   : hide(".rsegment");
     // revenuePromised.done(revenuePromiseDone);
-    // show(".loading-mask");
 
     console.log("\n!!!promises done!!!\n");
   });
