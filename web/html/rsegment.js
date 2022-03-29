@@ -1,20 +1,4 @@
-// function getRSegmentInfo() {
-//   $.ajax({
-//     url: "/api/v1/rsegment",
-//     type: "GET",
-//     async: true,
-//     cashe: false,
-//     dataType: "json",
-//     contentType: "application/json",
-//   })
-//     .done(function (result) {
-//       rSegmentChart(result);
-//     })
-//     .fail(function (result) {
-//       alert("Failed to load the information");
-//       console.log(result);
-//     });
-// }
+"use strict";
 
 function getSegmentPromise() {
   return $.ajax({

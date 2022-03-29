@@ -1,3 +1,5 @@
+"use strict";
+
 const btnKabutanNewsDelete = document.getElementById("btn-kabutan-news-delete");
 const btnKabutanDisDelete = document.getElementById("btn-kabutan-dis-delete");
 const btnUlletNewsDelete = document.getElementById("btn-ullet-news-delete");

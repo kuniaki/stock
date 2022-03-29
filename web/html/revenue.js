@@ -1,3 +1,5 @@
+"use strict";
+
 function getRevenuePromise() {
   return $.ajax({
     url: `/api/v1/revenue?code=${$("#code").val()}&country=${$(
