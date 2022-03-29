@@ -1,5 +1,3 @@
-"use strict";
-
 function getSegmentPromise() {
   return $.ajax({
     url: "/api/v1/rsegment",

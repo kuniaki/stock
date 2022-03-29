@@ -1,5 +1,3 @@
-"use strict";
-
 google.charts.load("current", { packages: ["corechart"] });
 
 $("#btn-getinfo").click(function () {

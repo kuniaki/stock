@@ -1,5 +1,3 @@
-"use strict";
-
 function getStockPromise() {
   date = new Date();
   year = date.getFullYear();
