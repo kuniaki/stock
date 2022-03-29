@@ -7,7 +7,7 @@ $("#btn-getinfo").click(function () {
 
   const infoPromised = getCompanyInfoPromise();
   const stockPromised = getStockPromise();
-  //const segementPromised = getSegmentPromise();
+  // const segementPromised = getSegmentPromise();
   const revenuePromised = getRevenuePromise();
 
   Promise.all([
