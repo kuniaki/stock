@@ -45,7 +45,8 @@ def api_overview():
 @app.route('/api/v1/revenue/', methods=['GET'])
 def api_revenue():
   code  = request.args.get('code')
-  country = request.args.get('country')
+  #country = request.args.get('country')
+  country = "japan"
 
   annual_revenue = investpy.get_stock_financial_summary(stock=code, country=country, summary_type='income_statement', period='annual')
   revenue_a = annual_revenue.reset_index()
@@ -103,7 +104,8 @@ def api_rsegment():
 def api_stock():
 
   code  = request.args.get('code')
-  country = request.args.get('country')
+  #country = request.args.get('country')
+  country = "japan"
   fromD   = request.args.get('from_date')
   toD     = request.args.get('to_date')
 
