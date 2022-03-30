@@ -20,6 +20,7 @@ $("#btn-getinfo").click(function () {
     //   ? segementPromised.done(segmentPromiseDone)
     //   : hide(".rsegment");
     revenuePromised.done(revenuePromiseDone);
+    show('.graph');
 
     console.log("\n!!!promises done!!!\n");
   });
