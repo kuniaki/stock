@@ -61,16 +61,17 @@ def api_revenue():
 
     dc_a = dict(date=dateFormatter([i for i in revenue_a['Date'].dt.date]), total_revenue=[i for i in revenue_a['Total Revenue']], gross_profit=[
                 i for i in revenue_a['Gross Profit']], operating_income=[i for i in revenue_a['Operating Income']], net_income=[i for i in revenue_a['Net Income']])
-    dc_a['revenue_percentage'] = getPercentage(dc_a['total_revenue'])
+    # dc_a['revenue_percentage'] = getPercentage(dc_a['total_revenue'])
     dc_a['gross_percentage'] = getPercentage(
         dc_a['gross_profit'], dc_a['total_revenue'])
     dc_a['operating_percentage'] = getPercentage(
         dc_a['operating_income'], dc_a['total_revenue'])
     dc_a['net_percentage'] = getPercentage(
         dc_a['net_income'], dc_a['total_revenue'])
+
     dc_q = dict(date=dateFormatter([i for i in revenue_q['Date'].dt.date]), total_revenue=[i for i in revenue_q['Total Revenue']], gross_profit=[
                 i for i in revenue_q['Gross Profit']], operating_income=[i for i in revenue_q['Operating Income']], net_income=[i for i in revenue_q['Net Income']])
-    dc_q['revenue_percentage'] = getPercentage(dc_q['total_revenue'])
+    # dc_q['revenue_percentage'] = getPercentage(dc_q['total_revenue'])
     dc_q['gross_percentage'] = getPercentage(
         dc_q['gross_profit'], dc_q['total_revenue'])
     dc_q['operating_percentage'] = getPercentage(
@@ -346,19 +347,22 @@ def dateFormatter(data):
 # Get percentage change base on given list
 
 
-def getPercentage(data):
-    result = []
-    index = 0
-    while (index < len(data) - 1):
-        percentage = (data[index] - data[index+1]) / data[index]
-        result.insert(index, round(percentage, 3))
-        index += 1
-    result.insert(index, None)
-    return result
+# def getPercentage(data):
+#     result = []
+#     index = 0
+#     while (index < len(data) - 1):
+#         percentage = (data[index] - data[index+1]) / data[index]
+#         result.insert(index, round(percentage, 3))
+#         index += 1
+#     result.insert(index, None)
+#     return result
 
 
 def getPercentage(arr1, arr2):
-    return [round(i, 3) for i in np.divide(arr1, arr2)]
+    result = []
+    for i in np.divide(arr1, arr2):
+        result.append(round(i, 3))
+    return result
 
 
 def isalnum(text):
