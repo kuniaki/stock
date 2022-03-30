@@ -33,7 +33,7 @@ function addRevenueChart(result, term, graph) {
   for (let i = 0; i < result[term]["date"].length; i++) {
     chartData.addRow([
       result[term]["date"][i],
-      parseInt(result[term]["total_revenue"][i]), // index 0
+      parseInt(result[term]["total_revenue"][i]) / 100, // index 0
       // parseInt(result[term]["gross_profit"][i]), // index 1
       // parseInt(result[term]["operating_income"][i]), // index 2
       // parseInt(result[term]["net_income"][i]), // index 3
@@ -46,7 +46,7 @@ function addRevenueChart(result, term, graph) {
   }
 
   var options = {
-    title: `${term === "annual" ? "通期売上・利益率" : "四半期売上・利益率"}`,
+    title: `${term === "annual" ? "通期売上・利益率 （単位：億円）" : "四半期売上・利益率　（単位：億円）"}`,
     seriesType: "bars",
     series: {
       1: {
@@ -77,14 +77,18 @@ function addRevenueChart(result, term, graph) {
     vAxes: {
       0: {
         // title: "Revenue",
+        gridlines: {color: 'transparent'},
+        format: "¥###,###,###,###,###",
       },
       1: {
         // title: "Percentage",
+        gridlines: {color: 'transparent'},
         format: "percent",
       },
     },
+    min: 0,
     isStacked: false,
-    width: 600,
+    width: 700,
     height: 400,
   };
 
