@@ -27,16 +27,20 @@ function addRevenueChart(result, term, graph) {
   chartData.addColumn("number", "売上総利益"); // gross profit
   chartData.addColumn("number", "営業利益"); // operating income
   chartData.addColumn("number", "純利益"); // net income
-  chartData.addColumn("number", "Total Revenue %"); // total revenue %
+  // chartData.addColumn("number", "Total Revenue %"); // total revenue %
 
   for (let i = 0; i < result[term]["date"].length; i++) {
     chartData.addRow([
       result[term]["date"][i],
-      parseInt(result[term]["total_revenue"][i]),
-      parseInt(result[term]["gross_profit"][i]),
-      parseInt(result[term]["operating_income"][i]),
-      parseInt(result[term]["net_income"][i]),
-      parseFloat(result[term]["revenue_percentage"][i]),
+      parseInt(result[term]["total_revenue"][i]), // index 0
+      parseInt(result[term]["gross_profit"][i]), // index 1
+      parseInt(result[term]["operating_income"][i]), // index 2
+      parseInt(result[term]["net_income"][i]), // index 3
+      // parseFloat(result[term]["revenue_percentage"][i]), // index 4
+      parseFloat(result[term]["gross_percentage"][i]), // index 4
+      parseFloat(result[term]["operating_percentage"][i]), // index 5
+      parseFloat(result[term]["net_percentage"][i]), // index 6
+      
     ]);
   }
 
@@ -44,11 +48,15 @@ function addRevenueChart(result, term, graph) {
     title: `${term === "annual" ? "通期売上・利益率" : "四半期売上・利益率"}`,
     seriesType: "bars",
     series: {
-      4: {
-        type: "line",
-        color: "red",
-        targetAxisIndex: 1,
-      },
+      // 4: {
+      //   type: "line",
+      //   color: "red",
+      //   targetAxisIndex: 1,
+      // },
+      // 4: {
+      //   type: "line",
+      //   color: ""
+      // }
     },
     bar: {
       groupWidth: "75%",
@@ -66,7 +74,7 @@ function addRevenueChart(result, term, graph) {
       },
     },
     isStacked: false,
-    width: 1500,
+    width: 800,
     height: 400,
   };
 
