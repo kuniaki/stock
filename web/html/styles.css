@@ -25,14 +25,14 @@ select {
   float: right;
 }
 
-.revenue-graph,
-.stock-graph {
-  text-align: justify;
+.revenue-graph .stock-graph {
+  display: flex;
+  justify-content: flex-start;
+  max-width: 1200px;
 }
 
-#annual-revenue,
-#quarterly-revenue,
-#append1year,
-#append5year {
-  display: inline;
+#annual-revenue #quarterly-revenue #append1year #append5year {
+  flex: 1;
+  margin-top: 5px;
+  margin-bottom: 15px;
 }

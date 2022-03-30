@@ -40,7 +40,8 @@ function addRevenueChart(result, term, graph) {
   }
 
   var options = {
-    title: `${term === "annual" ? "通期売上・利益率 （単位：億円）" : "四半期売上・利益率　（単位：億円）"}`,
+    title: `${term === "annual" ? "通期売上・利益率" : "四半期売上・利益率"}`,
+    titleTextStyle: {fontSize: 15},
     seriesType: "bars",
     series: {
       1: {
@@ -82,8 +83,9 @@ function addRevenueChart(result, term, graph) {
     },
     min: 0,
     isStacked: false,
-    width: 700,
-    height: 400,
+    legend: {textStyle: {fontSize:10}},
+    width: 600,
+    height: 300,
   };
 
   var chart = new google.visualization.ColumnChart(

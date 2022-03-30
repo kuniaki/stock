@@ -117,6 +117,7 @@ function main1years(result) {
 
   var options = {
     title: title,
+    titleTextStyle: {fontSize: 15},
     bar: {
       groupWidth: "100%",
     },
@@ -172,6 +173,7 @@ function main5years(result) {
 
   var options = {
     title: title,
+    titleTextStyle: {fontSize: 15},
     bar: {
       groupWidth: "100%",
     },
