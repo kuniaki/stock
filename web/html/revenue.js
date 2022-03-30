@@ -24,22 +24,23 @@ function addRevenueChart(result, term, graph) {
 
   chartData.addColumn("string", "Date");
   chartData.addColumn("number", "売上"); // total revenue
-  chartData.addColumn("number", "売上総利益"); // gross profit
-  chartData.addColumn("number", "営業利益"); // operating income
-  chartData.addColumn("number", "純利益"); // net income
+  chartData.addColumn("number", "%売上総利益"); // gross profit
+  chartData.addColumn("number", "%営業利益"); // operating income
+  chartData.addColumn("number", "%純利益"); // net income
   // chartData.addColumn("number", "Total Revenue %"); // total revenue %
+
 
   for (let i = 0; i < result[term]["date"].length; i++) {
     chartData.addRow([
       result[term]["date"][i],
       parseInt(result[term]["total_revenue"][i]), // index 0
-      parseInt(result[term]["gross_profit"][i]), // index 1
-      parseInt(result[term]["operating_income"][i]), // index 2
-      parseInt(result[term]["net_income"][i]), // index 3
+      // parseInt(result[term]["gross_profit"][i]), // index 1
+      // parseInt(result[term]["operating_income"][i]), // index 2
+      // parseInt(result[term]["net_income"][i]), // index 3
       // parseFloat(result[term]["revenue_percentage"][i]), // index 4
-      parseFloat(result[term]["gross_percentage"][i]), // index 4
-      parseFloat(result[term]["operating_percentage"][i]), // index 5
-      parseFloat(result[term]["net_percentage"][i]), // index 6
+      parseFloat(result[term]["gross_percentage"][i]), // index 1
+      parseFloat(result[term]["operating_percentage"][i]), // index 2
+      parseFloat(result[term]["net_percentage"][i]), // index 3
       
     ]);
   }
@@ -48,18 +49,27 @@ function addRevenueChart(result, term, graph) {
     title: `${term === "annual" ? "通期売上・利益率" : "四半期売上・利益率"}`,
     seriesType: "bars",
     series: {
-      // 4: {
-      //   type: "line",
-      //   color: "red",
-      //   targetAxisIndex: 1,
-      // },
-      // 4: {
-      //   type: "line",
-      //   color: ""
-      // }
+      1: {
+        type: "line",
+        color: "#6f9654",
+        pointSize: 3,
+        targetAxisIndex: 1,
+      },
+      2: {
+        type: "line",
+        color: "#e7711b",
+        pointSize: 3,
+        targetAxisIndex: 1,
+      },
+      3: {
+        type: "line",
+        color: "#f1ca3a",
+        pointSize: 3,
+        targetAxisIndex: 1,
+      },
     },
     bar: {
-      groupWidth: "75%",
+      groupWidth: "60%",
     },
     hAxis: {
       direction: -1,
@@ -74,7 +84,7 @@ function addRevenueChart(result, term, graph) {
       },
     },
     isStacked: false,
-    width: 800,
+    width: 600,
     height: 400,
   };
 
