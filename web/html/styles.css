@@ -15,6 +15,15 @@ h5 {
   font-weight: 500;
 }
 
+tr {
+  background-color: #d3d3d330;
+  text-align: left;
+}
+
+td {
+  padding: 8px 10px 8px 10px;
+}
+
 .display {
   margin: 15px;
 }
@@ -31,7 +40,6 @@ h5 {
 
 .overview-title {
   text-align: left;
-  border-bottom: 3px solid lightgray;
 }
 
 .overview-data {
