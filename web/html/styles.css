@@ -16,16 +16,62 @@ h5 {
 }
 
 tr {
-  background-color: #d3d3d330;
   text-align: left;
+}
+
+tr.overview {
+  background-color: #d3d3d330;
 }
 
 td {
   padding: 8px 10px 8px 10px;
+  width: auto;
+}
+
+button {
+  font-size: 13px;
+  padding: 2px 9px 2px 9px;
+  transition-duration: 0.2s;
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 8px 2px 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555555;
+  color: white;
+}
+
+input.kabutan-news-check {
+  margin: 0px;
+  width: auto;
+}
+
+input.kabutan-dis-check {
+  margin: 0px;
+  width: auto;
+}
+
+input.ullet-news-check {
+  margin: 0px;
+  width: auto;
+}
+
+input.ullet-feeds-check {
+  margin: 0px;
+  width: auto;
 }
 
 .display {
   margin: 15px;
+  margin-bottom: 100px;
 }
 
 .hidden {

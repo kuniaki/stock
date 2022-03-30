@@ -54,19 +54,19 @@ function fillInOverview(info, stakeinfo, identifier, code) {
   tableTitle.innerHTML = `${code} ${info["会社情報"]}\n${info["英語社名"]}<h5 class="overview-data">時価総額: ${info["時価総額"]}</h5><h5 class="overview-data">PER(予): ${info["PER"]}</h5>`;
   table.insertAdjacentHTML(
     "beforeend",
-    `<tr><td>概要</td><td>${info["概要"]}</td></tr>`
+    `<tr class="overview"><td>概要</td><td>${info["概要"]}</td></tr>`
   );
   table.insertAdjacentHTML(
     "beforeend",
-    `<tr><td>業種</td><td>${info["業種"]}</td></tr>`
+    `<tr class="overview"><td>業種</td><td>${info["業種"]}</td></tr>`
   );
   table.insertAdjacentHTML(
     "beforeend",
-    `<tr><td>企業サイト</td><td><a target="_blank" rel="noopener noreferrer" href="${info["会社サイト"]}">${info["会社サイト"]}</a></td></tr>`
+    `<tr class="overview"><td>企業サイト</td><td><a target="_blank" rel="noopener noreferrer" href="${info["会社サイト"]}">${info["会社サイト"]}</a></td></tr>`
   );
   table.insertAdjacentHTML(
     "beforeend", 
-    `<tr><td>役員構成</td><td><a class="ullet-stakeholder-link" target="_blank" rel="noopener noreferrer" href=${stakeinfo}>${stakeinfo}</a></td></tr>`
+    `<tr class="overview"><td>役員構成</td><td><a class="ullet-stakeholder-link" target="_blank" rel="noopener noreferrer" href=${stakeinfo}>${stakeinfo}</a></td></tr>`
   );
 }
 
