@@ -51,7 +51,7 @@ function fillInOverview(info, identifier, code) {
   const tableTitle = document.querySelector(".overview-title");
 
   table.innerHTML = "";
-  tableTitle.innerHTML = `${code} ${info["会社情報"]}\n${info["英語社名"]}<span class="info-right">時価総額: ${info["時価総額"]}   PER(予): ${info["PER"]}</span>`;
+  tableTitle.innerHTML = `${code} ${info["会社情報"]}\n${info["英語社名"]}<h5>時価総額: ${info["時価総額"]}</h5><h5>PER(予): ${info["PER"]}</h5>`;
   table.insertAdjacentHTML(
     "beforeend",
     `<tr><td>概要</td><td>${info["概要"]}</td></tr>`
@@ -64,13 +64,17 @@ function fillInOverview(info, identifier, code) {
     "beforeend",
     `<tr><td>企業サイト</td><td><a target="_blank" rel="noopener noreferrer" href="${info["会社サイト"]}">${info["会社サイト"]}</a></td></tr>`
   );
-}
-
-function fillInStakeholder(info, identifier) {
-  const item = document.querySelector(identifier);
-  item.innerHTML = "";
-  item.insertAdjacentHTML(
-    "beforeend",
-    `<a class="ullet-stakeholder-link" target="_blank" rel="noopener noreferrer" href=${info}>Click here for more</a>`
+  table.insertAdjacentHTML(
+    "beforeend", 
+    `<tr><td>役員構成</td><td><a class="ullet-stakeholder-link" target="_blank" rel="noopener noreferrer" href=${info}>Click here for more</a></td></tr>`
   );
 }
+
+// function fillInStakeholder(info, identifier) {
+//   const item = document.querySelector(identifier);
+//   item.innerHTML = "";
+//   item.insertAdjacentHTML(
+//     "beforeend",
+//     `<a class="ullet-stakeholder-link" target="_blank" rel="noopener noreferrer" href=${info}>Click here for more</a>`
+//   );
+// }
