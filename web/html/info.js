@@ -66,7 +66,7 @@ function fillInOverview(info, stakeinfo, identifier, code) {
   );
   table.insertAdjacentHTML(
     "beforeend", 
-    `<tr><td>役員構成</td><td><a class="ullet-stakeholder-link" target="_blank" rel="noopener noreferrer" href=${stakeinfo}>Click here for more</a></td></tr>`
+    `<tr><td>役員構成</td><td><a class="ullet-stakeholder-link" target="_blank" rel="noopener noreferrer" href=${stakeinfo}>link</a></td></tr>`
   );
 }
 

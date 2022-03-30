@@ -19,12 +19,28 @@
         </p>
     </div>
     <div class="display">
-        <p class="loading-message hidden"> Loading... </p>
         <div class='company-info hidden'>
             <div class="company-overview">
                 <table class="overview-table">
                     <h3 class="overview-title"></h3>
                     <tbody class="overview-body"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="stock-graph">
+            <div id='append1year'></div>
+            <div id='append5year'></div>
+        </div>
+        <!-- <div class='rsegment hidden'></div> -->
+        <div class="revenue-graph">
+            <div id='annual-revenue'></div>
+            <div id='quarterly-revenue'></div>
+        </div>
+        <div class="company-info hidden">
+            <div class="capital-info">
+                <h3>資本構成</h3>
+                <table class="capital-table">
+                    <tbody class="capital-body"></tbody>
                 </table>
             </div>
             <form id="company-news">
@@ -36,18 +52,7 @@
                     <button id="btn-kabutan-news-delete" type="submit" value="delete">Delete</button>
                 </div>
             </form>
-        </div>
-        <div class="stock-graph">
-            <div id='append1year'></div>
-            <div id='append5year'></div>
-        </div>
-        <div class='rsegment hidden'></div>
-        <div class="revenue-graph">
-            <div id='annual-revenue'></div>
-            <div id='quarterly-revenue'></div>
-        </div>
-        <div class="company-info hidden">
-            <form="disclosure-news">
+            <form id="disclosure-news">
                 <h3>開示情報</h3>
                 <table id="disclosure-table">
                     <tbody class="disclosure-body"></tbody>
@@ -56,12 +61,6 @@
                     <button id="btn-kabutan-dis-delete" type="submit" value="delete">Delete</button>
                 </div>
             </form>
-            <div class="capital-info">
-                <h3>資本構成</h3>
-                <table class="capital-table">
-                    <tbody class="capital-body"></tbody>
-                </table>
-            </div>
         </div>
         <div class="company-info ullet-info hidden">
             <form id="ullet-news">
