@@ -23,11 +23,11 @@ function addRevenueChart(result, term, graph) {
   var chartData = new google.visualization.DataTable();
 
   chartData.addColumn("string", "Date");
-  chartData.addColumn("number", "Total Revenue");
-  chartData.addColumn("number", "Gross Profit");
-  chartData.addColumn("number", "Operating Income");
-  chartData.addColumn("number", "Net Income");
-  chartData.addColumn("number", "Total Revenue %");
+  chartData.addColumn("number", "売上"); // total revenue
+  chartData.addColumn("number", "売上総利益"); // gross profit
+  chartData.addColumn("number", "営業利益"); // operating income
+  chartData.addColumn("number", "純利益"); // net income
+  chartData.addColumn("number", "Total Revenue %"); // total revenue %
 
   for (let i = 0; i < result[term]["date"].length; i++) {
     chartData.addRow([
@@ -41,7 +41,7 @@ function addRevenueChart(result, term, graph) {
   }
 
   var options = {
-    title: `${term === "annual" ? "Annual" : "Quarterly"} Revenue Chart`,
+    title: `${term === "annual" ? "通期売上・利益率" : "四半期売上・利益率"}`,
     seriesType: "bars",
     series: {
       4: {
@@ -58,15 +58,15 @@ function addRevenueChart(result, term, graph) {
     },
     vAxes: {
       0: {
-        title: "Revenue",
+        // title: "Revenue",
       },
       1: {
-        title: "Percentage",
+        // title: "Percentage",
         format: "percent",
       },
     },
     isStacked: false,
-    width: 800,
+    width: 1500,
     height: 400,
   };
 
