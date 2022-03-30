@@ -11,6 +11,10 @@ select {
   margin: 10px;
 }
 
+h5 {
+  font-weight: 500;
+}
+
 .display {
   margin: 15px;
 }
@@ -30,11 +34,52 @@ select {
   border-bottom: 3px solid lightgray;
 }
 
+.overview-data {
+  margin: 5px 0px 5px 0px;
+}
+
+.company-overview {
+  margin-bottom: 40px;
+}
+
+.graph-header {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 .revenue-graph,
 .stock-graph {
   display: flex;
   justify-content: flex-start;
   max-width: 1200px;
+}
+
+.stock-graph {
+  margin-bottom: 20px;
+}
+.revenue-graph {
+  margin-top: 20px;
+}
+
+.capital-info {
+  margin-bottom: 40px;
+}
+
+.kabutan-info,
+.ullet-info {
+  margin: 0px;
+  border: 0px;
+}
+
+.news-subtitle {
+  margin-bottom: 10px;
+}
+
+#company-news,
+#disclosure-news,
+#ullet-news,
+#ullet-feeds {
+  margin-bottom: 40px;
 }
 
 #annual-revenue,
