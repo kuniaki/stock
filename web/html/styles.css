@@ -24,3 +24,15 @@ select {
 .info-right {
   float: right;
 }
+
+.revenue-graph,
+.stock-graph {
+  text-align: justify;
+}
+
+#annual-revenue,
+#quarterly-revenue,
+#append1year,
+#append5year {
+  display: inline;
+}
