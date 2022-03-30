@@ -18,7 +18,7 @@ function getCompanyInfoPromise() {
 const infoPromiseDone = function (result) {
   console.log("loading company info...");
   console.log(result);
-  fillInOverview(result["overview"], result["ulletstakeholder"],".overview-body", code);
+  fillInOverview(result["overview"], result["ulletstakeholder"], ".overview-body", code);
   fillInNews(result["news"], ".news-body", "kabutan-news-check");
   fillInNews(result["disclosure"], ".disclosure-body", "kabutan-dis-check");
   fillInCapital(result["capital"], ".capital-body");
@@ -66,7 +66,7 @@ function fillInOverview(info, stakeinfo, identifier, code) {
   );
   table.insertAdjacentHTML(
     "beforeend", 
-    `<tr><td>役員構成</td><td><a class="ullet-stakeholder-link" target="_blank" rel="noopener noreferrer" href=${info}>Click here for more</a></td></tr>`
+    `<tr><td>役員構成</td><td><a class="ullet-stakeholder-link" target="_blank" rel="noopener noreferrer" href=${stakeinfo}>Click here for more</a></td></tr>`
   );
 }
 
