@@ -18,13 +18,13 @@ function getCompanyInfoPromise() {
 const infoPromiseDone = function (result) {
   console.log("loading company info...");
   console.log(result);
-  fillInOverview(result["overview"], ".overview-body", code);
+  fillInOverview(result["overview"], result["ulletstakeholder"],".overview-body", code);
   fillInNews(result["news"], ".news-body", "kabutan-news-check");
   fillInNews(result["disclosure"], ".disclosure-body", "kabutan-dis-check");
   fillInCapital(result["capital"], ".capital-body");
   fillInNews(result["ulletnews"], ".ullet-news-body", "ullet-news-check");
   fillInNews(result["ulletfeeds"], ".ullet-feeds-body", "ullet-feeds-check");
-  fillInStakeholder(result["ulletstakeholder"], ".ullet-stakeholder-fill");
+  // fillInStakeholder(result["ulletstakeholder"], ".ullet-stakeholder-fill");
   show(".company-info");
 };
 
@@ -46,7 +46,7 @@ function fillInNews(info, identifier, className) {
   }
 }
 
-function fillInOverview(info, identifier, code) {
+function fillInOverview(info, stakeinfo, identifier, code) {
   const table = document.querySelector(identifier);
   const tableTitle = document.querySelector(".overview-title");
 
@@ -70,11 +70,11 @@ function fillInOverview(info, identifier, code) {
   );
 }
 
-// function fillInStakeholder(info, identifier) {
-//   const item = document.querySelector(identifier);
-//   item.innerHTML = "";
-//   item.insertAdjacentHTML(
-//     "beforeend",
-//     `<a class="ullet-stakeholder-link" target="_blank" rel="noopener noreferrer" href=${info}>Click here for more</a>`
-//   );
-// }
+function fillInStakeholder(info, identifier) {
+  const item = document.querySelector(identifier);
+  item.innerHTML = "";
+  item.insertAdjacentHTML(
+    "beforeend",
+    `<a class="ullet-stakeholder-link" target="_blank" rel="noopener noreferrer" href=${info}>Click here for more</a>`
+  );
+}
