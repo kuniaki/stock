@@ -1,3 +1,7 @@
+body {
+  margin: 10px;
+}
+
 input {
   width: 140px;
   margin: 10px;
@@ -17,6 +21,11 @@ select {
   position: relative;
 }
 
+.search-bar {
+  padding: 5px, 0px, 5px, 0px;
+  font-weight: bold;
+}
+
 .overview-title {
   text-align: left;
 }
@@ -25,14 +34,21 @@ select {
   float: right;
 }
 
-.revenue-graph .stock-graph {
+.revenue-graph,
+.stock-graph {
   display: flex;
   justify-content: flex-start;
   max-width: 1200px;
 }
 
-#annual-revenue #quarterly-revenue #append1year #append5year {
+#annual-revenue,
+#quarterly-revenue,
+#append1year,
+#append5year {
   flex: 1;
   margin-top: 5px;
   margin-bottom: 15px;
+}
+
+#graph-heading {
 }
