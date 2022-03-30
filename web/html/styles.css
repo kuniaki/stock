@@ -11,6 +11,10 @@ select {
   margin: 10px;
 }
 
+.display {
+  margin: 15px;
+}
+
 .hidden {
   display: none;
 }
@@ -21,13 +25,9 @@ select {
   position: relative;
 }
 
-.search-bar {
-  padding: 5px, 0px, 5px, 0px;
-  font-weight: bold;
-}
-
 .overview-title {
   text-align: left;
+  border-bottom: 3px solid lightgray;
 }
 
 .revenue-graph,
@@ -44,4 +44,12 @@ select {
   flex: 1;
   margin-top: 5px;
   margin-bottom: 15px;
+}
+
+#search-bar {
+  margin: 0px;
+  margin-bottom: 30px;
+  padding: 10px 0px 10px 15px;
+  font-weight: bold;
+  border-bottom: 3px solid lightgray;
 }

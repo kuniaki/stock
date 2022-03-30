@@ -11,66 +11,66 @@
 
 <body>
     <div id="search-bar">
-        <p>
+        <!-- <p> -->
             <label for="code">Company Code:</label>
             <input value="2502" type="text" maxlength="4" id='code'>
             <!-- <label>country:<input value="japan" type="text" maxlength="10" id='country'> -->
             <button id='btn-getinfo' type="button">Get Info</button>
-        </p>
+        <!-- </p> -->
     </div>
     <div class="display">
-        <div class='company-info hidden'>
-            <div class="company-overview">
+            <div class="company-overview company-info hidden">
                 <table class="overview-table">
                     <h3 class="overview-title"></h3>
                     <tbody class="overview-body"></tbody>
                 </table>
             </div>
-        </div>
-        <!-- <div class="graph hidden">
-        <h3 class="graph-header">株価推移</h3> -->
+        <div class="graph">
+        <h3 class="graph-header hidden">株価推移</h3>
             <div class="stock-graph">
                 <div id='append1year'></div>
                 <div id='append5year'></div>
             </div>
-        <!-- </div> -->
+        </div>
         <!-- <div class='rsegment hidden'></div> -->
-        <!-- <div class="graph hidden">
-            <h3 class="graph-header">通期業績推移</h3> -->
+        <div class="graph">
+            <h3 class="graph-header hidden">通期業績推移</h3>
             <div class="revenue-graph">
                 <div id='annual-revenue'></div>
                 <div id='quarterly-revenue'></div>
             </div>
-        <!-- </div> -->
-        <div class="company-info hidden">
-            <div class="capital-info">
+        </div>
+        <!-- <div class="company-info hidden"> -->
+            <div class="capital-info company-info hidden">
                 <h3>資本構成</h3>
                 <table class="capital-table">
                     <tbody class="capital-body"></tbody>
                 </table>
             </div>
-            <form id="company-news">
-                <h3>決算ニュース</h3>
-                <table id="news-table">
-                    <tbody class="news-body"></tbody>
-                </table>
-                <div>
-                    <button id="btn-kabutan-news-delete" type="submit" value="delete">Delete</button>
-                </div>
-            </form>
-            <form id="disclosure-news">
-                <h3>開示情報</h3>
-                <table id="disclosure-table">
-                    <tbody class="disclosure-body"></tbody>
-                </table>
-                <div>
-                    <button id="btn-kabutan-dis-delete" type="submit" value="delete">Delete</button>
-                </div>
-            </form>
-        </div>
-        <div class="company-info ullet-info hidden">
+            <div class="kabutan-info company-info hidden">
+                <form id="company-news">
+                    <h3>決算ニュース</h3>
+                    <table id="news-table">
+                        <tbody class="news-body"></tbody>
+                    </table>
+                    <div>
+                        <button id="btn-kabutan-news-delete" type="submit" value="delete">Delete</button>
+                    </div>
+                </form>
+                <form id="disclosure-news">
+                    <h3>開示情報</h3>
+                    <table id="disclosure-table">
+                        <tbody class="disclosure-body"></tbody>
+                    </table>
+                    <div>
+                        <button id="btn-kabutan-dis-delete" type="submit" value="delete">Delete</button>
+                    </div>
+                </form>
+            </div>
+        <!-- </div> -->
+        <div class="ullet-info company-info hidden">
             <form id="ullet-news">
-                <h3>Ulletユーレット ニュース</h3>
+                <h3>記事一覧</h3>
                 <table id="ullet-news-table">
                     <tbody class="ullet-news-body"></tbody>
                 </table>
@@ -79,7 +79,7 @@
                 </div>
             </form>
             <form id="ullet-feeds">
-                <h3>Ulletユーレット 配信情報</h3>
+                <h3>配信情報</h3>
                 <table id="ullet-feeds-table">
                     <tbody class="ullet-feeds-body"></tbody>
                 </table>
@@ -87,10 +87,6 @@
                     <button id="btn-ullet-feeds-delete" type="submit" value="delete">Delete</button>
                 </div>
             </form>
-            <!-- <div class="ullet-stakeholder">
-                <h3>役員構成</h3>
-                <div class="ullet-stakeholder-fill"></div>
-            </div> -->
         </div>
 
     </div>

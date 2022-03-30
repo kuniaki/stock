@@ -51,7 +51,7 @@ function fillInOverview(info, stakeinfo, identifier, code) {
   const tableTitle = document.querySelector(".overview-title");
 
   table.innerHTML = "";
-  tableTitle.innerHTML = `${code} ${info["会社情報"]}\n${info["英語社名"]}<h5>時価総額: ${info["時価総額"]}</h5><h5>PER(予): ${info["PER"]}</h5>`;
+  tableTitle.innerHTML = `${code} ${info["会社情報"]}\n${info["英語社名"]}<h5 class="overview-data">時価総額: ${info["時価総額"]}</h5><h5 class="overview-data">PER(予): ${info["PER"]}</h5>`;
   table.insertAdjacentHTML(
     "beforeend",
     `<tr><td>概要</td><td>${info["概要"]}</td></tr>`
