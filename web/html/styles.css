@@ -1,6 +1,6 @@
-body {
+/* body {
   margin: 10px;
-}
+} */
 
 input {
   width: 140px;
@@ -21,20 +21,16 @@ select {
   position: relative;
 }
 
-.search-bar {
+/* .search-bar {
   padding: 5px, 0px, 5px, 0px;
   font-weight: bold;
-}
+} */
 
 .overview-title {
   text-align: left;
 }
 
-.info-right {
-  float: right;
-}
-
-.revenue-graph,
+/* .revenue-graph,
 .stock-graph {
   display: flex;
   justify-content: flex-start;
@@ -48,4 +44,4 @@ select {
   flex: 1;
   margin-top: 5px;
   margin-bottom: 15px;
-}
+} */
