@@ -117,6 +117,7 @@ function main1years(result) {
 
   var options = {
     title: title,
+    titleTextStyle: {fontSize: 15},
     bar: {
       groupWidth: "100%",
     },
@@ -124,8 +125,8 @@ function main1years(result) {
       stepSize: stepSize,
       format: "yy/MM/dd",
     },
-    width: 1200,
-    height: 400,
+    width: 600,
+    height: 300,
     lineWidth: 1,
     curveType: "function",
     seriesType: "Line",
@@ -172,6 +173,7 @@ function main5years(result) {
 
   var options = {
     title: title,
+    titleTextStyle: {fontSize: 15},
     bar: {
       groupWidth: "100%",
     },
@@ -180,8 +182,8 @@ function main5years(result) {
       format: "yy/MM/dd",
       direction: -1,
     },
-    width: 1200,
-    height: 400,
+    width: 600,
+    height: 300,
     lineWidth: 1,
     curveType: "function",
     seriesType: "Line",

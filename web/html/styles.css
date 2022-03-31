@@ -1,3 +1,7 @@
+body {
+  margin: 10px;
+}
+
 input {
   width: 140px;
   margin: 10px;
@@ -5,6 +9,63 @@ input {
 
 select {
   margin: 10px;
+}
+
+h5 {
+  font-weight: 500;
+}
+
+tr {
+  text-align: left;
+}
+
+tr.overview {
+  background-color: #d3d3d330;
+}
+
+td {
+  padding: 8px 10px 8px 10px;
+  width: auto;
+}
+
+button {
+  font-size: 13px;
+  padding: 2px 9px 2px 9px;
+  transition-duration: 0.2s;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 8px 2px 4px 2px;
+  cursor: pointer;
+}
+
+input.kabutan-news-check {
+  margin: 0px;
+  width: auto;
+}
+
+input.kabutan-dis-check {
+  margin: 0px;
+  width: auto;
+}
+
+input.ullet-news-check {
+  margin: 0px;
+  width: auto;
+}
+
+input.ullet-feeds-check {
+  margin: 0px;
+  width: auto;
+}
+
+.display {
+  margin: 15px;
+  margin-bottom: 100px;
 }
 
 .hidden {
@@ -21,6 +82,67 @@ select {
   text-align: left;
 }
 
-.info-right {
-  float: right;
+.overview-data {
+  margin: 5px 0px 5px 0px;
+}
+
+.company-overview {
+  margin-bottom: 40px;
+}
+
+.graph-header {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.revenue-graph,
+.stock-graph {
+  display: flex;
+  justify-content: flex-start;
+  max-width: 1200px;
+}
+
+.stock-graph {
+  margin-bottom: 20px;
+}
+.revenue-graph {
+  margin-top: 20px;
+}
+
+.capital-info {
+  margin-bottom: 40px;
+}
+
+.kabutan-info,
+.ullet-info {
+  margin: 0px;
+  border: 0px;
+}
+
+.news-subtitle {
+  margin-bottom: 10px;
+}
+
+#company-news,
+#disclosure-news,
+#ullet-news,
+#ullet-feeds {
+  margin-bottom: 40px;
+}
+
+#annual-revenue,
+#quarterly-revenue,
+#append1year,
+#append5year {
+  flex: 1;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+#search-bar {
+  margin: 0px;
+  margin-bottom: 30px;
+  padding: 10px 0px 10px 15px;
+  font-weight: bold;
+  border-bottom: 3px solid lightgray;
 }

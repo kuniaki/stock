@@ -23,51 +23,69 @@ function addRevenueChart(result, term, graph) {
   var chartData = new google.visualization.DataTable();
 
   chartData.addColumn("string", "Date");
-  chartData.addColumn("number", "Total Revenue");
-  chartData.addColumn("number", "Gross Profit");
-  chartData.addColumn("number", "Operating Income");
-  chartData.addColumn("number", "Net Income");
-  chartData.addColumn("number", "Total Revenue %");
+  chartData.addColumn("number", "売上(単位：億円)"); // total revenue
+  chartData.addColumn("number", "%売上総利益"); // gross profit
+  chartData.addColumn("number", "%営業利益"); // operating income
+  chartData.addColumn("number", "%純利益"); // net income
 
   for (let i = 0; i < result[term]["date"].length; i++) {
     chartData.addRow([
       result[term]["date"][i],
-      parseInt(result[term]["total_revenue"][i]),
-      parseInt(result[term]["gross_profit"][i]),
-      parseInt(result[term]["operating_income"][i]),
-      parseInt(result[term]["net_income"][i]),
-      parseFloat(result[term]["revenue_percentage"][i]),
+      parseInt(result[term]["total_revenue"][i]) / 100, // index 0
+      parseFloat(result[term]["gross_percentage"][i]), // index 1
+      parseFloat(result[term]["operating_percentage"][i]), // index 2
+      parseFloat(result[term]["net_percentage"][i]), // index 3
+      
     ]);
   }
 
   var options = {
-    title: `${term === "annual" ? "Annual" : "Quarterly"} Revenue Chart`,
+    title: `${term === "annual" ? "通期売上・利益率" : "四半期売上・利益率"}`,
+    titleTextStyle: {fontSize: 15},
     seriesType: "bars",
     series: {
-      4: {
+      1: {
         type: "line",
-        color: "red",
+        color: "#6f9654",
+        pointSize: 3,
+        targetAxisIndex: 1,
+      },
+      2: {
+        type: "line",
+        color: "#e7711b",
+        pointSize: 3,
+        targetAxisIndex: 1,
+      },
+      3: {
+        type: "line",
+        color: "#f1ca3a",
+        pointSize: 3,
         targetAxisIndex: 1,
       },
     },
     bar: {
-      groupWidth: "75%",
+      groupWidth: "60%",
     },
     hAxis: {
       direction: -1,
     },
     vAxes: {
       0: {
-        title: "Revenue",
+        // title: "Revenue",
+        gridlines: {color: 'transparent'},
+        format: "###,###,###,###,###",
       },
       1: {
-        title: "Percentage",
+        // title: "Percentage",
+        gridlines: {color: 'transparent'},
         format: "percent",
       },
     },
+    min: 0,
     isStacked: false,
-    width: 800,
-    height: 400,
+    legend: {textStyle: {fontSize:10}},
+    width: 600,
+    height: 300,
   };
 
   var chart = new google.visualization.ColumnChart(

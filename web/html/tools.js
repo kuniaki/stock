@@ -1,5 +1,3 @@
-"use strict";
-
 function show(identifier) {
   const item = document.querySelectorAll(identifier);
   for (const i of item) {
