@@ -1,112 +1,288 @@
-<!DOCTYPE html>
-<html lang="ja">
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
 <head>
-    <meta charset="utf-8">
-    <title>Chart</title>
-    <!--- デザインに関する規定はこれしかないので、cssファイルではなくstyleタグに記述 --->
-    <link rel="stylesheet" href="styles.css">
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+	Integration Framework &mdash; Self Service Portal | HHAeXchange</title>
+	<link rel="icon" type="image/png" href="../img/favicon.png">
+	<link rel="stylesheet" href="../css/dataTables.foundation.min.css">
+	<link rel="stylesheet" href="../css/responsive.dataTables.min.css">
+	<link rel="stylesheet" href="../css/zmultiselect.min.css"> 
+	<link rel="stylesheet" href="../third-party/fontawesome-pro-6/css/all.min.css">
+	<link rel="stylesheet" href="../css/deque-patterns.min.css">
+	<link rel="stylesheet" href="../css/app.css">
+	<style>
+		.hhax-card-show-hide>.accordion-item>.accordion-title::before { content: none;}
+		.hhax-card-show-hide>.accordion-item.is-active>.accordion-title::before { content: none;}
+		.row-header th { background-color: #DCF1F0; }
+	</style>
 </head>
-
 <body>
-    <div id="search-bar">
-        <!-- <p> -->
-            <label for="code">証券コード:</label>
-            <input value="2502" type="text" maxlength="4" id='code'>
-            <!-- <label>country:<input value="japan" type="text" maxlength="10" id='country'> -->
-            <button id='btn-getinfo' type="button">Get Info</button>
-        <!-- </p> -->
-    </div>
-    <div class="display">
-            <div class="company-overview company-info hidden">
-                <table class="overview-table">
-                    <h3 class="overview-title"></h3>
-                    <tbody class="overview-body"></tbody>
-                </table>
-            </div>
-        <div class="graph">
-        <h3 class="graph-header hidden">株価推移</h3>
-            <div class="stock-graph">
-                <div id='append1year'></div>
-                <div id='append5year'></div>
-            </div>
-        </div>
-        <!-- <div class='rsegment hidden'></div> -->
-        <div class="graph">
-            <h3 class="graph-header hidden">通期業績推移</h3>
-            <div class="revenue-graph">
-                <div id='annual-revenue'></div>
-                <div id='quarterly-revenue'></div>
-            </div>
-        </div>
-        <!-- <div class="company-info hidden"> -->
-        <div class="capital-info company-info hidden">
-            <h3>資本構成</h3>
-            <table class="capital-table">
-                <tbody class="capital-body"></tbody>
-            </table>
-        </div>
-        <div class="kabutan-info company-info hidden">
-            <form id="company-news">
-                <h3 class="news-subtitle">決算ニュース</h3>
-                <table id="news-table">
-                    <tbody class="news-body"></tbody>
-                </table>
-                <div>
-                    <button id="btn-kabutan-news-delete" type="submit" value="delete">Remove</button>
-                </div>
-            </form>
-            <form id="disclosure-news">
-                <h3 class="news-subtitle">開示情報</h3>
-                <table id="disclosure-table">
-                    <tbody class="disclosure-body"></tbody>
-                </table>
-                <div>
-                    <button id="btn-kabutan-dis-delete" type="submit" value="delete">Remove</button>
-                </div>
-            </form>
-        </div>
-        <!-- </div> -->
-        <div class="ullet-info company-info hidden">
-            <form id="ullet-news">
-                <h3 class="news-subtitle">記事一覧</h3>
-                <table id="ullet-news-table">
-                    <tbody class="ullet-news-body"></tbody>
-                </table>
-                <div>
-                    <button id="btn-ullet-news-delete" type="submit" value="delete">Remove</button>
-                </div>
-            </form>
-            <form id="ullet-feeds">
-                <h3 class="news-subtitle">配信情報</h3>
-                <table id="ullet-feeds-table">
-                    <tbody class="ullet-feeds-body"></tbody>
-                </table>
-                <div>
-                    <button id="btn-ullet-feeds-delete" type="submit" value="delete">Remove</button>
-                </div>
-            </form>
-        </div>
+	<div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
+	  <h2 class="title">Main Menu</h2>
+	  <button class="close-button" aria-label="Close alert" type="button" data-toggle="offCanvasLeft"> <span aria-hidden="true">&times;</span> </button>
+	  <ul class="vertical menu" data-accordion-menu>
+		<li>menu here for mobile</li>
+	  </ul>
+	</div>
+	<div class="off-canvas position-right" id="offCanvasRight" data-off-canvas>
+	  <h2 class="title">User Profile Menu</h2>
+	  <button class="close-button" aria-label="Close alert" type="button" data-toggle="offCanvasRight"> <span aria-hidden="true">&times;</span> </button>
+	  <ul class="vertical menu">
+		<li class="label title">Need Help?</li>	
+	  </ul>  
+	</div>
+	<div class="off-canvas-content" data-off-canvas-content>
+		<!-- START : NAVBAR -->
+	<a href="#mainContent" class="skip-link button hollow">Skip to main content</a>
+	<div class="title-bar hide-for-large">
+	  <div class="title-bar-left">
+		<button class="menu-icon" data-tooltip title="Main Menu" type="button" data-toggle="offCanvasLeft" aria-label="Menu button"></button>
+		<span class="title-bar-title">
+		  <img src="../img/logo_hhax-white.svg" class="hhax-logo" alt="HHAeXchange" style="height: 2rem;">
+		</span> </div>
+	</div>
+	<div class="top-bar show-for-large hhax-navbar" id="hhaxNav">
+	  <div class="top-bar-left flex-container">
+		<div class="flex-child-shrink"> <a href="index.php">
+		  <img src="../img/logo_hhax-white.svg" class="hhax-logo margin-bottom-half" alt="HHAeXchange">
+		  </a> </div>
+	  </div>
+	</div>
+	<!-- END : NAVBAR -->
 
-    </div>
-    
+	<!-- Instructions or Links for Prototype Users -->
 
-    <!-- need to add div id=revenue here-->
-
-    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <!--- ここでGoogle Chartの読み込み --->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript" src ="tools.js"></script>
-    <script type="text/javascript" src ="info.js"></script>
-    <!-- <script type="text/javascript" src="rsegment.js"></script> -->
-    <script type="text/javascript" src="chart.js"></script>
-    <script type="text/javascript" src="revenue.js"></script>
-    <script type="text/javascript" src="select.js"></script>
-    <script type="text/javascript" src="event.js"></script>
-
-
-
+	<!-- START : MAIN CONTENT -->
+	<main class="grid-container fluid hhax-main-content" id="mainContent">
+	  <div class="grid-x grid-margin-x hhax-page-header">
+		<div class="cell medium-8 large-9">
+		  <h1 class="padding-left-3">Integration Framework  &mdash; Self Service Portal</h1>
+		</div>
+		<div class="cell medium-4 large-3"></div>
+	  </div>
+	  <div class="hhax-container grid-x grid-margin-x padding-left-3 padding-right-3">
+		<div class="card hhax-card cell large-4">
+			<div class="card-section">
+				<h2>Web Hooks</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+				<p class="stat margin-top-2">$100</p>
+				<p>Per service billed monthly</p>
+				<h3 class="margin-top-2">What's included</h3>
+				<ul class="input-list margin-bottom-2">
+					<li><i class="fas fa-check success margin-right-1"></i> Lorem ipsum dolor sit</li>
+					<li><i class="fas fa-check success margin-right-1"></i> Amet consectetur adipiscing</li>
+					<li><i class="fas fa-check success margin-right-1"></i> Elit sed do eiusmod tempor</li>
+					<li><i class="fas fa-check success margin-right-1"></i> Incididunt ut labore et</li>
+					<li><i class="fas fa-check success margin-right-1"></i> Dolore magna aliqua</li>
+				</ul>
+			</div>  
+		</div>
+		<div class="card hhax-card cell large-4">
+			<div class="card-section">
+				<h2>API</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+				<p class="stat margin-top-2">$100</p>
+				<p>Per service billed monthly</p>
+				<h3 class="margin-top-2">What's included</h3>
+				<ul class="input-list margin-bottom-2">
+					<li><i class="fas fa-check success margin-right-1"></i> Lorem ipsum dolor sit</li>
+					<li><i class="fas fa-check success margin-right-1"></i> Amet consectetur adipiscing</li>
+					<li><i class="fas fa-check success margin-right-1"></i> Elit sed do eiusmod tempor</li>
+					<li><i class="fas fa-check success margin-right-1"></i> Incididunt ut labore et</li>
+					<li><i class="fas fa-check success margin-right-1"></i> Dolore magna aliqua</li>
+				</ul>
+			</div>  
+		</div>
+		<div class="card hhax-card cell large-4">
+			<div class="card-section">
+				<h2>Batch</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+				<p class="stat margin-top-2">$100</p>
+				<p>Per service billed monthly</p>
+				<h3 class="margin-top-2">What's included</h3>
+				<ul class="input-list margin-bottom-2">
+					<li><i class="fas fa-check success margin-right-1"></i> Lorem ipsum dolor sit</li>
+					<li><i class="fas fa-check success margin-right-1"></i> Amet consectetur adipiscing</li>
+					<li><i class="fas fa-check success margin-right-1"></i> Elit sed do eiusmod tempor</li>
+					<li><i class="fas fa-check success margin-right-1"></i> Incididunt ut labore et</li>
+					<li><i class="fas fa-check success margin-right-1"></i> Dolore magna aliqua</li>
+				</ul>
+			</div>  
+		</div>
+		<div class="cell">
+			<div class="hhax-card">
+			  <div class="card-section">
+				<ul class="accordion hhax-card-show-hide" data-accordion data-allow-all-closed="true">
+				  <li class="accordion-item is-active" data-accordion-item> <a href="#" class="accordion-title text-center" onClick="$(this).children('svg').toggleClass('hide')">See full feature matrix <i class="fas fa-chevron-down margin-left-half"></i><i class="fas fa-chevron-up hide margin-left-half"></i></a>
+					<div class="accordion-content" data-tab-content>
+						<div class="table-scroll">
+							<table class="hhax-table">
+							  <caption class="show-for-sr">
+							  Sortable Table with Actions Column
+							  </caption>
+							  <thead>
+								<tr>
+								  <th style="width: 30%"></th>
+								  <th style="width: 20%">Web Hooks</th>
+								  <th style="width: 20%">API</th>
+								  <th style="width: 20%">Batch</th>
+								  <th></th>
+								</tr>
+							  </thead>
+							  <tbody>
+								<tr class="row-header">
+								  <th colspan="5">Key Features</th>  
+								</tr>
+								<tr>
+								  <td class="padding-left-2">Lorem ipsum dolor sit amet</td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td></td>	
+								</tr>
+								<tr>
+								   <td class="padding-left-2">Consectetur adipiscing elit</td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td></td>
+								  <td></td>
+								</tr>
+								<tr>
+								  <td class="padding-left-2">Sed do eiusmod tempor incididunt</td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td></td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+							      <td></td>
+								</tr>
+								<tr class="row-header">
+								  <th colspan="5">Security</th>  
+								</tr>
+								<tr>
+								  <td class="padding-left-2">Ut labore et dolore magna aliqua</td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td></td>
+								</tr>
+								<tr>
+								  <td class="padding-left-2">Magna ac placerat vestibulum </td>
+								  <td></td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td></td>
+								  <td></td>
+								</tr>
+								<tr>
+								  <td class="padding-left-2">Lectus mauris ultrices</td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td></td>
+								  <td></td>
+								  <td></td>
+								</tr> 
+								<tr class="row-header">
+								  <th colspan="5">Support</th>  
+								</tr>
+								<tr>
+								  <td class="padding-left-2">Commodo odio aenean sed</td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td></td>
+								</tr>
+								<tr>
+								  <td class="padding-left-2">Adipiscing diam donec adipiscing tristique</td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td></td>
+								</tr>
+								<tr>
+								  <td class="padding-left-2">Praesent tristique magna</td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td></td>
+								  <td></td>
+								</tr>
+								<tr>
+								  <td class="padding-left-2">sit amet purus gravida</td>
+								  <td></td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td></td>
+								  <td></td>
+								</tr>
+								<tr>
+								  <td class="padding-left-2">Lectus mauris ultrices</td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td></td>
+								  <td><i class="fas fa-check fa-lg success"></i></td>
+								  <td></td>
+								</tr>
+							  </tbody>
+							  <tfoot>
+								<tr>
+									<td></td>
+									<td><button class="primary button margin-bottom-0">Get Web Hooks</button></td>
+									<td><button class="primary button margin-bottom-0">Get API</button></td>
+									<td><button class="primary button margin-bottom-0">Get Batch</button></td>
+									<td></td>
+								</tr>
+							  </tfoot>
+							</table>
+						</div>
+						
+					</div>
+				  </li>
+				</ul>
+				  
+				<h2 class="text-center margin-bottom-2 margin-top-3">Frequently Asked Questions</h2>
+				<div class="grid-x grid-margin-x">
+					<div class="cell large-4 padding-1"><h3>How do I get started?</h3>
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+					</div>
+					<div class="cell large-4 padding-1"><h3>Is my data secure?</h3>
+					<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p> </div>
+					<div class="cell large-4 padding-1"><h3>What type of support do you offer?</h3>
+					<p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit</p> </div>
+				</div>
+				  
+				<h2 class="text-center margin-bottom-2 margin-top-3">Have Other Questions?</h2>
+				<p class="lead text-center"><a href="#">Contact us</a> so we can help.</p>
+				   
+			  </div>
+			</div>  
+		</div>
+	  </div>
+	</main>
+	<!-- END : MAIN CONTENT -->
+	<footer class="hhax-footer hide-for-small-only">
+	  <div class="grid-container fluid">
+		<div class="grid-x grid-margin-x">
+		  <div class="cell">
+			<p>© 2022 HHAeXchange. All Rights Reserved. <br>
+			  <small>Integration Framework  &mdash; Self Service Portal</small>
+			</p>
+			<p><a href="tel:7034445555"><i class="fas fa-phone-alt magin-right-half"></i> Call us</a><span class="padding-left-1 padding-right-1"> | </span><a href="mailto:support@hhaexchange.com"><i class="fas fa-envelope magin-right-half"></i> Email Us</a></p>
+			
+		  </div>
+		</div>
+	  </div>
+	</footer>
+	</div>
+	<script defer src="../third-party/fontawesome-pro-6/js/all.min.js"></script>
+	<script src="../third-party/foundation-6.7.4/js/vendor/jquery.js"></script> 
+	<script src="../third-party/foundation-6.7.4/js/vendor/what-input.js"></script> 
+	<script src="../third-party/foundation-6.7.4/js/vendor/foundation.min.js"></script>
+	<script src="../third-party/foundation-6.7.4/js/app.js"></script> 
+	<script src="../js/jquery.dataTables.min.js"></script>
+	<script src="../js/dataTables.foundation.min.js"></script>
+	<script src="../js/dataTables.responsive.min.js"></script>
+	<script src="../js/multi-input.js"></script> 
+	<script src="../js/zmultiselect.min.js"></script> 
+	<script src="../js/recorder.js"></script> 
+	<script src="../js/quill.js"></script>
+	<script src="../js/commonScripts.js"></script>
+	<script src="../js/deque-patterns.min.js"></script>
 </body>
-
 </html>
