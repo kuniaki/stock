@@ -273,22 +273,17 @@
 	<script src="commonScripts.js"></script>
 	<script>
            function getThis(){
-             fetch('https://vpr90iayuf.execute-api.us-east-1.amazonaws.com/items', {
-             method: 'PUT',
-             headers: {
-               'Content-Type': 'application/json'
-             },
-             // body: '{"id": "1", "endpoint": "mnarodia@hhaexchange.com", "protocol": "email", "payerglobalid": "0273c757-a325-4184-a3be-2fc298149a5f", "topic": "Visit", "eventname": "VisitEVVClockedIn"}',
-             body: JSON.stringify({
-             'id': '1',
-              'endpoint': 'mnarodia@hhaexchange.com',
-              'protocol': 'email',
-              'payerglobalid': '0273c757-a325-4184-a3be-2fc298149a5f',
-              'topic': 'Visit',
-              'eventname': 'VisitEVVClockedIn'
+            let data = fetch('https://y4blesfxp0.execute-api.us-east-1.amazonaws.com/connectDB', {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({
+               'name': 'aaaaa'
               })
             });
-           alert('hi');
+
+           alert(data);
            }
         </script>
 </body>
