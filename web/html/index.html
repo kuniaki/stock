@@ -273,7 +273,22 @@
 	<script src="commonScripts.js"></script>
 	<script>
            function getThis(){
-              alert('hi');
+             fetch('https://vpr90iayuf.execute-api.us-east-1.amazonaws.com/items', {
+             method: 'PUT',
+             headers: {
+               'Content-Type': 'application/json'
+             },
+             // body: '{"id": "1", "endpoint": "mnarodia@hhaexchange.com", "protocol": "email", "payerglobalid": "0273c757-a325-4184-a3be-2fc298149a5f", "topic": "Visit", "eventname": "VisitEVVClockedIn"}',
+             body: JSON.stringify({
+             'id': '1',
+              'endpoint': 'mnarodia@hhaexchange.com',
+              'protocol': 'email',
+              'payerglobalid': '0273c757-a325-4184-a3be-2fc298149a5f',
+              'topic': 'Visit',
+              'eventname': 'VisitEVVClockedIn'
+              })
+            });
+           alert('hi');
            }
         </script>
 </body>
